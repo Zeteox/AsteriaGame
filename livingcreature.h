@@ -14,6 +14,7 @@ protected:
     int m_baseDefence, m_defence;
 public:
     LivingCreature(string name, int maxHp, int golds, int damage, int defence);
+    string& getName();
     void virtual attack(LivingCreature* target) const;
     void virtual showStats() const = 0;
     void updDamage();
