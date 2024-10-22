@@ -11,6 +11,70 @@ LivingCreature::LivingCreature(string name, int maxHp, int golds, int damage, in
     updDefence();
 }
 
+string& LivingCreature::getName() {
+    return m_name;
+}
+
+void LivingCreature::setHp(int hp) {
+    if (hp >=0) {
+        m_hp=hp;
+        return;
+    }
+    m_hp = hp;
+}
+
+int LivingCreature::getHp() const {
+    return m_hp;
+}
+
+void LivingCreature::setMaxHp(int maxHp) {
+    if (maxHp >0) {
+        m_maxHp=maxHp;
+    }
+}
+
+int LivingCreature::getMaxHp() const {
+    return getMaxHp();
+}
+
+void LivingCreature::setGolds(int golds) {
+    if (golds >=0) {
+        m_golds=golds;
+    }
+}
+
+int LivingCreature::getGolds() const {
+    return m_golds;
+}
+
+int LivingCreature::getBaseDamage() const {
+    return m_baseDamage;
+}
+
+int LivingCreature::getBaseDefence() const {
+    return m_baseDefence;
+}
+
+void LivingCreature::setDamage(int damage) {
+    if (damage >=0) {
+        m_damage=damage;
+    }
+}
+
+int LivingCreature::getDamage() const {
+    return m_damage;
+}
+
+void LivingCreature::setDefence(int defence) {
+    if (defence >=0) {
+        m_defence=defence;
+    }
+}
+
+int LivingCreature::getDefence() const {
+    return m_defence;
+}
+
 void LivingCreature::attack(LivingCreature* target) const {
     target->removeHp(m_damage);
 }
