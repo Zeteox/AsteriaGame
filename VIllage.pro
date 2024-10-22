@@ -11,11 +11,15 @@ CONFIG += c++17
 SOURCES += \
     main.cpp \
     mainwindow.cpp \
-    potion.cpp
+    potion.cpp \
+    randomNumber.cpp \
+    village.cpp
 
 HEADERS += \
     mainwindow.h \
-    potion.h
+    potion.h \
+    randomNumber.h \
+    village.h
 
 FORMS += \
     mainwindow.ui
