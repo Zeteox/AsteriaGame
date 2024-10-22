@@ -20,6 +20,7 @@ SOURCES += \
     weapon.cpp
 
 HEADERS += \
+    livingcreature.h \
     mainwindow.h \
     potion.h \
     shield.h \
@@ -27,7 +28,6 @@ HEADERS += \
     sword.h \
     weapon.h
     hero.h \
-    livingcreature.h
 
 FORMS += \
     mainwindow.ui
