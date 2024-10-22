@@ -1,6 +1,6 @@
 #include "livingcreature.h"
 
-LivingCreature::LivingCreature(string name, int maxHp, int golds, int damage, int defence) {
+LivingCreature::LivingCreature(const string name, const int maxHp, const int golds, const int damage, const int defence) {
     m_name = name;
     m_maxHp = maxHp;
     m_hp = m_maxHp;
@@ -34,7 +34,7 @@ void LivingCreature::setMaxHp(int maxHp) {
 }
 
 int LivingCreature::getMaxHp() const {
-    return getMaxHp();
+    return m_maxHp;
 }
 
 void LivingCreature::setGolds(int golds) {
