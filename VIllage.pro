@@ -9,6 +9,8 @@ CONFIG += c++17
 #DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
 
 SOURCES += \
+    hero.cpp \
+    livingcreature.cpp \
     main.cpp \
     mainwindow.cpp \
     potion.cpp \
@@ -24,6 +26,8 @@ HEADERS += \
     staff.h \
     sword.h \
     weapon.h
+    hero.h \
+    livingcreature.h
 
 FORMS += \
     mainwindow.ui
