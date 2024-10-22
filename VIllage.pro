@@ -11,11 +11,19 @@ CONFIG += c++17
 SOURCES += \
     main.cpp \
     mainwindow.cpp \
-    potion.cpp
+    potion.cpp \
+    shield.cpp \
+    staff.cpp \
+    sword.cpp \
+    weapon.cpp
 
 HEADERS += \
     mainwindow.h \
-    potion.h
+    potion.h \
+    shield.h \
+    staff.h \
+    sword.h \
+    weapon.h
 
 FORMS += \
     mainwindow.ui
