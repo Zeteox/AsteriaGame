@@ -11,6 +11,7 @@ CONFIG += c++17
 SOURCES += \
     building.cpp \
     hero.cpp \
+    hostel.cpp \
     livingcreature.cpp \
     main.cpp \
     mainwindow.cpp \
@@ -22,6 +23,7 @@ SOURCES += \
 
 HEADERS += \
     building.h \
+    hostel.h \
     livingcreature.h \
     mainwindow.h \
     potion.h \
