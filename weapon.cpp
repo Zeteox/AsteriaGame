@@ -1,11 +1,11 @@
 #include "weapon.h"
 
-Weapon::Weapon(const string& name, const int price) {
+Weapon::Weapon(const string &name, const int price) {
     m_name = name;
     m_price = price;
 }
 
-string& Weapon::getName() {
+string &Weapon::getName() {
     return m_name;
 }
 

@@ -14,7 +14,7 @@ private:
 
 public:
     Potion(int level);
-    string& getName();
+    string &getName();
     void setName(string name);
     void setHp(int hp);
     int getHp();

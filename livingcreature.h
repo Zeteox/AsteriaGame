@@ -14,7 +14,7 @@ protected:
     int m_baseDefence, m_defence;
 public:
     LivingCreature(const string name, const int maxHp, const int golds, const int damage, const int defence);
-    string& getName();
+    string &getName();
     void setHp(int hp);
     int getHp() const;
     void setMaxHp(int maxHp);
@@ -27,10 +27,10 @@ public:
     int getDamage() const;
     void setDefence(int defence);
     int getDefence() const;
-    void virtual attack(LivingCreature* target) const;
+    void attack(LivingCreature *target) const;
     void virtual showStats() const = 0;
-    void updDamage();
-    void updDefence();
+    void virtual updDamage();
+    void virtual updDefence();
     void removeHp(int damage);
     void healHp(int heal);
     bool isAlive();
