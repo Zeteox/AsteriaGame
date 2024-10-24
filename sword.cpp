@@ -1,7 +1,7 @@
 #include "sword.h"
 #include <QDebug>
 
-Sword::Sword(const string& name, const int price, int damage)
+Sword::Sword(const string &name, const int price, int damage)
     : Weapon(name, price) {
     m_damage=damage;
 }

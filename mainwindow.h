@@ -17,6 +17,12 @@ public:
     MainWindow(QWidget *parent = nullptr);
     ~MainWindow();
 
+private slots:
+    void quitButtonClicked();
+    void startButtonClicked();
+    void backButtonClicked();
+    void createHeroButtonClicked();
+
 private:
     Ui::MainWindow *ui;
 };

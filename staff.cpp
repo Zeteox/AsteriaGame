@@ -1,7 +1,7 @@
 #include "staff.h"
 #include <QDebug>
 
-Staff::Staff(const string& name, const int price, int damage)
+Staff::Staff(const string &name, const int price, int damage)
     : Weapon(name, price) {
     m_damage=damage;
 }

@@ -11,7 +11,7 @@ LivingCreature::LivingCreature(const string name, const int maxHp, const int gol
     updDefence();
 }
 
-string& LivingCreature::getName() {
+string &LivingCreature::getName() {
     return m_name;
 }
 
@@ -75,7 +75,7 @@ int LivingCreature::getDefence() const {
     return m_defence;
 }
 
-void LivingCreature::attack(LivingCreature* target) const {
+void LivingCreature::attack(LivingCreature *target) const {
     target->removeHp(m_damage);
 }
 

@@ -7,7 +7,7 @@ class Shield : public Weapon
 private:
     int m_defence;
 public:
-    Shield(const string& name, const int price, int defence);
+    Shield(const string &name, const int price, int defence);
     void setDefence(int newDefence);
     int getDefence() const;
     void showStats() const;

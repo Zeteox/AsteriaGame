@@ -1,7 +1,7 @@
 #include "shield.h"
 #include <QDebug>
 
-Shield::Shield(const string& name, const int price, int defence)
+Shield::Shield(const string &name, const int price, int defence)
     : Weapon(name, price) {
     m_defence=defence;
 }

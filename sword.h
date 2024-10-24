@@ -8,7 +8,7 @@ class Sword : public Weapon
 private:
     int m_damage;
 public:
-    Sword(const string& name, const int price, int damage);
+    Sword(const string &name, const int price, int damage);
     void setDamage(int newDamage);
     int getDamage() const;
     void showStats() const;

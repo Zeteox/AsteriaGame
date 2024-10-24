@@ -7,7 +7,7 @@ class Staff : public Weapon
 private:
     int m_damage;
 public:
-    Staff(const string& name, const int price, int damage);
+    Staff(const string &name, const int price, int damage);
     void setDamage(int newDamage);
     int getDamage() const;
     void showStats() const;
