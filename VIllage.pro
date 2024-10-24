@@ -12,6 +12,7 @@ SOURCES += \
     building.cpp \
     hero.cpp \
     hostel.cpp \
+    inventory.cpp \
     livingcreature.cpp \
     main.cpp \
     mainwindow.cpp \
@@ -26,6 +27,7 @@ SOURCES += \
 HEADERS += \
     building.h \
     hostel.h \
+    inventory.h \
     livingcreature.h \
     mainwindow.h \
     potion.h \

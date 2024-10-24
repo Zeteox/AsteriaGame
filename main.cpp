@@ -1,19 +1,17 @@
 #include "mainwindow.h"
-#include "hero.h"
 
 #include <QApplication>
 #include "potion.h"
-#include "sword.h"
+#include "inventory.h"
 
 int main(int argc, char *argv[])
 {
     QApplication a(argc, argv);
     MainWindow w;
     w.show();
-    Sword* ss = new Sword("sa",10,10);
-    ss->showStats();
-    Hero* toto = new Hero("hg",10,10,10,10,"mage noir");
-    toto->talk();
-    toto->showStats();
+    Potion* popo = new Potion(2);
+    Inventory* Inv = new Inventory();
+    string lala = Inv->addPotion(popo);
+    qDebug()<<lala;
     return a.exec();
 }
