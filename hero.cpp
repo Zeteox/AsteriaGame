@@ -22,3 +22,8 @@ void Hero::showStats() const {
             << "Damage:" <<m_damage << "\n"
             << "Defence:" <<m_defence;
 }
+
+void Hero::drink(Potion *potion) {
+    healHp(potion->getHp());
+    delete potion;
+}

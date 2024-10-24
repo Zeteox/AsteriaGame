@@ -2,6 +2,7 @@
 #define HERO_H
 
 #include "livingcreature.h"
+#include "potion.h"
 
 class Hero : public LivingCreature
 {
@@ -16,7 +17,7 @@ public:
     //virtual void removeFromInventory(Potion *potion);
     void talk() const;
     void showStats() const;
-    //void drink(Potion *potion);
+    void drink(Potion *potion);
     //void trade(Merchant *merchant);
 };
 
