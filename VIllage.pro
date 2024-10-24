@@ -16,9 +16,11 @@ SOURCES += \
     main.cpp \
     mainwindow.cpp \
     potion.cpp \
+    randomNumber.cpp \
     shield.cpp \
     staff.cpp \
     sword.cpp \
+    village.cpp \
     weapon.cpp
 
 HEADERS += \
@@ -27,9 +29,11 @@ HEADERS += \
     livingcreature.h \
     mainwindow.h \
     potion.h \
+    randomNumber.h \
     shield.h \
     staff.h \
     sword.h \
+    village.h \
     weapon.h
     hero.h \
 
