@@ -1,14 +1,14 @@
 #include "livingcreature.h"
 
-LivingCreature::LivingCreature(const string name, const int maxHp, const int golds, const int damage, const int defence) {
+LivingCreature::LivingCreature(const string &name, const int maxHp, const int golds, const int damage, const int defence) {
     m_name = name;
     m_maxHp = maxHp;
     m_hp = m_maxHp;
     m_golds = golds;
     m_baseDamage = damage;
     m_baseDefence = defence;
-    updDamage();
-    updDefence();
+    m_damage = m_baseDamage;
+    m_defence = m_baseDefence;
 }
 
 string &LivingCreature::getName() {

@@ -1,7 +1,7 @@
 #include "hero.h"
 #include <QDebug>
 
-Hero::Hero(const string name, const int maxHp, const int golds, const int damage, const int defence, const string p_class)
+Hero::Hero(const string &name, const int maxHp, const int golds, const int damage, const int defence, const string &p_class)
     : LivingCreature(name, maxHp, golds, damage, defence) {
     m_class = p_class;
 }

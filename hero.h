@@ -10,7 +10,7 @@ protected:
     string m_class;
     //Inventory* m_inventory;
 public:
-    Hero(const string name, const int maxHp, const int golds, const int damage, const int defence, const string p_class);
+    Hero(const string &name, const int maxHp, const int golds, const int damage, const int defence, const string &p_class);
     string& getClass();
     //Inventory &getInventory();
     //virtual void addToInventory(Potion *potion);

@@ -13,7 +13,7 @@ protected:
     int m_baseDamage, m_damage;
     int m_baseDefence, m_defence;
 public:
-    LivingCreature(const string name, const int maxHp, const int golds, const int damage, const int defence);
+    LivingCreature(const string &name, const int maxHp, const int golds, const int damage, const int defence);
     string &getName();
     void setHp(int hp);
     int getHp() const;

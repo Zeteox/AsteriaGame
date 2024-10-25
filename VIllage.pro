@@ -17,6 +17,7 @@ SOURCES += \
     shield.cpp \
     staff.cpp \
     sword.cpp \
+    warrior.cpp \
     weapon.cpp
 
 HEADERS += \
@@ -26,6 +27,7 @@ HEADERS += \
     shield.h \
     staff.h \
     sword.h \
+    warrior.h \
     weapon.h
     hero.h \
 
