@@ -26,6 +26,7 @@ SOURCES += \
 
 HEADERS += \
     building.h \
+    hero.h \
     hostel.h \
     inventory.h \
     livingcreature.h \

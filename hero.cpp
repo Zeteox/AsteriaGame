@@ -25,5 +25,13 @@ void Hero::showStats() const {
 
 void Hero::drink(Potion *potion) {
     healHp(potion->getHp());
-    //removeFromInventory();
+    removeFromInventory(potion);
+}
+
+void Hero::removeFromInventory(Potion *potion) {
+    m_inventory->removePotion(potion);
+}
+
+void Hero::addToInventory(Potion* potion) {
+    m_inventory->addPotion(potion);
 }
