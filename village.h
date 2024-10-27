@@ -1,31 +1,25 @@
 #ifndef VILLAGE_H
 #define VILLAGE_H
 #include <iostream>
-
+#include "building.h"
+#include <vector>
 using namespace std;
 
 class Village
 {
     string m_name;
-    int m_hostelNumber;
-    int m_mineNumber ;
-    int m_merchantNumber;
-    //vector<Hostel*> m_allHostels ;
-    //vector<Mine*> m_allMines ;
-    //vector<Merchant*> m_allMerchants;
+    int m_numberBuildings;
+    vector<Building*> m_allBuildings ;
 public:
     Village(string name);
+    string getName();
+    void setName(string name);
+    int getNumberBuildings();
+    void setNumberBuildings(int numberBuildings);
+    vector<Building*> getAllBuildings();
+    string addBuilding(Building* building);
+    string removeBuilding(Building* building);
     void generateVillage();
-    //vector<Hostel*>* getHostels()
-    //void addHostel(Hostel* hostel)
-    //void removeHostel(Hostel* hostel)
-    //vector<Mine*>getMines()
-    //void addMine(Mine* mine)
-    //void removeMine(Mine* mine)
-    //vector<Merchant*> getMerchants()
-    //void addMerchnat(Merchant* merchant)
-    //void removeMerchant(Merchant* merchant)
-
 };
 
 #endif // VILLAGE_H
