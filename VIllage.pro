@@ -14,8 +14,10 @@ SOURCES += \
     hostel.cpp \
     inventory.cpp \
     livingcreature.cpp \
+    mage.cpp \
     main.cpp \
     mainwindow.cpp \
+    paladin.cpp \
     potion.cpp \
     randomNumber.cpp \
     shield.cpp \
@@ -31,7 +33,9 @@ HEADERS += \
     hostel.h \
     inventory.h \
     livingcreature.h \
+    mage.h \
     mainwindow.h \
+    paladin.h \
     potion.h \
     randomNumber.h \
     shield.h \
