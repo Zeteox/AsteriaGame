@@ -16,6 +16,7 @@ SOURCES += \
     livingcreature.cpp \
     main.cpp \
     mainwindow.cpp \
+    merchant.cpp \
     potion.cpp \
     randomNumber.cpp \
     shield.cpp \
@@ -30,6 +31,7 @@ HEADERS += \
     inventory.h \
     livingcreature.h \
     mainwindow.h \
+    merchant.h \
     potion.h \
     randomNumber.h \
     shield.h \
