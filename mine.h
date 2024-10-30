@@ -2,12 +2,23 @@
 #define MINE_H
 
 #include "building.h"
+#include "monster.h"
+#include <vector>
 class Mine : public Building
 {
     int m_mineLevel;
-    //vector<Monster* monster> m_monster;
+    vector<Monster*> m_monster;
+    int fibonacci(int n);
+
 public:
-    Mine();
+    Mine(int mineLevel, Monster* monster);
+    int getMineLevel();
+    void setMineLevel(int mineLevel);
+    vector<Monster*> getMonster();
+    string addMonster(Monster* monster);
+    string removeMonster(Monster* monster);
+    bool isEmpty();
+    void generateMine(int mineLevel, Monster* monster);
 };
 
 #endif // MINE_H
