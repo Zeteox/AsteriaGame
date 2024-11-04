@@ -14,7 +14,7 @@ int Shield::getDefence() const {
     return m_defence;
 }
 
-string Shield::showStats() const {
+string Shield::getStats() const {
     return "Name: " + m_name +
            "\nPrice: " + to_string(m_price) +
            "\nDefence: "+ to_string(m_defence);

@@ -14,7 +14,7 @@ int Sword::getDamage() const {
     return m_damage;
 }
 
-string Sword::showStats() const {
+string Sword::getStats() const {
     return "Name: " + m_name +
            "\nPrice: " + to_string(m_price) +
            "\nDamage: "+ to_string(m_damage);

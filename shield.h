@@ -10,7 +10,7 @@ public:
     Shield(const string& name, const int price, int defence);
     void setDefence(int newDefence);
     int getDefence() const;
-    void showStats() const;
+    string getStats() const;
 };
 
 #endif // SHIELD_H
