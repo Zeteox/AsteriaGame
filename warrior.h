@@ -16,7 +16,8 @@ public:
     Sword &getSword();
     void setDamageBoost(int newDamageBoost);
     string getStats() const;
-    int getDamageBoost()const ;
+    int getDamageBoost()const;
+    void updDamage();
 };
 
 #endif // WARRIOR_H

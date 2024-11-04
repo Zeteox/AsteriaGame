@@ -32,3 +32,11 @@ string Mage::getStats() const {
            "\nDodge chance: " + to_string(m_dodgeChance) +
             "\nStaff: " + m_staff->getName();
 }
+
+void Mage::updDamage() {
+    if (m_staff != nullptr) {
+        m_damage = m_baseDamage + m_staff->getDamage();
+    } else {
+        m_damage = m_baseDamage;
+    }
+}

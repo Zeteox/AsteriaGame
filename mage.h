@@ -16,6 +16,7 @@ public:
     string getStats() const;
     void setDodgeChance(int newDodgeChance);
     int getDodgeChance();
+    void updDamage();
 };
 
 #endif // MAGE_H

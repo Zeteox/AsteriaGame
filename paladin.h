@@ -17,6 +17,8 @@ public:
     void setShield(Shield *newShield);
     Shield &getShield();
     string getStats() const;
+    void updDamage();
+    void updDefence();
 };
 
 #endif // PALADIN_H

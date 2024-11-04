@@ -92,12 +92,8 @@ void LivingCreature::removeHp(int damage) {
     if (damageTaken>0) {
         if (m_hp - damageTaken<=0) {
             m_hp = 0;
-            cout << m_name + " has died" << endl;
         } else {
             m_hp -= damageTaken;
-            cout << m_name << " took " <<
-                damageTaken << " damage" <<
-                endl;
         }
     }
 }

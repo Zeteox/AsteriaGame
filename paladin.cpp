@@ -32,3 +32,19 @@ string Paladin::getStats() const {
             "\nSword: " + m_sword->getName() +
             "\nShield: " + m_shield->getName();
 }
+
+void Paladin::updDamage() {
+    if (m_sword != nullptr) {
+        m_damage = m_baseDamage + m_sword->getDamage();
+    } else {
+        m_damage = m_baseDamage;
+    }
+}
+
+void Paladin::updDefence() {
+    if (m_shield != nullptr) {
+        m_defence = m_baseDefence + m_shield->getDefence();
+    } else {
+        m_defence = m_baseDefence;
+    }
+}

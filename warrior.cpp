@@ -37,3 +37,10 @@ string Warrior::getStats() const {
             "\nSword: " + m_sword->getName();
 }
 
+void Warrior::updDamage() {
+    if (m_sword != nullptr) {
+        m_damage = m_baseDamage + m_sword->getDamage();
+    } else {
+        m_damage = m_baseDamage;
+    }
+}
