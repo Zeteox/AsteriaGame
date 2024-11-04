@@ -14,6 +14,8 @@ int Staff::getDamage() const {
     return m_damage;
 }
 
-void Staff::showStats() const {
-    qDebug()<< "Name:"<< m_name<<"\nPrice:"<< m_price <<"\nDamage:"<<m_damage;
+string Staff::showStats() const {
+    return "Name: " + m_name +
+           "\nPrice: " + to_string(m_price) +
+           "\nDamage: "+ to_string(m_damage);
 }

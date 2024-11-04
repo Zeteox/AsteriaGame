@@ -11,7 +11,7 @@ protected:
     int m_price;
 public:
     Weapon(const string& name, const int price);
-    virtual void showStats() const = 0;
+    virtual string showStats() const = 0;
     string& getName();
     void setPrice(int newPrice);
     int getPrice() const;

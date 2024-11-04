@@ -14,6 +14,8 @@ int Shield::getDefence() const {
     return m_defence;
 }
 
-void Shield::showStats() const {
-    qDebug()<< "Name:"<< m_name<<"\nPrice:"<< m_price <<"\nDefence:"<<m_defence;
+string Shield::showStats() const {
+    return "Name: " + m_name +
+           "\nPrice: " + to_string(m_price) +
+           "\nDefence: "+ to_string(m_defence);
 }
