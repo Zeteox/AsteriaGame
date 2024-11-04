@@ -1,5 +1,8 @@
 #include <QApplication>
+<<<<<<< HEAD
 #include "mainwindow.h"
+=======
+>>>>>>> weapon
 
 int main(int argc, char *argv[])
 {
