@@ -50,8 +50,8 @@ string Village::removeBuilding(Building* building){
     return "The building doesn't exist in the inventory";
 }
 
-void Village::generateVillage(){
-    for(int x=0; x != m_numberBuildings; x++);{
+string Village::generateVillage(){
+    for(int x=0; x != m_numberBuildings; x++){
         int choiceBuildingType = getRandNumber(1, 3);
         string buildingType;
         switch(choiceBuildingType){
@@ -67,4 +67,5 @@ void Village::generateVillage(){
         }
         m_allBuildings.push_back(new Building(buildingType));
     }
+    return "The village was created";
 }

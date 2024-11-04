@@ -10,6 +10,8 @@ private:
     vector<Potion*> m_potions;
 public:
     Inventory();
+    size_t getSpace();
+    vector<Potion*> showPotions();
     string addPotion(Potion* potion);
     string removePotion(Potion* potion);
     string addSpace();

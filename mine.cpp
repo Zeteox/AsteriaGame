@@ -4,7 +4,7 @@ Mine::Mine(int mineLevel) : Building("Mine"){
     m_mineLevel = mineLevel;
 }
 
-int fibonacci(int n) {
+int Mine::fibonacci(int n) {
     if(n==0) {
         return 0;
     }else if(n==1||n==2) {

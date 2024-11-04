@@ -3,6 +3,14 @@
 Inventory::Inventory() {
     m_space = 10;
 }
+size_t Inventory::getSpace(){
+    return m_space;
+}
+
+vector<Potion*> Inventory::showPotions(){
+    return m_potions;
+}
+
 string Inventory::addPotion(Potion* potion){
     if (m_potions.size()<m_space) {
         m_potions.push_back(potion);

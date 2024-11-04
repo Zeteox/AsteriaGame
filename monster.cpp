@@ -2,8 +2,11 @@
 #include "monster.h"
 #include "sword.h"
 
-Monster::Monster() : LivingCreature("Monster", 25, 3, 5, 5){
-    m_sword = new Sword("StandarSword",5,15);
+Monster::Monster(const string name, const int maxHp, const int golds, const int damage, const int defence, const bool haveSword,
+                 const string swordName, const int swordPrice, int swordDamage) : LivingCreature( name, maxHp, golds, damage, defence){
+    if(haveSword == true){
+        m_sword = new Sword(swordName,swordPrice,swordDamage);
+    }
 }
 
 Sword* Monster::getSword(){

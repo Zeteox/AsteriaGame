@@ -19,7 +19,7 @@ public:
     vector<Building*> getAllBuildings();
     string addBuilding(Building* building);
     string removeBuilding(Building* building);
-    void generateVillage();
+    string generateVillage();
 };
 
 #endif // VILLAGE_H

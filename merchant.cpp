@@ -3,20 +3,19 @@
 Merchant::Merchant() : Building("Merchant"){
 }
 
-/*
-vector<Sword*> getSwordStock(){
+
+vector<Sword*> Merchant::getSwordStock(){
     return m_swordStock;
 }
-vector<Shield*> getShieldStock(){
+vector<Shield*> Merchant::getShieldStock(){
     return m_shieldStock;
 }
-vector<Staff*> getStaffStock(){
+vector<Staff*> Merchant::getStaffStock(){
     return m_staffStock;
 }
-vector<Potion*> getPotionStock(){
+vector<Potion*> Merchant::getPotionStock(){
     return m_potionStock;
 }
-*/
 
 string Merchant::removeSword(Sword* sword){
     if (m_swordStock.size() == 0){

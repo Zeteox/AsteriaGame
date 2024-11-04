@@ -11,7 +11,7 @@ class Mine : public Building
     int fibonacci(int n);
 
 public:
-    Mine(int mineLevel, Monster* monster);
+    Mine(int mineLevel);
     int getMineLevel();
     void setMineLevel(int mineLevel);
     vector<Monster*> getMonster();
