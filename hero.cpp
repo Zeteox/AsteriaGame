@@ -10,17 +10,8 @@ string& Hero::getClass() {
     return m_class;
 }
 
-void Hero::talk() const {
-    qDebug() << "je suis le hero " << m_name;
-}
-
-void Hero::showStats() const {
-    qDebug()<< "Name:" << m_name << "\n"
-            << "class:" << m_class << "\n"
-            << "Hp:" << m_hp << "/" << m_maxHp << "\n"
-            << "Gold:" << m_golds << "\n"
-            << "Damage:" <<m_damage << "\n"
-            << "Defence:" <<m_defence;
+string Hero::talk() const {
+    return "je suis le hero " + m_name;
 }
 
 void Hero::drink(Potion *potion) {

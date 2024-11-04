@@ -16,8 +16,7 @@ public:
     Inventory &getInventory();
     void addToInventory(Potion *potion);
     void removeFromInventory(Potion *potion);
-    void talk() const;
-    void showStats() const;
+    string talk() const;
     void drink(Potion *potion);
     //void trade(Merchant *merchant);
 };
