@@ -15,6 +15,7 @@ public:
     void setSword(Sword *newSword);
     Sword &getSword();
     void setDamageBoost(int newDamageBoost);
+    string getStats() const;
     int getDamageBoost()const ;
 };
 

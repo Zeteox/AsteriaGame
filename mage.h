@@ -13,6 +13,7 @@ public:
     Mage(const string &name, const int maxHp, const int golds, const int damage, const int defence, const string &p_class);
     void setStaff(Staff *newStaff);
     Staff &getStaff();
+    string getStats() const;
     void setDodgeChance(int newDodgeChance);
     int getDodgeChance();
 };

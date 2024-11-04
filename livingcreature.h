@@ -28,9 +28,9 @@ public:
     void setDefence(int defence);
     int getDefence() const;
     void attack(LivingCreature *target) const;
-    void virtual showStats() const = 0;
-    void virtual updDamage();
-    void virtual updDefence();
+    virtual string getStats() const = 0;
+    virtual void updDamage();
+    virtual void updDefence();
     void removeHp(int damage);
     void healHp(int heal);
     bool isAlive();

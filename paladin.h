@@ -16,6 +16,7 @@ public:
     Sword &getSword();
     void setShield(Shield *newShield);
     Shield &getShield();
+    string getStats() const;
 };
 
 #endif // PALADIN_H

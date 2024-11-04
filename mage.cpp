@@ -21,3 +21,14 @@ void Mage::setDodgeChance(int newDodgeChance) {
 int Mage::getDodgeChance() {
     return m_dodgeChance;
 }
+
+string Mage::getStats() const {
+    return  "Name: " + m_name +
+           "\nclass: " + m_class +
+           "\nHp: " + to_string(m_hp) + "/" + to_string(m_maxHp) +
+           "\nGold: " + to_string(m_golds) +
+           "\nDamage: " + to_string(m_damage) +
+           "\nDefence: " + to_string(m_defence) +
+           "\nDodge chance: " + to_string(m_dodgeChance) +
+            "\nStaff: " + m_staff->getName();
+}

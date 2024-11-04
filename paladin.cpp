@@ -21,3 +21,14 @@ Sword &Paladin::getSword() {
 Shield &Paladin::getShield() {
     return *m_shield;
 }
+
+string Paladin::getStats() const {
+    return  "Name: " + m_name +
+            "\nclass: " + m_class +
+            "\nHp: " + to_string(m_hp) + "/" + to_string(m_maxHp) +
+            "\nGold: " + to_string(m_golds) +
+            "\nDamage: " + to_string(m_damage) +
+            "\nDefence: " + to_string(m_defence) +
+            "\nSword: " + m_sword->getName() +
+            "\nShield: " + m_shield->getName();
+}

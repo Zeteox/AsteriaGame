@@ -26,3 +26,14 @@ int Warrior::getDamageBoost() const{
     return m_damageBoost;
 }
 
+string Warrior::getStats() const {
+    return  "Name: " + m_name +
+            "\nclass: " + m_class +
+            "\nHp: " + to_string(m_hp) + "/" + to_string(m_maxHp) +
+            "\nGold: " + to_string(m_golds) +
+            "\nDamage: " + to_string(m_damage) +
+            "\nDefence: " + to_string(m_defence) +
+            "\nDamage boost: " + to_string(m_damageBoost) +
+            "\nSword: " + m_sword->getName();
+}
+
