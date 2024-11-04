@@ -10,7 +10,7 @@ public:
     Staff(const string &name, const int price, int damage);
     void setDamage(int newDamage);
     int getDamage() const;
-    void showStats() const;
+    string getStats() const;
 };
 
 #endif // STAFF_H

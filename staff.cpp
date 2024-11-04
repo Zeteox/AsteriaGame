@@ -14,7 +14,7 @@ int Staff::getDamage() const {
     return m_damage;
 }
 
-string Staff::showStats() const {
+string Staff::getStats() const {
     return "Name: " + m_name +
            "\nPrice: " + to_string(m_price) +
            "\nDamage: "+ to_string(m_damage);
