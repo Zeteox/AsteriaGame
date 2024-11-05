@@ -1,18 +1,7 @@
 <RCC>
     <qresource prefix="/Images">
-        <file>Images/Background/maps habitation/boutique potion.png</file>
         <file>Images/Background/maps habitation/grote.jpeg</file>
-        <file>Images/Background/maps habitation/shop arme.jpg</file>
-        <file>Images/Background/maps lieux/map monde.jpg</file>
-        <file>Images/Background/maps lieux/village 2.png</file>
-        <file>Images/Background/maps lieux/village 3.jpg</file>
-        <file>Images/Background/maps lieux/village.png</file>
         <file>Images/Background/start background/imgForMakeBackgroung.jpeg</file>
-        <file>Images/Background/start background/imgForMakeBackgroung.jpg</file>
-        <file>Images/Background/start background/startsBackground.png</file>
-        <file>Images/Button/button type.jpg</file>
-        <file>Images/Button/button type.png</file>
-        <file>Images/LivingCreature/Hero/jsp c est comme tu veux j'aimais bien.jpeg</file>
         <file>Images/LivingCreature/Hero/paladin.jpeg</file>
         <file>Images/LivingCreature/Hero/sorcer.jpeg</file>
         <file>Images/LivingCreature/Hero/warrior.jpeg</file>
@@ -30,6 +19,10 @@
         <file>Images/LivingCreature/Monster/mobs/tiefling/Tiefling homme (2).jpeg</file>
         <file>Images/LivingCreature/PNG/Merchant.jpeg</file>
         <file>Images/LivingCreature/PNG/Tavernier.jpeg</file>
-        <file>Images/Background/maps habitation/Tavern.png</file>
+        <file>Images/Background/maps habitation/boutique potion.jpeg</file>
+        <file>Images/Background/maps habitation/shop arme.jpeg</file>
+        <file>Images/Background/maps habitation/Tavern.jpeg</file>
+        <file>Images/Button/button type (2).jpeg</file>
+        <file>Images/Button/button type.jpeg</file>
     </qresource>
 </RCC>

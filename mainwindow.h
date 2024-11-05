@@ -23,6 +23,12 @@ private slots:
     void backButtonClicked();
     void createHeroButtonClicked();
 
+    void on_btn_warrior_clicked();
+
+    void on_btn_mage_clicked();
+
+    void on_btn_paladin_clicked();
+
 private:
     Ui::MainWindow *ui;
 };

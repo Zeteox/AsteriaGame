@@ -2,16 +2,46 @@
 <ui version="4.0">
  <class>MainWindow</class>
  <widget class="QMainWindow" name="MainWindow">
+  <property name="enabled">
+   <bool>true</bool>
+  </property>
   <property name="geometry">
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>1276</width>
-    <height>704</height>
+    <width>1000</width>
+    <height>680</height>
    </rect>
   </property>
+  <property name="minimumSize">
+   <size>
+    <width>1000</width>
+    <height>680</height>
+   </size>
+  </property>
+  <property name="maximumSize">
+   <size>
+    <width>1000</width>
+    <height>680</height>
+   </size>
+  </property>
+  <property name="baseSize">
+   <size>
+    <width>1000</width>
+    <height>680</height>
+   </size>
+  </property>
+  <property name="contextMenuPolicy">
+   <enum>Qt::ContextMenuPolicy::NoContextMenu</enum>
+  </property>
+  <property name="acceptDrops">
+   <bool>false</bool>
+  </property>
   <property name="windowTitle">
-   <string>MainWindow</string>
+   <string>Asteria</string>
+  </property>
+  <property name="tabShape">
+   <enum>QTabWidget::TabShape::Rounded</enum>
   </property>
   <widget class="QWidget" name="centralwidget">
    <widget class="QStackedWidget" name="Game">
@@ -19,8 +49,8 @@
      <rect>
       <x>0</x>
       <y>0</y>
-      <width>1271</width>
-      <height>653</height>
+      <width>1000</width>
+      <height>680</height>
      </rect>
     </property>
     <property name="sizePolicy">
@@ -28,6 +58,24 @@
       <horstretch>0</horstretch>
       <verstretch>0</verstretch>
      </sizepolicy>
+    </property>
+    <property name="minimumSize">
+     <size>
+      <width>0</width>
+      <height>0</height>
+     </size>
+    </property>
+    <property name="maximumSize">
+     <size>
+      <width>16777215</width>
+      <height>16777215</height>
+     </size>
+    </property>
+    <property name="baseSize">
+     <size>
+      <width>0</width>
+      <height>0</height>
+     </size>
     </property>
     <property name="font">
      <font>
@@ -39,15 +87,24 @@
     <property name="cursor">
      <cursorShape>ArrowCursor</cursorShape>
     </property>
+    <property name="acceptDrops">
+     <bool>true</bool>
+    </property>
+    <property name="styleSheet">
+     <string notr="true"/>
+    </property>
     <property name="currentIndex">
      <number>1</number>
     </property>
     <widget class="QWidget" name="p1_mainMenu">
+     <property name="styleSheet">
+      <string notr="true">background-image: url(:/Images/Images/Background/start background/imgForMakeBackgroung.jpeg);</string>
+     </property>
      <widget class="QPushButton" name="btn_start">
       <property name="geometry">
        <rect>
-        <x>480</x>
-        <y>350</y>
+        <x>380</x>
+        <y>290</y>
         <width>300</width>
         <height>81</height>
        </rect>
@@ -80,8 +137,8 @@
      <widget class="QPushButton" name="btn_quit">
       <property name="geometry">
        <rect>
-        <x>480</x>
-        <y>440</y>
+        <x>380</x>
+        <y>390</y>
         <width>300</width>
         <height>81</height>
        </rect>
@@ -116,8 +173,8 @@
      <widget class="QPushButton" name="btn_back">
       <property name="geometry">
        <rect>
-        <x>560</x>
-        <y>580</y>
+        <x>450</x>
+        <y>570</y>
         <width>131</width>
         <height>31</height>
        </rect>
@@ -129,30 +186,59 @@
        <string>Back</string>
       </property>
      </widget>
-     <widget class="QRadioButton" name="radioButton">
+     <widget class="QPushButton" name="btn_paladin">
+      <property name="enabled">
+       <bool>true</bool>
+      </property>
       <property name="geometry">
        <rect>
-        <x>190</x>
-        <y>140</y>
-        <width>181</width>
-        <height>321</height>
-       </rect>
-      </property>
-      <property name="text">
-       <string>Paladin</string>
-      </property>
-     </widget>
-     <widget class="QRadioButton" name="radioButton_2">
-      <property name="geometry">
-       <rect>
-        <x>540</x>
+        <x>100</x>
         <y>140</y>
         <width>221</width>
         <height>321</height>
        </rect>
       </property>
+      <property name="styleSheet">
+       <string notr="true"/>
+      </property>
       <property name="text">
-       <string>Warrior</string>
+       <string/>
+      </property>
+      <property name="icon">
+       <iconset resource="Ressources.qrc">
+        <normaloff>:/Images/Images/LivingCreature/Hero/paladin.jpeg</normaloff>:/Images/Images/LivingCreature/Hero/paladin.jpeg</iconset>
+      </property>
+      <property name="iconSize">
+       <size>
+        <width>200</width>
+        <height>300</height>
+       </size>
+      </property>
+      <property name="checkable">
+       <bool>true</bool>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="btn_warrior">
+      <property name="enabled">
+       <bool>true</bool>
+      </property>
+      <property name="geometry">
+       <rect>
+        <x>400</x>
+        <y>140</y>
+        <width>221</width>
+        <height>321</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true"/>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+      <property name="icon">
+       <iconset resource="Ressources.qrc">
+        <normaloff>:/Images/Images/LivingCreature/Hero/warrior.jpeg</normaloff>:/Images/Images/LivingCreature/Hero/warrior.jpeg</iconset>
       </property>
       <property name="iconSize">
        <size>
@@ -160,25 +246,47 @@
         <height>2000</height>
        </size>
       </property>
+      <property name="checkable">
+       <bool>true</bool>
+      </property>
      </widget>
-     <widget class="QRadioButton" name="radioButton_3">
+     <widget class="QPushButton" name="btn_mage">
+      <property name="enabled">
+       <bool>true</bool>
+      </property>
       <property name="geometry">
        <rect>
-        <x>870</x>
+        <x>710</x>
         <y>140</y>
-        <width>181</width>
+        <width>211</width>
         <height>321</height>
        </rect>
       </property>
+      <property name="styleSheet">
+       <string notr="true"/>
+      </property>
       <property name="text">
-       <string>Magus</string>
+       <string/>
+      </property>
+      <property name="icon">
+       <iconset resource="Ressources.qrc">
+        <normaloff>:/Images/Images/LivingCreature/Hero/sorcer.jpeg</normaloff>:/Images/Images/LivingCreature/Hero/sorcer.jpeg</iconset>
+      </property>
+      <property name="iconSize">
+       <size>
+        <width>200</width>
+        <height>302</height>
+       </size>
+      </property>
+      <property name="checkable">
+       <bool>true</bool>
       </property>
      </widget>
      <widget class="QPushButton" name="btn_createHero">
       <property name="geometry">
        <rect>
-        <x>560</x>
-        <y>530</y>
+        <x>450</x>
+        <y>520</y>
         <width>131</width>
         <height>31</height>
        </rect>
@@ -190,6 +298,19 @@
        <string>Create hero</string>
       </property>
      </widget>
+     <widget class="QLabel" name="lbl_warrior">
+      <property name="geometry">
+       <rect>
+        <x>490</x>
+        <y>110</y>
+        <width>63</width>
+        <height>20</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Warrior</string>
+      </property>
+     </widget>
     </widget>
    </widget>
   </widget>
@@ -198,13 +319,15 @@
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>1276</width>
-     <height>21</height>
+     <width>1000</width>
+     <height>25</height>
     </rect>
    </property>
   </widget>
   <widget class="QStatusBar" name="statusbar"/>
  </widget>
- <resources/>
+ <resources>
+  <include location="Ressources.qrc"/>
+ </resources>
  <connections/>
 </ui>

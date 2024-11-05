@@ -39,3 +39,33 @@ void MainWindow::createHeroButtonClicked()
     ui->Game->setCurrentIndex(0);
 }
 
+
+void MainWindow::on_btn_warrior_clicked()
+{
+    if (!ui->btn_warrior->isChecked()) {
+        ui->btn_warrior->setChecked(true);
+    }
+    ui->btn_mage->setChecked(false);
+    ui->btn_paladin->setChecked(false);
+}
+
+
+void MainWindow::on_btn_mage_clicked()
+{
+    if (!ui->btn_mage->isChecked()) {
+        ui->btn_mage->setChecked(true);
+    }
+    ui->btn_warrior->setChecked(false);
+    ui->btn_paladin->setChecked(false);
+}
+
+
+void MainWindow::on_btn_paladin_clicked()
+{
+    if (!ui->btn_paladin->isChecked()) {
+        ui->btn_paladin->setChecked(true);
+    }
+    ui->btn_warrior->setChecked(false);
+    ui->btn_mage->setChecked(false);
+}
+
