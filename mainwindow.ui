@@ -100,7 +100,7 @@
      <enum>QFrame::Shadow::Plain</enum>
     </property>
     <property name="currentIndex">
-     <number>1</number>
+     <number>0</number>
     </property>
     <widget class="QWidget" name="p1_mainMenu">
      <property name="autoFillBackground">
@@ -143,7 +143,6 @@
       <property name="styleSheet">
        <string notr="true">color: rgb(0, 0, 0);
 font: 25pt &quot;Algerian&quot;;
-qproperty-alignment: AlignCenter;
 border-image: url(:/Images/Images/Button/button 1.png);</string>
       </property>
       <property name="text">
@@ -186,7 +185,6 @@ border-image: url(:/Images/Images/Button/button 1.png);</string>
       <property name="styleSheet">
        <string notr="true">color: rgb(0, 0, 0);
 font: 25pt &quot;Algerian&quot;;
-qproperty-alignment: AlignCenter;
 border-image: url(:/Images/Images/Button/button 1.png);</string>
       </property>
       <property name="text">
@@ -352,7 +350,6 @@ border-image: url(:/Images/Images/Button/box 2.png);</string>
       <property name="styleSheet">
        <string notr="true">color: rgb(0, 0, 0);
 font: 25pt &quot;Algerian&quot;;
-qproperty-alignment: AlignCenter;
 border-image: url(:/Images/Images/Button/button 1.png);</string>
       </property>
       <property name="text">
@@ -484,7 +481,7 @@ QPushButton:hover{
        </rect>
       </property>
       <property name="currentIndex">
-       <number>1</number>
+       <number>0</number>
       </property>
       <widget class="QWidget" name="selectionButtonWarr">
        <widget class="QPushButton" name="btn_warrior">
@@ -528,7 +525,24 @@ QPushButton:checked {
         </property>
        </widget>
       </widget>
-      <widget class="QWidget" name="statsWarrior"/>
+      <widget class="QWidget" name="statsWarrior">
+       <property name="styleSheet">
+        <string notr="true">QWidget#statsWarrior{border-image: url(:/Images/Images/Button/statsBox.png);}</string>
+       </property>
+       <widget class="QLabel" name="txt_Stats_2">
+        <property name="geometry">
+         <rect>
+          <x>0</x>
+          <y>0</y>
+          <width>221</width>
+          <height>61</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>Stats</string>
+        </property>
+       </widget>
+      </widget>
      </widget>
      <widget class="QStackedWidget" name="stk_Paladin">
       <property name="geometry">
@@ -543,7 +557,7 @@ QPushButton:checked {
        <string notr="true"/>
       </property>
       <property name="currentIndex">
-       <number>1</number>
+       <number>0</number>
       </property>
       <widget class="QWidget" name="selectionButtonPala">
        <widget class="QPushButton" name="btn_paladin">
@@ -586,8 +600,21 @@ QPushButton:checked {
       </widget>
       <widget class="QWidget" name="statsPaladin">
        <property name="styleSheet">
-        <string notr="true">border-image: url(:/Images/Images/Button/statsBox.png);</string>
+        <string notr="true">QWidget#statsPaladin{border-image: url(:/Images/Images/Button/statsBox.png);}</string>
        </property>
+       <widget class="QLabel" name="txt_Stats">
+        <property name="geometry">
+         <rect>
+          <x>0</x>
+          <y>10</y>
+          <width>221</width>
+          <height>61</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>Stats</string>
+        </property>
+       </widget>
       </widget>
      </widget>
      <widget class="QStackedWidget" name="stk_Mage">
@@ -600,7 +627,7 @@ QPushButton:checked {
        </rect>
       </property>
       <property name="currentIndex">
-       <number>1</number>
+       <number>0</number>
       </property>
       <widget class="QWidget" name="selectionButtonMage">
        <widget class="QPushButton" name="btn_mage">
@@ -641,7 +668,24 @@ QPushButton:checked {
         </property>
        </widget>
       </widget>
-      <widget class="QWidget" name="statsMage"/>
+      <widget class="QWidget" name="statsMage">
+       <property name="styleSheet">
+        <string notr="true">QWidget#statsMage{border-image: url(:/Images/Images/Button/statsBox.png);}</string>
+       </property>
+       <widget class="QLabel" name="txt_Stats_3">
+        <property name="geometry">
+         <rect>
+          <x>0</x>
+          <y>0</y>
+          <width>221</width>
+          <height>61</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>Stats</string>
+        </property>
+       </widget>
+      </widget>
      </widget>
      <zorder>btn_back</zorder>
      <zorder>btn_createHero</zorder>

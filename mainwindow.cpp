@@ -60,6 +60,9 @@ void MainWindow::backButtonClicked()
 void MainWindow::createHeroButtonClicked()
 {
     ui->Game->setCurrentIndex(0);
+    ui->btn_mage->setChecked(false);
+    ui->btn_paladin->setChecked(false);
+    ui->btn_warrior->setChecked(false);
 }
 
 
