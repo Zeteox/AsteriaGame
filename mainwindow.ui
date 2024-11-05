@@ -100,7 +100,7 @@
      <enum>QFrame::Shadow::Plain</enum>
     </property>
     <property name="currentIndex">
-     <number>0</number>
+     <number>1</number>
     </property>
     <widget class="QWidget" name="p1_mainMenu">
      <property name="autoFillBackground">
@@ -481,7 +481,7 @@ QPushButton:hover{
        </rect>
       </property>
       <property name="currentIndex">
-       <number>0</number>
+       <number>1</number>
       </property>
       <widget class="QWidget" name="selectionButtonWarr">
        <widget class="QPushButton" name="btn_warrior">
@@ -527,19 +527,60 @@ QPushButton:checked {
       </widget>
       <widget class="QWidget" name="statsWarrior">
        <property name="styleSheet">
-        <string notr="true">QWidget#statsWarrior{border-image: url(:/Images/Images/Button/statsBox.png);}</string>
+        <string notr="true">QWidget#statsWarrior{
+	border-image: url(:/Images/Images/Button/statsBox.png);
+	background-color: qlineargradient(spread:pad, x1:0, y1:0, x2:1, y2:1, stop:0.0140845 	rgba(255, 255, 0, 185), stop:1 rgba(255, 255, 255, 255));
+}</string>
        </property>
        <widget class="QLabel" name="txt_Stats_2">
         <property name="geometry">
          <rect>
           <x>0</x>
-          <y>0</y>
+          <y>10</y>
           <width>221</width>
           <height>61</height>
          </rect>
         </property>
         <property name="text">
          <string>Stats</string>
+        </property>
+       </widget>
+       <widget class="QLabel" name="txt_warriorSpe">
+        <property name="geometry">
+         <rect>
+          <x>10</x>
+          <y>190</y>
+          <width>201</width>
+          <height>101</height>
+         </rect>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">font: 10pt;</string>
+        </property>
+        <property name="text">
+         <string>Can only hold
+a sword and have 50%
+more damage</string>
+        </property>
+       </widget>
+       <widget class="QLabel" name="txt_warriorStats">
+        <property name="geometry">
+         <rect>
+          <x>20</x>
+          <y>80</y>
+          <width>181</width>
+          <height>111</height>
+         </rect>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">font: 15pt;
+qproperty-alignment: AlignLeft;</string>
+        </property>
+        <property name="text">
+         <string>health: 10/10
+Gold: 10
+Attack: 2
+Defence: 1</string>
         </property>
        </widget>
       </widget>
@@ -557,7 +598,7 @@ QPushButton:checked {
        <string notr="true"/>
       </property>
       <property name="currentIndex">
-       <number>0</number>
+       <number>1</number>
       </property>
       <widget class="QWidget" name="selectionButtonPala">
        <widget class="QPushButton" name="btn_paladin">
@@ -600,7 +641,10 @@ QPushButton:checked {
       </widget>
       <widget class="QWidget" name="statsPaladin">
        <property name="styleSheet">
-        <string notr="true">QWidget#statsPaladin{border-image: url(:/Images/Images/Button/statsBox.png);}</string>
+        <string notr="true">QWidget#statsPaladin{
+	border-image: url(:/Images/Images/Button/statsBox.png);
+	background-color: qlineargradient(spread:pad, x1:0, y1:0, x2:1, y2:1, stop:0.0140845 rgba(255, 255, 0, 185), stop:1 rgba(255, 255, 255, 255));
+}</string>
        </property>
        <widget class="QLabel" name="txt_Stats">
         <property name="geometry">
@@ -615,6 +659,44 @@ QPushButton:checked {
          <string>Stats</string>
         </property>
        </widget>
+       <widget class="QLabel" name="txt_paladinStats">
+        <property name="geometry">
+         <rect>
+          <x>20</x>
+          <y>80</y>
+          <width>181</width>
+          <height>111</height>
+         </rect>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">font: 15pt;
+qproperty-alignment: AlignLeft;</string>
+        </property>
+        <property name="text">
+         <string>health: 15/15
+Gold: 10
+Attack: 1
+Defence: 2</string>
+        </property>
+       </widget>
+       <widget class="QLabel" name="txt_paladinSpe">
+        <property name="geometry">
+         <rect>
+          <x>10</x>
+          <y>190</y>
+          <width>201</width>
+          <height>101</height>
+         </rect>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">font: 10pt;</string>
+        </property>
+        <property name="text">
+         <string>Can hold a sword
+and a shield but have
+no particular bonuses</string>
+        </property>
+       </widget>
       </widget>
      </widget>
      <widget class="QStackedWidget" name="stk_Mage">
@@ -627,7 +709,7 @@ QPushButton:checked {
        </rect>
       </property>
       <property name="currentIndex">
-       <number>0</number>
+       <number>1</number>
       </property>
       <widget class="QWidget" name="selectionButtonMage">
        <widget class="QPushButton" name="btn_mage">
@@ -670,19 +752,60 @@ QPushButton:checked {
       </widget>
       <widget class="QWidget" name="statsMage">
        <property name="styleSheet">
-        <string notr="true">QWidget#statsMage{border-image: url(:/Images/Images/Button/statsBox.png);}</string>
+        <string notr="true">QWidget#statsMage{
+	border-image: url(:/Images/Images/Button/statsBox.png);
+	background-color: qlineargradient(spread:pad, x1:0, y1:0, x2:1, y2:1, stop:0.0140845 rgba(255, 255, 0, 185), stop:1 rgba(255, 255, 255, 255));
+}</string>
        </property>
        <widget class="QLabel" name="txt_Stats_3">
         <property name="geometry">
          <rect>
           <x>0</x>
-          <y>0</y>
+          <y>10</y>
           <width>221</width>
           <height>61</height>
          </rect>
         </property>
         <property name="text">
          <string>Stats</string>
+        </property>
+       </widget>
+       <widget class="QLabel" name="txt_mageStats">
+        <property name="geometry">
+         <rect>
+          <x>20</x>
+          <y>80</y>
+          <width>181</width>
+          <height>111</height>
+         </rect>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">font: 15pt;
+qproperty-alignment: AlignLeft;</string>
+        </property>
+        <property name="text">
+         <string>health: 10/10
+Gold: 15
+Attack: 2
+Defence: 0</string>
+        </property>
+       </widget>
+       <widget class="QLabel" name="txt_warriorSpe_2">
+        <property name="geometry">
+         <rect>
+          <x>10</x>
+          <y>190</y>
+          <width>201</width>
+          <height>101</height>
+         </rect>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">font: 10pt;</string>
+        </property>
+        <property name="text">
+         <string>Can only hold
+a staff and have 20%
+ of dodging</string>
         </property>
        </widget>
       </widget>

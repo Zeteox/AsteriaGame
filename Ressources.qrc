@@ -34,5 +34,6 @@
         <file>Images/Button/box 2.png</file>
         <file>Images/Button/box 3.png</file>
         <file>Images/Button/statsBox.png</file>
+        <file>Images/Background/Header Background.png</file>
     </qresource>
 </RCC>
