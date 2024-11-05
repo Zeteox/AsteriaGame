@@ -40,6 +40,9 @@
   <property name="windowTitle">
    <string>Asteria</string>
   </property>
+  <property name="styleSheet">
+   <string notr="true">background-color: rgb(50, 50, 50);</string>
+  </property>
   <property name="tabShape">
    <enum>QTabWidget::TabShape::Rounded</enum>
   </property>
@@ -94,7 +97,7 @@
      <string notr="true"/>
     </property>
     <property name="currentIndex">
-     <number>1</number>
+     <number>0</number>
     </property>
     <widget class="QWidget" name="p1_mainMenu">
      <property name="styleSheet">
@@ -123,6 +126,10 @@
         <bold>true</bold>
         <underline>false</underline>
        </font>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">background-color: rgb(170, 0, 255);
+background-image:none;</string>
       </property>
       <property name="text">
        <string>Start</string>
@@ -231,7 +238,12 @@
        </rect>
       </property>
       <property name="styleSheet">
-       <string notr="true"/>
+       <string notr="true">background-color: rgb(50, 50, 50);
+selection-color: rgb(255, 170, 255);
+selection-background-color: rgb(255, 170, 255);
+selection-color: rgb(255, 170, 255);
+alternate-background-color: rgb(255, 170, 255);
+border-color: rgb(50, 50, 50);</string>
       </property>
       <property name="text">
        <string/>
