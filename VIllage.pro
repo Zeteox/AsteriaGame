@@ -14,33 +14,40 @@ SOURCES += \
     hostel.cpp \
     inventory.cpp \
     livingcreature.cpp \
+    mage.cpp \
     main.cpp \
     mainwindow.cpp \
     merchant.cpp \
     mine.cpp \
     monster.cpp \
+    paladin.cpp \
     potion.cpp \
     randomNumber.cpp \
     shield.cpp \
     staff.cpp \
     sword.cpp \
+    warrior.cpp \
     village.cpp \
     weapon.cpp
 
 HEADERS += \
     building.h \
+    hero.h \
     hostel.h \
     inventory.h \
     livingcreature.h \
+    mage.h \
     mainwindow.h \
     merchant.h \
     mine.h \
     monster.h \
+    paladin.h \
     potion.h \
     randomNumber.h \
     shield.h \
     staff.h \
     sword.h \
+    warrior.h \
     village.h \
     weapon.h
     hero.h \

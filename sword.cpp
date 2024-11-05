@@ -6,6 +6,10 @@ Sword::Sword(const string &name, const int price, int damage)
     m_damage=damage;
 }
 
+Sword::~Sword() {
+
+}
+
 void Sword::setDamage(int newDamage) {
     m_damage = newDamage;
 }
@@ -14,6 +18,8 @@ int Sword::getDamage() const {
     return m_damage;
 }
 
-void Sword::showStats() const {
-    qDebug()<< "Name:"<< m_name<<"\nPrice:"<< m_price <<"\nDamage:"<<m_damage;
+string Sword::getStats() const {
+    return "Name: " + m_name +
+           "\nPrice: " + to_string(m_price) +
+           "\nDamage: "+ to_string(m_damage);
 }

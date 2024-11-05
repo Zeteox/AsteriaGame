@@ -9,9 +9,10 @@ private:
     int m_damage;
 public:
     Sword(const string &name, const int price, int damage);
+    virtual ~Sword();
     void setDamage(int newDamage);
     int getDamage() const;
-    void showStats() const;
+    string getStats() const;
 };
 
 #endif // SWORD_H

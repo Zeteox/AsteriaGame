@@ -24,8 +24,8 @@ string Inventory::removePotion(Potion* potion){
         return "You have no potion to remove";
     }else{
         for (size_t i=0; i<m_potions.size();i++) {
-            if (m_potions[i]->getName()==potion->getName()) {
-                m_potions.erase(next(m_potions.begin()+i));
+            if (m_potions[i] == potion) {
+                m_potions.erase(m_potions.begin()+i);
                 return "The potion has been removed";
             }
         }

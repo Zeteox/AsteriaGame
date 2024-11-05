@@ -12,6 +12,7 @@ class Village
     vector<Building*> m_allBuildings ;
 public:
     Village(string name);
+    ~Village();
     string getName();
     void setName(string name);
     int getNumberBuildings();

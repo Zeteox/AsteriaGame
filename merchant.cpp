@@ -22,7 +22,7 @@ string Merchant::removeSword(Sword* sword){
         return "You have no sword to remove";
     }else{
         for (size_t i=0; i<m_swordStock.size();i++) {
-            if (m_swordStock[i]->getName()== sword->getName()) {
+            if (m_swordStock[i] == sword) {
                 m_swordStock.erase(next(m_swordStock.begin()+i));
                 return "The sword has been removed";
             }
@@ -36,8 +36,8 @@ string Merchant::removeShield(Shield* shield){
         return "You have no shield to remove";
     }else{
         for (size_t i=0; i<m_shieldStock.size();i++) {
-            if (m_shieldStock[i]->getName()==shield->getName()) {
-                m_shieldStock.erase(next(m_shieldStock.begin()+i));
+            if (m_shieldStock[i] == shield) {
+                m_shieldStock.erase(m_shieldStock.begin()+i);
                 return "The shield has been removed";
             }
         }
@@ -50,8 +50,8 @@ string Merchant::removeStaff(Staff* staff){
         return "You have no staff to remove";
     }else{
         for (size_t i=0; i<m_staffStock.size();i++) {
-            if (m_staffStock[i]->getName()==staff->getName()) {
-                m_staffStock.erase(next(m_staffStock.begin()+i));
+            if (m_staffStock[i] == staff) {
+                m_staffStock.erase(m_staffStock.begin()+i);
                 return "The staff has been removed";
             }
         }
@@ -64,8 +64,8 @@ string Merchant::removePotion(Potion* potion){
         return "You have no potion to remove";
     }else{
         for (size_t i=0; i<m_potionStock.size();i++) {
-            if (m_potionStock[i]->getName()==potion->getName()) {
-                m_potionStock.erase(next(m_potionStock.begin()+i));
+            if (m_potionStock[i] == potion) {
+                m_potionStock.erase(m_potionStock.begin()+i);
                 return "The potion has been removed";
             }
         }

@@ -1,5 +1,8 @@
 #include "village.h"
 #include <iostream>
+#include "hostel.h"
+#include "merchant.h"
+#include "mine.h"
 #include "randomNumber.h"
 #include "building.h"
 #include <vector>
@@ -9,6 +12,12 @@ Village::Village(string name) {
     m_name = name;
     m_numberBuildings = getRandNumber(0, 9);
     generateVillage();
+}
+
+Village::~Village(){
+    for(size_t x = 0; x< m_allBuildings.size(); x++){
+        delete m_allBuildings[x];
+    }
 }
 
 string Village::getName(){
@@ -41,8 +50,8 @@ string Village::removeBuilding(Building* building){
         return "You have no building to remove";
     }else{
         for (int i=0; i<m_numberBuildings;i++) {
-            if (m_allBuildings[i]->getType()==building->getType()) {
-                m_allBuildings.erase(next(m_allBuildings.begin()+i));
+            if (m_allBuildings[i] == building) {
+                m_allBuildings.erase(m_allBuildings.begin()+i);
                 return "The building has been removed";
             }
         }
@@ -53,19 +62,17 @@ string Village::removeBuilding(Building* building){
 string Village::generateVillage(){
     for(int x=0; x != m_numberBuildings; x++){
         int choiceBuildingType = getRandNumber(1, 3);
-        string buildingType;
         switch(choiceBuildingType){
         case 1 :
-            buildingType = "Hostel";
+            m_allBuildings.push_back(new Hostel());
             break;
         case 2 :
-            buildingType = "Merchant";
+            m_allBuildings.push_back(new Mine(0));
             break;
         case 3 :
-            buildingType = "Mine";
+            m_allBuildings.push_back(new Merchant());
             break;
         }
-        m_allBuildings.push_back(new Building(buildingType));
     }
     return "The village was created";
 }

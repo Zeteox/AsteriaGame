@@ -18,7 +18,7 @@ public:
     string addMonster(Monster* monster);
     string removeMonster(Monster* monster);
     bool isEmpty();
-    void generateMine(int mineLevel, Monster* monster);
+    void generateMine(Monster* monster);
 };
 
 #endif // MINE_H

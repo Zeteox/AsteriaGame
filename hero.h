@@ -2,21 +2,22 @@
 #define HERO_H
 
 #include "livingcreature.h"
+#include "potion.h"
+#include "inventory.h"
 
 class Hero : public LivingCreature
 {
 protected:
     string m_class;
-    //Inventory* m_inventory;
+    Inventory* m_inventory;
 public:
-    Hero(const string name, const int maxHp, const int golds, const int damage, const int defence, const string p_class);
+    Hero(const string &name, const int maxHp, const int golds, const int damage, const int defence, const string &p_class);
     string& getClass();
-    //Inventory &getInventory();
-    //virtual void addToInventory(Potion *potion);
-    //virtual void removeFromInventory(Potion *potion);
-    void talk() const;
-    void showStats() const;
-    //void drink(Potion *potion);
+    Inventory &getInventory();
+    void addToInventory(Potion *potion);
+    void removeFromInventory(Potion *potion);
+    string talk() const;
+    void drink(Potion *potion);
     //void trade(Merchant *merchant);
 };
 
