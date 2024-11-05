@@ -22,14 +22,16 @@ private slots:
     void startButtonClicked();
     void backButtonClicked();
     void createHeroButtonClicked();
-
-    void on_btn_warrior_clicked();
-
-    void on_btn_mage_clicked();
-
-    void on_btn_paladin_clicked();
+    void btnWarriorClicked();
+    void btnWarriorStatsClicked();
+    void btnMageClicked();
+    void btnMageStatsClicked();
+    void btnPaladinClicked();
+    void btnPaladinStatsClicked();
 
 private:
     Ui::MainWindow *ui;
+    void connectAll();
+    void stackedWidgetIndexSetup();
 };
 #endif // MAINWINDOW_H

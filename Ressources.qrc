@@ -27,5 +27,12 @@
         <file>Images/Background/maps lieux/map monde.jpeg</file>
         <file>Images/Background/maps lieux/village 2.jpeg</file>
         <file>Images/Background/maps lieux/village 3.jpeg</file>
+        <file>Images/Background/title background.png</file>
+        <file>Images/Button/button 1.png</file>
+        <file>Images/Background/selection (2).png</file>
+        <file>Images/Background/selection.png</file>
+        <file>Images/Button/box 2.png</file>
+        <file>Images/Button/box 3.png</file>
+        <file>Images/Button/statsBox.png</file>
     </qresource>
 </RCC>
