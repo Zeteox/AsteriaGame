@@ -3,6 +3,14 @@
 Inventory::Inventory() {
     m_space = 10;
 }
+size_t Inventory::getSpace(){
+    return m_space;
+}
+
+vector<Potion*> Inventory::showPotions(){
+    return m_potions;
+}
+
 string Inventory::addPotion(Potion* potion){
     if (m_potions.size()<m_space) {
         m_potions.push_back(potion);
@@ -16,8 +24,8 @@ string Inventory::removePotion(Potion* potion){
         return "You have no potion to remove";
     }else{
         for (size_t i=0; i<m_potions.size();i++) {
-            if (m_potions[i]->getName()==potion->getName()) {
-                m_potions.erase(next(m_potions.begin()+i));
+            if (m_potions[i] == potion) {
+                m_potions.erase(m_potions.begin()+i);
                 return "The potion has been removed";
             }
         }

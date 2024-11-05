@@ -40,7 +40,7 @@
      <cursorShape>ArrowCursor</cursorShape>
     </property>
     <property name="currentIndex">
-     <number>0</number>
+     <number>1</number>
     </property>
     <widget class="QWidget" name="p1_mainMenu">
      <widget class="QPushButton" name="btn_start">
@@ -154,10 +154,6 @@
       <property name="text">
        <string>Warrior</string>
       </property>
-      <property name="icon">
-       <iconset resource="images.qrc">
-        <normaloff>:/Pictures/Screenshots/Screenshot 2024-07-23 003659.png</normaloff>:/Pictures/Screenshots/Screenshot 2024-07-23 003659.png</iconset>
-      </property>
       <property name="iconSize">
        <size>
         <width>200</width>
@@ -203,14 +199,12 @@
      <x>0</x>
      <y>0</y>
      <width>1276</width>
-     <height>25</height>
+     <height>21</height>
     </rect>
    </property>
   </widget>
   <widget class="QStatusBar" name="statusbar"/>
  </widget>
- <resources>
-  <include location="images.qrc"/>
- </resources>
+ <resources/>
  <connections/>
 </ui>

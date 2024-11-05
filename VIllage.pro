@@ -17,6 +17,9 @@ SOURCES += \
     mage.cpp \
     main.cpp \
     mainwindow.cpp \
+    merchant.cpp \
+    mine.cpp \
+    monster.cpp \
     paladin.cpp \
     potion.cpp \
     randomNumber.cpp \
@@ -35,6 +38,9 @@ HEADERS += \
     livingcreature.h \
     mage.h \
     mainwindow.h \
+    merchant.h \
+    mine.h \
+    monster.h \
     paladin.h \
     potion.h \
     randomNumber.h \
@@ -55,4 +61,4 @@ else: unix:!android: target.path = /opt/$${TARGET}/bin
 !isEmpty(target.path): INSTALLS += target
 
 RESOURCES += \
-    images.qrc
+    Ressources.qrc
