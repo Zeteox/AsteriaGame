@@ -3,6 +3,7 @@
 
 Mine::Mine(int mineLevel) : Building("Mine"){
     m_mineLevel = mineLevel;
+    generateMine();
 }
 
 int Mine::fibonacci(int n) {
@@ -91,5 +92,15 @@ string Mine::generateMine(){
             break;
         }
         return "Mine was generated";
+    }
+}
+
+string Mine::levelUp() {
+    if(isEmpty() == true){
+        m_mineLevel++;
+        generateMine();
+        return "The Mine was level Up";
+    }else{
+        return "There are still monsters in the mine";
     }
 }
