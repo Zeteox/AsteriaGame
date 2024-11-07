@@ -19,6 +19,7 @@ string Inventory::addPotion(Potion* potion){
         return "The Inventory is full";
     }
 }
+
 string Inventory::removePotion(Potion* potion){
     if (m_potions.size() == 0){
         return "You have no potion to remove";

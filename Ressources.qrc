@@ -24,7 +24,6 @@
         <file>Images/Background/maps habitation/Tavern.jpeg</file>
         <file>Images/Button/button type (2).jpeg</file>
         <file>Images/Button/button type.jpeg</file>
-        <file>Images/Background/maps lieux/map monde.jpeg</file>
         <file>Images/Background/maps lieux/village 2.jpeg</file>
         <file>Images/Background/maps lieux/village 3.jpeg</file>
         <file>Images/Background/title background.png</file>
@@ -35,5 +34,23 @@
         <file>Images/Button/box 3.png</file>
         <file>Images/Button/statsBox.png</file>
         <file>Images/Background/Header Background.png</file>
+        <file>Images/Background/maps lieux/worldMap.jpg</file>
+        <file>Images/Button/button 1_2.png</file>
+        <file>Images/Button/back button.png</file>
+        <file>Images/Button/button back_2.png</file>
+        <file>Images/villages/village 1/asteria village4.png</file>
+        <file>Images/villages/village 1/village2.png</file>
+        <file>Images/villages/village 1/village2Mini.png</file>
+        <file>Images/Void.png</file>
+        <file>Images/villages/village 1/asteria village2.png</file>
+        <file>Images/villages/village 1/asteria.png</file>
+        <file>Images/villages/village 1/asteria village3.png</file>
+        <file>Images/villages/village 1/mineGate1.png</file>
+        <file>Images/villages/village 1/mineGate2.png</file>
+        <file>Images/Button/settings1.png</file>
+        <file>Images/Button/settings2.png</file>
+        <file>Images/Button/stuff1.png</file>
+        <file>Images/Button/stuff2.png</file>
+        <file>Images/villages/village 1/village3.png</file>
     </qresource>
 </RCC>

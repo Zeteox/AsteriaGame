@@ -2,6 +2,13 @@
 #define MAINWINDOW_H
 
 #include <QMainWindow>
+#include "warrior.h"
+#include "mage.h"
+#include "paladin.h"
+#include "village.h"
+#include "mine.h"
+#include "hostel.h"
+#include "merchant.h"
 
 QT_BEGIN_NAMESPACE
 namespace Ui {
@@ -28,9 +35,22 @@ private slots:
     void btnMageStatsClicked();
     void btnPaladinClicked();
     void btnPaladinStatsClicked();
+    void btnVillageOneClicked();
+    void btnVillageTwoClicked();
+    void worldButtonClicked();
+    void heroButtonClicked();
+    void searchInput();
+    void statsButtonClicked();
+    void invButtonClicked();
+    void menuButtonClicked();
 
 private:
     Ui::MainWindow *ui;
+    Hero* m_hero;
+    int m_lastIndex;
+
+
+
     void connectAll();
     void stackedWidgetIndexSetup();
 };

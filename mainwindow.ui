@@ -10,25 +10,25 @@
     <x>0</x>
     <y>0</y>
     <width>1000</width>
-    <height>680</height>
+    <height>660</height>
    </rect>
   </property>
   <property name="minimumSize">
    <size>
     <width>1000</width>
-    <height>680</height>
+    <height>660</height>
    </size>
   </property>
   <property name="maximumSize">
    <size>
     <width>1000</width>
-    <height>680</height>
+    <height>660</height>
    </size>
   </property>
   <property name="baseSize">
    <size>
     <width>1000</width>
-    <height>680</height>
+    <height>660</height>
    </size>
   </property>
   <property name="contextMenuPolicy">
@@ -41,19 +41,19 @@
    <string>Asteria</string>
   </property>
   <property name="styleSheet">
-   <string notr="true">QMainWidget{background-color: rgb(50, 50, 50);}</string>
+   <string notr="true"/>
   </property>
   <property name="tabShape">
    <enum>QTabWidget::TabShape::Rounded</enum>
   </property>
   <widget class="QWidget" name="centralwidget">
-   <widget class="QStackedWidget" name="Game">
+   <widget class="QStackedWidget" name="Main">
     <property name="geometry">
      <rect>
       <x>0</x>
       <y>0</y>
       <width>1000</width>
-      <height>680</height>
+      <height>681</height>
      </rect>
     </property>
     <property name="sizePolicy">
@@ -100,7 +100,7 @@
      <enum>QFrame::Shadow::Plain</enum>
     </property>
     <property name="currentIndex">
-     <number>1</number>
+     <number>0</number>
     </property>
     <widget class="QWidget" name="p1_mainMenu">
      <property name="autoFillBackground">
@@ -135,15 +135,20 @@
        </font>
       </property>
       <property name="mouseTracking">
-       <bool>false</bool>
+       <bool>true</bool>
       </property>
       <property name="autoFillBackground">
        <bool>false</bool>
       </property>
       <property name="styleSheet">
-       <string notr="true">color: rgb(0, 0, 0);
-font: 25pt &quot;Algerian&quot;;
-border-image: url(:/Images/Images/Button/button 1.png);</string>
+       <string notr="true">QPushButton:!hover{
+	color: rgb(0, 0, 0);
+	font: 25pt &quot;Algerian&quot;;
+	border-image: url(:/Images/Images/Button/button 1.png);
+}
+QPushButton:hover{
+	border-image: url(:/Images/Images/Button/button 1_2.png);
+}</string>
       </property>
       <property name="text">
        <string>Start</string>
@@ -183,9 +188,14 @@ border-image: url(:/Images/Images/Button/button 1.png);</string>
        </font>
       </property>
       <property name="styleSheet">
-       <string notr="true">color: rgb(0, 0, 0);
-font: 25pt &quot;Algerian&quot;;
-border-image: url(:/Images/Images/Button/button 1.png);</string>
+       <string notr="true">QPushButton:!hover{
+	color: rgb(0, 0, 0);
+	font: 25pt &quot;Algerian&quot;;
+	border-image: url(:/Images/Images/Button/button 1.png);
+}
+QPushButton:hover{
+	border-image: url(:/Images/Images/Button/button 1_2.png);
+}</string>
       </property>
       <property name="text">
        <string>Quit</string>
@@ -197,7 +207,7 @@ border-image: url(:/Images/Images/Button/button 1.png);</string>
        </size>
       </property>
      </widget>
-     <widget class="QLabel" name="txt_title">
+     <widget class="QLabel" name="lbl_title">
       <property name="geometry">
        <rect>
         <x>340</x>
@@ -224,6 +234,7 @@ border-image: url(:/Images/Images/Button/button 1.png);</string>
         <pointsize>45</pointsize>
         <italic>false</italic>
         <bold>false</bold>
+        <underline>false</underline>
        </font>
       </property>
       <property name="styleSheet">
@@ -246,27 +257,11 @@ font: 25pt &quot;Algerian&quot;;
 qproperty-alignment: AlignCenter;
 }</string>
      </property>
-     <widget class="QPushButton" name="btn_back">
-      <property name="geometry">
-       <rect>
-        <x>110</x>
-        <y>550</y>
-        <width>131</width>
-        <height>31</height>
-       </rect>
-      </property>
-      <property name="styleSheet">
-       <string notr="true">background-color: rgb(70, 70, 70);</string>
-      </property>
-      <property name="text">
-       <string>Back</string>
-      </property>
-     </widget>
      <widget class="QLabel" name="lbl_warrior">
       <property name="geometry">
        <rect>
-        <x>410</x>
-        <y>110</y>
+        <x>390</x>
+        <y>140</y>
         <width>211</width>
         <height>51</height>
        </rect>
@@ -283,8 +278,8 @@ border-image: url(:/Images/Images/Button/box 2.png);</string>
      <widget class="QLabel" name="lbl_warrior_2">
       <property name="geometry">
        <rect>
-        <x>720</x>
-        <y>110</y>
+        <x>700</x>
+        <y>140</y>
         <width>191</width>
         <height>51</height>
        </rect>
@@ -301,8 +296,8 @@ border-image: url(:/Images/Images/Button/box 2.png);</string>
      <widget class="QLabel" name="lbl_warrior_3">
       <property name="geometry">
        <rect>
-        <x>110</x>
-        <y>110</y>
+        <x>90</x>
+        <y>140</y>
         <width>201</width>
         <height>51</height>
        </rect>
@@ -317,10 +312,13 @@ border-image: url(:/Images/Images/Button/box 2.png);</string>
       </property>
      </widget>
      <widget class="QPushButton" name="btn_createHero">
+      <property name="enabled">
+       <bool>false</bool>
+      </property>
       <property name="geometry">
        <rect>
-        <x>330</x>
-        <y>530</y>
+        <x>540</x>
+        <y>550</y>
         <width>381</width>
         <height>71</height>
        </rect>
@@ -342,15 +340,20 @@ border-image: url(:/Images/Images/Button/box 2.png);</string>
        </font>
       </property>
       <property name="mouseTracking">
-       <bool>false</bool>
+       <bool>true</bool>
       </property>
       <property name="autoFillBackground">
        <bool>false</bool>
       </property>
       <property name="styleSheet">
-       <string notr="true">color: rgb(0, 0, 0);
-font: 25pt &quot;Algerian&quot;;
-border-image: url(:/Images/Images/Button/button 1.png);</string>
+       <string notr="true">QPushButton:!hover{
+	color: rgb(0, 0, 0);
+	font: 25pt &quot;Algerian&quot;;
+	border-image: url(:/Images/Images/Button/button 1.png);
+}
+QPushButton:hover{
+	border-image: url(:/Images/Images/Button/button 1_2.png);
+}</string>
       </property>
       <property name="text">
        <string>Create Hero</string>
@@ -365,7 +368,7 @@ border-image: url(:/Images/Images/Button/button 1.png);</string>
        <bool>false</bool>
       </property>
      </widget>
-     <widget class="QLabel" name="txt_choose">
+     <widget class="QLabel" name="lbl_choose">
       <property name="geometry">
        <rect>
         <x>240</x>
@@ -375,7 +378,8 @@ border-image: url(:/Images/Images/Button/button 1.png);</string>
        </rect>
       </property>
       <property name="styleSheet">
-       <string notr="true">border-image: url(:/Images/Images/Background/title background.png);</string>
+       <string notr="true">color: rgb(255, 255, 127);
+border-image: url(:/Images/Images/Background/Header Background.png);</string>
       </property>
       <property name="text">
        <string>Choose Your Destiny</string>
@@ -384,8 +388,8 @@ border-image: url(:/Images/Images/Button/button 1.png);</string>
      <widget class="QPushButton" name="btn_statsWarrior">
       <property name="geometry">
        <rect>
-        <x>586</x>
-        <y>150</y>
+        <x>566</x>
+        <y>180</y>
         <width>20</width>
         <height>31</height>
        </rect>
@@ -393,7 +397,9 @@ border-image: url(:/Images/Images/Button/button 1.png);</string>
       <property name="font">
        <font>
         <pointsize>15</pointsize>
+        <italic>false</italic>
         <bold>true</bold>
+        <underline>false</underline>
        </font>
       </property>
       <property name="styleSheet">
@@ -414,8 +420,8 @@ QPushButton:hover{
      <widget class="QPushButton" name="btn_statsMage">
       <property name="geometry">
        <rect>
-        <x>880</x>
-        <y>150</y>
+        <x>860</x>
+        <y>180</y>
         <width>20</width>
         <height>31</height>
        </rect>
@@ -423,7 +429,9 @@ QPushButton:hover{
       <property name="font">
        <font>
         <pointsize>15</pointsize>
+        <italic>false</italic>
         <bold>true</bold>
+        <underline>false</underline>
        </font>
       </property>
       <property name="styleSheet">
@@ -444,8 +452,8 @@ QPushButton:hover{
      <widget class="QPushButton" name="btn_statsPaladin">
       <property name="geometry">
        <rect>
-        <x>280</x>
-        <y>150</y>
+        <x>260</x>
+        <y>180</y>
         <width>20</width>
         <height>31</height>
        </rect>
@@ -453,7 +461,9 @@ QPushButton:hover{
       <property name="font">
        <font>
         <pointsize>15</pointsize>
+        <italic>false</italic>
         <bold>true</bold>
+        <underline>false</underline>
        </font>
       </property>
       <property name="styleSheet">
@@ -474,8 +484,8 @@ QPushButton:hover{
      <widget class="QStackedWidget" name="stk_Warrior">
       <property name="geometry">
        <rect>
-        <x>410</x>
-        <y>180</y>
+        <x>390</x>
+        <y>210</y>
         <width>221</width>
         <height>321</height>
        </rect>
@@ -532,7 +542,7 @@ QPushButton:checked {
 	background-color: qlineargradient(spread:pad, x1:0, y1:0, x2:1, y2:1, stop:0.0140845 	rgba(255, 255, 0, 185), stop:1 rgba(255, 255, 255, 255));
 }</string>
        </property>
-       <widget class="QLabel" name="txt_Stats_2">
+       <widget class="QLabel" name="lbl_Stats_2">
         <property name="geometry">
          <rect>
           <x>0</x>
@@ -545,7 +555,7 @@ QPushButton:checked {
          <string>Stats</string>
         </property>
        </widget>
-       <widget class="QLabel" name="txt_warriorSpe">
+       <widget class="QLabel" name="lbl_warriorSpe">
         <property name="geometry">
          <rect>
           <x>10</x>
@@ -563,7 +573,7 @@ a sword and have 50%
 more damage</string>
         </property>
        </widget>
-       <widget class="QLabel" name="txt_warriorStats">
+       <widget class="QLabel" name="lbl_warriorStats">
         <property name="geometry">
          <rect>
           <x>20</x>
@@ -588,8 +598,8 @@ Defence: 1</string>
      <widget class="QStackedWidget" name="stk_Paladin">
       <property name="geometry">
        <rect>
-        <x>100</x>
-        <y>180</y>
+        <x>80</x>
+        <y>210</y>
         <width>221</width>
         <height>321</height>
        </rect>
@@ -646,7 +656,7 @@ QPushButton:checked {
 	background-color: qlineargradient(spread:pad, x1:0, y1:0, x2:1, y2:1, stop:0.0140845 rgba(255, 255, 0, 185), stop:1 rgba(255, 255, 255, 255));
 }</string>
        </property>
-       <widget class="QLabel" name="txt_Stats">
+       <widget class="QLabel" name="lbl_Stats">
         <property name="geometry">
          <rect>
           <x>0</x>
@@ -659,7 +669,7 @@ QPushButton:checked {
          <string>Stats</string>
         </property>
        </widget>
-       <widget class="QLabel" name="txt_paladinStats">
+       <widget class="QLabel" name="lbl_paladinStats">
         <property name="geometry">
          <rect>
           <x>20</x>
@@ -679,7 +689,7 @@ Attack: 1
 Defence: 2</string>
         </property>
        </widget>
-       <widget class="QLabel" name="txt_paladinSpe">
+       <widget class="QLabel" name="lbl_paladinSpe">
         <property name="geometry">
          <rect>
           <x>10</x>
@@ -702,8 +712,8 @@ no particular bonuses</string>
      <widget class="QStackedWidget" name="stk_Mage">
       <property name="geometry">
        <rect>
-        <x>710</x>
-        <y>180</y>
+        <x>690</x>
+        <y>210</y>
         <width>221</width>
         <height>321</height>
        </rect>
@@ -757,7 +767,7 @@ QPushButton:checked {
 	background-color: qlineargradient(spread:pad, x1:0, y1:0, x2:1, y2:1, stop:0.0140845 rgba(255, 255, 0, 185), stop:1 rgba(255, 255, 255, 255));
 }</string>
        </property>
-       <widget class="QLabel" name="txt_Stats_3">
+       <widget class="QLabel" name="lbl_Stats_3">
         <property name="geometry">
          <rect>
           <x>0</x>
@@ -770,7 +780,7 @@ QPushButton:checked {
          <string>Stats</string>
         </property>
        </widget>
-       <widget class="QLabel" name="txt_mageStats">
+       <widget class="QLabel" name="lbl_mageStats">
         <property name="geometry">
          <rect>
           <x>20</x>
@@ -790,7 +800,7 @@ Attack: 2
 Defence: 0</string>
         </property>
        </widget>
-       <widget class="QLabel" name="txt_warriorSpe_2">
+       <widget class="QLabel" name="lbl_mageSpe">
         <property name="geometry">
          <rect>
           <x>10</x>
@@ -810,9 +820,73 @@ a staff and have 20%
        </widget>
       </widget>
      </widget>
-     <zorder>btn_back</zorder>
+     <widget class="QPushButton" name="btn_back">
+      <property name="geometry">
+       <rect>
+        <x>110</x>
+        <y>40</y>
+        <width>51</width>
+        <height>31</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">QPushButton:!hover{
+	color: rgb(0, 0, 0);
+	font: 13pt &quot;Algerian&quot;;
+	border-image: url(:/Images/Images/Button/back button.png);
+}
+QPushButton:hover{
+	border-image: url(:/Images/Images/Button/button back_2.png);
+}</string>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+     </widget>
+     <widget class="QLineEdit" name="txt_name">
+      <property name="geometry">
+       <rect>
+        <x>150</x>
+        <y>530</y>
+        <width>311</width>
+        <height>111</height>
+       </rect>
+      </property>
+      <property name="sizePolicy">
+       <sizepolicy hsizetype="Maximum" vsizetype="Preferred">
+        <horstretch>0</horstretch>
+        <verstretch>0</verstretch>
+       </sizepolicy>
+      </property>
+      <property name="font">
+       <font>
+        <family>Algerian</family>
+        <pointsize>20</pointsize>
+        <italic>false</italic>
+        <bold>false</bold>
+        <kerning>true</kerning>
+       </font>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">border-image: url(:/Images/Images/Background/title background.png);
+color: rgb(0, 0, 0);
+font: 20pt &quot;Algerian&quot;;
+padding-left:20px;
+padding-right:20px;
+</string>
+      </property>
+      <property name="alignment">
+       <set>Qt::AlignmentFlag::AlignCenter</set>
+      </property>
+      <property name="placeholderText">
+       <string>Enter Your Name</string>
+      </property>
+      <property name="clearButtonEnabled">
+       <bool>false</bool>
+      </property>
+     </widget>
      <zorder>btn_createHero</zorder>
-     <zorder>txt_choose</zorder>
+     <zorder>lbl_choose</zorder>
      <zorder>btn_statsWarrior</zorder>
      <zorder>lbl_warrior</zorder>
      <zorder>btn_statsMage</zorder>
@@ -822,20 +896,698 @@ a staff and have 20%
      <zorder>stk_Warrior</zorder>
      <zorder>stk_Paladin</zorder>
      <zorder>stk_Mage</zorder>
+     <zorder>btn_back</zorder>
+     <zorder>txt_name</zorder>
+    </widget>
+    <widget class="QWidget" name="p3_Game">
+     <property name="styleSheet">
+      <string notr="true"/>
+     </property>
+     <widget class="QStackedWidget" name="Game">
+      <property name="geometry">
+       <rect>
+        <x>0</x>
+        <y>0</y>
+        <width>1001</width>
+        <height>751</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">QLabel{ 
+color: rgb(0, 0, 0);
+font: 25pt &quot;Algerian&quot;;
+qproperty-alignment: AlignCenter;
+}
+</string>
+      </property>
+      <widget class="QWidget" name="p1_worldMap">
+       <property name="styleSheet">
+        <string notr="true">QWidget#p1_worldMap{border-image: url(:/Images/Images/Background/maps lieux/worldMap.jpg);}</string>
+       </property>
+       <widget class="QPushButton" name="btn_village1">
+        <property name="geometry">
+         <rect>
+          <x>90</x>
+          <y>160</y>
+          <width>311</width>
+          <height>231</height>
+         </rect>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">border-image: url(:/Images/Images/Void.png);</string>
+        </property>
+        <property name="text">
+         <string/>
+        </property>
+        <property name="icon">
+         <iconset resource="Ressources.qrc">
+          <normaloff>:/Images/Images/villages/village 1/village2Mini.png</normaloff>:/Images/Images/villages/village 1/village2Mini.png</iconset>
+        </property>
+        <property name="iconSize">
+         <size>
+          <width>341</width>
+          <height>241</height>
+         </size>
+        </property>
+       </widget>
+       <widget class="QLabel" name="txt_nameVillage1">
+        <property name="geometry">
+         <rect>
+          <x>150</x>
+          <y>70</y>
+          <width>171</width>
+          <height>71</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>NAME</string>
+        </property>
+       </widget>
+       <widget class="QPushButton" name="btn_village2">
+        <property name="enabled">
+         <bool>false</bool>
+        </property>
+        <property name="geometry">
+         <rect>
+          <x>590</x>
+          <y>140</y>
+          <width>311</width>
+          <height>231</height>
+         </rect>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">border-image: url(:/Images/Images/Void.png);</string>
+        </property>
+        <property name="text">
+         <string/>
+        </property>
+        <property name="icon">
+         <iconset resource="Ressources.qrc">
+          <normaloff>:/Images/Images/villages/village 1/village2Mini.png</normaloff>:/Images/Images/villages/village 1/village2Mini.png</iconset>
+        </property>
+        <property name="iconSize">
+         <size>
+          <width>341</width>
+          <height>241</height>
+         </size>
+        </property>
+       </widget>
+       <widget class="QLabel" name="txt_nameVillage2">
+        <property name="geometry">
+         <rect>
+          <x>680</x>
+          <y>80</y>
+          <width>171</width>
+          <height>71</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>NAME</string>
+        </property>
+       </widget>
+      </widget>
+      <widget class="QWidget" name="p2_hero">
+       <widget class="QFrame" name="heroFrame">
+        <property name="geometry">
+         <rect>
+          <x>90</x>
+          <y>20</y>
+          <width>371</width>
+          <height>571</height>
+         </rect>
+        </property>
+        <property name="frameShape">
+         <enum>QFrame::Shape::StyledPanel</enum>
+        </property>
+        <property name="frameShadow">
+         <enum>QFrame::Shadow::Raised</enum>
+        </property>
+        <widget class="QLabel" name="lbl_heroPicture">
+         <property name="geometry">
+          <rect>
+           <x>10</x>
+           <y>10</y>
+           <width>351</width>
+           <height>551</height>
+          </rect>
+         </property>
+         <property name="styleSheet">
+          <string notr="true"/>
+         </property>
+         <property name="text">
+          <string/>
+         </property>
+        </widget>
+       </widget>
+       <widget class="QStackedWidget" name="stk_invStats">
+        <property name="geometry">
+         <rect>
+          <x>550</x>
+          <y>10</y>
+          <width>421</width>
+          <height>601</height>
+         </rect>
+        </property>
+        <property name="currentIndex">
+         <number>1</number>
+        </property>
+        <widget class="QWidget" name="page">
+         <widget class="QFrame" name="statsFrame">
+          <property name="geometry">
+           <rect>
+            <x>50</x>
+            <y>110</y>
+            <width>321</width>
+            <height>421</height>
+           </rect>
+          </property>
+          <property name="frameShape">
+           <enum>QFrame::Shape::StyledPanel</enum>
+          </property>
+          <property name="frameShadow">
+           <enum>QFrame::Shadow::Raised</enum>
+          </property>
+          <widget class="QLabel" name="lbl_statsHero">
+           <property name="geometry">
+            <rect>
+             <x>10</x>
+             <y>10</y>
+             <width>301</width>
+             <height>401</height>
+            </rect>
+           </property>
+           <property name="styleSheet">
+            <string notr="true">font: 20pt &quot;Segoe UI&quot;;
+color: rgb(255, 255, 127);</string>
+           </property>
+           <property name="text">
+            <string>No Stats here</string>
+           </property>
+          </widget>
+         </widget>
+         <widget class="QLabel" name="lbl_statsTitle">
+          <property name="geometry">
+           <rect>
+            <x>60</x>
+            <y>10</y>
+            <width>301</width>
+            <height>101</height>
+           </rect>
+          </property>
+          <property name="styleSheet">
+           <string notr="true">border-image: url(:/Images/Images/Background/Header Background.png);
+color: rgb(255, 255, 127);</string>
+          </property>
+          <property name="text">
+           <string>Stats</string>
+          </property>
+         </widget>
+         <widget class="QPushButton" name="btn_inv">
+          <property name="geometry">
+           <rect>
+            <x>10</x>
+            <y>50</y>
+            <width>51</width>
+            <height>29</height>
+           </rect>
+          </property>
+          <property name="text">
+           <string>Inv</string>
+          </property>
+         </widget>
+        </widget>
+        <widget class="QWidget" name="page_2">
+         <widget class="QLabel" name="lbl_statsTitle_2">
+          <property name="geometry">
+           <rect>
+            <x>60</x>
+            <y>10</y>
+            <width>301</width>
+            <height>101</height>
+           </rect>
+          </property>
+          <property name="styleSheet">
+           <string notr="true">border-image: url(:/Images/Images/Background/Header Background.png);
+color: rgb(255, 255, 127);</string>
+          </property>
+          <property name="text">
+           <string>Inventory</string>
+          </property>
+         </widget>
+         <widget class="QFrame" name="statsFrame_2">
+          <property name="geometry">
+           <rect>
+            <x>50</x>
+            <y>100</y>
+            <width>321</width>
+            <height>421</height>
+           </rect>
+          </property>
+          <property name="frameShape">
+           <enum>QFrame::Shape::StyledPanel</enum>
+          </property>
+          <property name="frameShadow">
+           <enum>QFrame::Shadow::Raised</enum>
+          </property>
+          <widget class="QListWidget" name="list_inventory">
+           <property name="geometry">
+            <rect>
+             <x>10</x>
+             <y>70</y>
+             <width>301</width>
+             <height>341</height>
+            </rect>
+           </property>
+          </widget>
+          <widget class="QPlainTextEdit" name="txt_search">
+           <property name="geometry">
+            <rect>
+             <x>133</x>
+             <y>20</y>
+             <width>161</width>
+             <height>31</height>
+            </rect>
+           </property>
+           <property name="plainText">
+            <string/>
+           </property>
+          </widget>
+          <widget class="QLabel" name="lbl_search">
+           <property name="geometry">
+            <rect>
+             <x>10</x>
+             <y>20</y>
+             <width>111</width>
+             <height>31</height>
+            </rect>
+           </property>
+           <property name="styleSheet">
+            <string notr="true">font: 9pt &quot;Segoe UI&quot;;</string>
+           </property>
+           <property name="text">
+            <string>Search</string>
+           </property>
+          </widget>
+         </widget>
+         <widget class="QPushButton" name="pushButton">
+          <property name="geometry">
+           <rect>
+            <x>70</x>
+            <y>530</y>
+            <width>83</width>
+            <height>29</height>
+           </rect>
+          </property>
+          <property name="text">
+           <string>Equip</string>
+          </property>
+         </widget>
+         <widget class="QPushButton" name="pushButton_2">
+          <property name="geometry">
+           <rect>
+            <x>170</x>
+            <y>530</y>
+            <width>83</width>
+            <height>29</height>
+           </rect>
+          </property>
+          <property name="text">
+           <string>Drink</string>
+          </property>
+         </widget>
+         <widget class="QPushButton" name="pushButton_3">
+          <property name="geometry">
+           <rect>
+            <x>270</x>
+            <y>530</y>
+            <width>83</width>
+            <height>29</height>
+           </rect>
+          </property>
+          <property name="text">
+           <string>Delete</string>
+          </property>
+         </widget>
+         <widget class="QPushButton" name="btn_stats">
+          <property name="geometry">
+           <rect>
+            <x>10</x>
+            <y>50</y>
+            <width>51</width>
+            <height>29</height>
+           </rect>
+          </property>
+          <property name="text">
+           <string>Stats</string>
+          </property>
+         </widget>
+        </widget>
+       </widget>
+       <widget class="QLabel" name="label_2">
+        <property name="geometry">
+         <rect>
+          <x>470</x>
+          <y>90</y>
+          <width>111</width>
+          <height>121</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>Item</string>
+        </property>
+       </widget>
+       <widget class="QLabel" name="label_3">
+        <property name="geometry">
+         <rect>
+          <x>470</x>
+          <y>190</y>
+          <width>111</width>
+          <height>121</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>Item</string>
+        </property>
+       </widget>
+       <widget class="QLabel" name="label_4">
+        <property name="geometry">
+         <rect>
+          <x>470</x>
+          <y>300</y>
+          <width>111</width>
+          <height>121</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>Item</string>
+        </property>
+       </widget>
+       <widget class="QLabel" name="label_5">
+        <property name="geometry">
+         <rect>
+          <x>470</x>
+          <y>400</y>
+          <width>111</width>
+          <height>121</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>Item</string>
+        </property>
+       </widget>
+      </widget>
+      <widget class="QWidget" name="p3_menu">
+       <property name="styleSheet">
+        <string notr="true">border-image: url(:/Images/Images/Background/start background/imgForMakeBackgroung.jpeg);</string>
+       </property>
+       <widget class="QPushButton" name="btn_resume">
+        <property name="geometry">
+         <rect>
+          <x>260</x>
+          <y>210</y>
+          <width>481</width>
+          <height>131</height>
+         </rect>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">QPushButton:!hover{
+	color: rgb(0, 0, 0);
+	font: 25pt &quot;Algerian&quot;;
+	border-image: url(:/Images/Images/Button/button 1.png);
+}
+QPushButton:hover{
+	border-image: url(:/Images/Images/Button/button 1_2.png);
+}</string>
+        </property>
+        <property name="text">
+         <string>Resume</string>
+        </property>
+       </widget>
+       <widget class="QPushButton" name="btn_quitMenu">
+        <property name="geometry">
+         <rect>
+          <x>260</x>
+          <y>370</y>
+          <width>481</width>
+          <height>131</height>
+         </rect>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">QPushButton:!hover{
+	color: rgb(0, 0, 0);
+	font: 25pt &quot;Algerian&quot;;
+	border-image: url(:/Images/Images/Button/button 1.png);
+}
+QPushButton:hover{
+	border-image: url(:/Images/Images/Button/button 1_2.png);
+}</string>
+        </property>
+        <property name="text">
+         <string>Quit</string>
+        </property>
+       </widget>
+      </widget>
+      <widget class="QWidget" name="p4_village1">
+       <property name="styleSheet">
+        <string notr="true">QWidget#p4_village1{background-image: url(:/Images/Images/villages/village 1/village2.png);}
+</string>
+       </property>
+       <widget class="QPushButton" name="btn_shop">
+        <property name="geometry">
+         <rect>
+          <x>90</x>
+          <y>380</y>
+          <width>401</width>
+          <height>261</height>
+         </rect>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">QPushButton#btn_shop:!hover{
+border-image: url(:/Images/Images/villages/village 1/asteria village2.png);
+color: rgb(255, 255, 127);
+font: 25pt &quot;Algerian&quot;;
+}
+QPushButton#btn_shop:hover{
+border-image: url(:/Images/Images/villages/village 1/asteria.png);
+}</string>
+        </property>
+        <property name="text">
+         <string>Shop
+
+
+
+
+
+</string>
+        </property>
+        <property name="iconSize">
+         <size>
+          <width>326</width>
+          <height>500</height>
+         </size>
+        </property>
+       </widget>
+       <widget class="QPushButton" name="btn_hostel">
+        <property name="geometry">
+         <rect>
+          <x>60</x>
+          <y>180</y>
+          <width>571</width>
+          <height>331</height>
+         </rect>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">QPushButton#btn_hostel:!hover{
+	border-image: url(:/Images/Images/villages/village 1/village3.png);
+	color: rgb(255, 255, 127);
+	font: 25pt &quot;Algerian&quot;;
+}
+QPushButton#btn_hostel:hover{
+	border-image: url(:/Images/Images/villages/village 1/asteria village3.png);
+}
+</string>
+        </property>
+        <property name="text">
+         <string>Hostel
+
+
+
+
+
+</string>
+        </property>
+        <property name="iconSize">
+         <size>
+          <width>326</width>
+          <height>500</height>
+         </size>
+        </property>
+       </widget>
+       <widget class="QPushButton" name="btn_mine">
+        <property name="geometry">
+         <rect>
+          <x>500</x>
+          <y>280</y>
+          <width>101</width>
+          <height>101</height>
+         </rect>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">QPushButton#btn_mine:!hover{
+border-image: url(:/Images/Images/villages/village 1/mineGate1.png);
+color: rgb(255, 255, 127);
+font: 13pt &quot;Algerian&quot;;
+}
+QPushButton#btn_mine:hover{
+border-image: url(:/Images/Images/villages/village 1/mineGate2.png);
+}</string>
+        </property>
+        <property name="text">
+         <string>Mine
+
+
+
+</string>
+        </property>
+       </widget>
+       <zorder>btn_hostel</zorder>
+       <zorder>btn_shop</zorder>
+       <zorder>btn_mine</zorder>
+      </widget>
+      <widget class="QWidget" name="p5_village2"/>
+      <widget class="QWidget" name="p6_shop"/>
+      <widget class="QWidget" name="p7_hostel"/>
+      <widget class="QWidget" name="p8_mine"/>
+     </widget>
+     <widget class="QWidget" name="verticalLayoutWidget">
+      <property name="geometry">
+       <rect>
+        <x>10</x>
+        <y>0</y>
+        <width>62</width>
+        <height>301</height>
+       </rect>
+      </property>
+      <layout class="QVBoxLayout" name="verticalLayout" stretch="0,0,1,0">
+       <property name="spacing">
+        <number>1</number>
+       </property>
+       <property name="sizeConstraint">
+        <enum>QLayout::SizeConstraint::SetNoConstraint</enum>
+       </property>
+       <property name="leftMargin">
+        <number>0</number>
+       </property>
+       <property name="topMargin">
+        <number>1</number>
+       </property>
+       <item>
+        <widget class="QPushButton" name="btn_Menu">
+         <property name="minimumSize">
+          <size>
+           <width>60</width>
+           <height>60</height>
+          </size>
+         </property>
+         <property name="maximumSize">
+          <size>
+           <width>60</width>
+           <height>60</height>
+          </size>
+         </property>
+         <property name="styleSheet">
+          <string notr="true">QPushButton#btn_Menu:!hover{
+	border-image: url(:/Images/Images/Button/settings1.png);
+}
+QPushButton#btn_Menu:hover{
+	border-image: url(:/Images/Images/Button/settings2.png);
+}</string>
+         </property>
+         <property name="text">
+          <string/>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QPushButton" name="btn_back2">
+         <property name="minimumSize">
+          <size>
+           <width>60</width>
+           <height>60</height>
+          </size>
+         </property>
+         <property name="maximumSize">
+          <size>
+           <width>60</width>
+           <height>60</height>
+          </size>
+         </property>
+         <property name="styleSheet">
+          <string notr="true">QPushButton#btn_back2:!hover{
+	border-image: url(:/Images/Images/Void.png);
+	image: url(:/Images/Images/Button/back button.png);
+}
+QPushButton#btn_back2:hover{
+	border-image: url(:/Images/Images/Void.png);
+	image: url(:/Images/Images/Button/button back_2.png);
+}</string>
+         </property>
+         <property name="text">
+          <string/>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QPushButton" name="btn_hero">
+         <property name="minimumSize">
+          <size>
+           <width>60</width>
+           <height>60</height>
+          </size>
+         </property>
+         <property name="maximumSize">
+          <size>
+           <width>60</width>
+           <height>60</height>
+          </size>
+         </property>
+         <property name="styleSheet">
+          <string notr="true">QPushButton#btn_hero:!hover{
+	border-image: url(:/Images/Images/Button/stuff1.png);
+}
+QPushButton#btn_hero:hover{
+	border-image: url(:/Images/Images/Button/stuff2.png);
+}</string>
+         </property>
+         <property name="text">
+          <string/>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QPushButton" name="btn_worldMap">
+         <property name="minimumSize">
+          <size>
+           <width>60</width>
+           <height>60</height>
+          </size>
+         </property>
+         <property name="maximumSize">
+          <size>
+           <width>60</width>
+           <height>60</height>
+          </size>
+         </property>
+         <property name="text">
+          <string>World Map</string>
+         </property>
+        </widget>
+       </item>
+      </layout>
+     </widget>
     </widget>
    </widget>
   </widget>
-  <widget class="QMenuBar" name="menubar">
-   <property name="geometry">
-    <rect>
-     <x>0</x>
-     <y>0</y>
-     <width>1000</width>
-     <height>25</height>
-    </rect>
-   </property>
-  </widget>
-  <widget class="QStatusBar" name="statusbar"/>
  </widget>
  <resources>
   <include location="Ressources.qrc"/>
