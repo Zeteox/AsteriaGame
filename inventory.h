@@ -14,10 +14,10 @@ public:
     Inventory();
     size_t getSpace();
     string addSpace();
-    vector<Potion*> showPotions();
+    vector<Potion*> getPotions();
     string addPotion(Potion* potion);
     string removePotion(Potion* potion);
-    vector<Weapon*> showWeapons();
+    vector<Weapon*> getWeapons();
     string addWeapon(Weapon* weapon);
     string removeWeapon(Weapon* weapon);
 };

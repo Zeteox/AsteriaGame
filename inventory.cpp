@@ -12,7 +12,7 @@ string Inventory::addSpace(){
     return "You have more space";
 }
 
-vector<Potion*> Inventory::showPotions(){
+vector<Potion*> Inventory::getPotions(){
     return m_potions;
 }
 
@@ -39,7 +39,7 @@ string Inventory::removePotion(Potion* potion){
     return "the potion doesn't exist in the inventory";
 }
 
-vector<Weapon*> Inventory::showWeapons(){
+vector<Weapon*> Inventory::getWeapons(){
     return m_weapons;
 }
 

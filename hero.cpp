@@ -26,3 +26,7 @@ void Hero::removeFromInventory(Potion *potion) {
 void Hero::addToInventory(Potion* potion) {
     m_inventory->addPotion(potion);
 }
+
+Inventory* Hero::getInventory() {
+    return m_inventory;
+}

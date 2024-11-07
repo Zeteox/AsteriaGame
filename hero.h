@@ -13,7 +13,7 @@ protected:
 public:
     Hero(const string &name, const int maxHp, const int golds, const int damage, const int defence, const string &p_class);
     string& getClass();
-    Inventory &getInventory();
+    Inventory* getInventory();
     void addToInventory(Potion *potion);
     void removeFromInventory(Potion *potion);
     string talk() const;
