@@ -1,10 +1,9 @@
 #ifndef MINE_H
 #define MINE_H
 
-#include "building.h"
 #include "monster.h"
 #include <vector>
-class Mine : public Building
+class Mine
 {
     int m_mineLevel;
     vector<Monster*> m_monster;

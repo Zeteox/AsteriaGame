@@ -10,7 +10,7 @@ using namespace std;
 
 Village::Village(string name) {
     m_name = name;
-    m_numberBuildings = getRandNumber(0, 9);
+    m_numberBuildings = getRandNumber(2, 9);
     generateVillage();
 }
 
@@ -64,13 +64,13 @@ string Village::generateVillage(){
         int choiceBuildingType = getRandNumber(1, 3);
         switch(choiceBuildingType){
         case 1 :
-            m_allBuildings.push_back(new Hostel());
+            m_allBuildings.push_back(new Building("Hostel"));
             break;
         case 2 :
-            m_allBuildings.push_back(new Mine(0));
+            m_allBuildings.push_back(new Building("Mine"));
             break;
         case 3 :
-            m_allBuildings.push_back(new Merchant());
+            m_allBuildings.push_back(new Building("Merchant"));
             break;
         }
     }

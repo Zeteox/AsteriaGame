@@ -1,6 +1,6 @@
 #include "mine.h"
 
-Mine::Mine(int mineLevel) : Building("Mine"){
+Mine::Mine(int mineLevel) {
     m_mineLevel = mineLevel;
 }
 

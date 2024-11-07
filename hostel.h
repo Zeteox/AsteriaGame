@@ -1,10 +1,9 @@
 #ifndef HOSTEL_H
 #define HOSTEL_H
 
-#include "building.h"
 #include "livingcreature.h"
 
-class Hostel : public Building
+class Hostel
 {
 private:
     int m_price;

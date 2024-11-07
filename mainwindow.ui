@@ -100,7 +100,7 @@
      <enum>QFrame::Shadow::Plain</enum>
     </property>
     <property name="currentIndex">
-     <number>0</number>
+     <number>2</number>
     </property>
     <widget class="QWidget" name="p1_mainMenu">
      <property name="autoFillBackground">
@@ -864,6 +864,7 @@ QPushButton:hover{
         <pointsize>20</pointsize>
         <italic>false</italic>
         <bold>false</bold>
+        <underline>false</underline>
         <kerning>true</kerning>
        </font>
       </property>
@@ -1045,7 +1046,7 @@ qproperty-alignment: AlignCenter;
           <x>550</x>
           <y>10</y>
           <width>421</width>
-          <height>601</height>
+          <height>631</height>
          </rect>
         </property>
         <property name="currentIndex">
@@ -1140,7 +1141,7 @@ color: rgb(255, 255, 127);</string>
             <x>50</x>
             <y>100</y>
             <width>321</width>
-            <height>421</height>
+            <height>501</height>
            </rect>
           </property>
           <property name="frameShape">
@@ -1149,21 +1150,11 @@ color: rgb(255, 255, 127);</string>
           <property name="frameShadow">
            <enum>QFrame::Shadow::Raised</enum>
           </property>
-          <widget class="QListWidget" name="list_inventory">
-           <property name="geometry">
-            <rect>
-             <x>10</x>
-             <y>70</y>
-             <width>301</width>
-             <height>341</height>
-            </rect>
-           </property>
-          </widget>
           <widget class="QPlainTextEdit" name="txt_search">
            <property name="geometry">
             <rect>
-             <x>133</x>
-             <y>20</y>
+             <x>143</x>
+             <y>10</y>
              <width>161</width>
              <height>31</height>
             </rect>
@@ -1175,58 +1166,94 @@ color: rgb(255, 255, 127);</string>
           <widget class="QLabel" name="lbl_search">
            <property name="geometry">
             <rect>
-             <x>10</x>
-             <y>20</y>
+             <x>20</x>
+             <y>10</y>
              <width>111</width>
              <height>31</height>
             </rect>
            </property>
            <property name="styleSheet">
-            <string notr="true">font: 9pt &quot;Segoe UI&quot;;</string>
+            <string notr="true">font: 15pt;</string>
            </property>
            <property name="text">
             <string>Search</string>
            </property>
           </widget>
-         </widget>
-         <widget class="QPushButton" name="pushButton">
-          <property name="geometry">
-           <rect>
-            <x>70</x>
-            <y>530</y>
-            <width>83</width>
-            <height>29</height>
-           </rect>
-          </property>
-          <property name="text">
-           <string>Equip</string>
-          </property>
-         </widget>
-         <widget class="QPushButton" name="pushButton_2">
-          <property name="geometry">
-           <rect>
-            <x>170</x>
-            <y>530</y>
-            <width>83</width>
-            <height>29</height>
-           </rect>
-          </property>
-          <property name="text">
-           <string>Drink</string>
-          </property>
-         </widget>
-         <widget class="QPushButton" name="pushButton_3">
-          <property name="geometry">
-           <rect>
-            <x>270</x>
-            <y>530</y>
-            <width>83</width>
-            <height>29</height>
-           </rect>
-          </property>
-          <property name="text">
-           <string>Delete</string>
-          </property>
+          <widget class="QTabWidget" name="tab_inventory">
+           <property name="geometry">
+            <rect>
+             <x>0</x>
+             <y>50</y>
+             <width>321</width>
+             <height>451</height>
+            </rect>
+           </property>
+           <property name="currentIndex">
+            <number>1</number>
+           </property>
+           <widget class="QWidget" name="potions">
+            <attribute name="title">
+             <string>Potions</string>
+            </attribute>
+            <widget class="QListWidget" name="list_potionInv">
+             <property name="geometry">
+              <rect>
+               <x>10</x>
+               <y>10</y>
+               <width>301</width>
+               <height>321</height>
+              </rect>
+             </property>
+            </widget>
+            <widget class="QPushButton" name="pushButton_2">
+             <property name="enabled">
+              <bool>false</bool>
+             </property>
+             <property name="geometry">
+              <rect>
+               <x>120</x>
+               <y>360</y>
+               <width>83</width>
+               <height>29</height>
+              </rect>
+             </property>
+             <property name="text">
+              <string>Drink</string>
+             </property>
+            </widget>
+           </widget>
+           <widget class="QWidget" name="weapons">
+            <attribute name="title">
+             <string>Weapons</string>
+            </attribute>
+            <widget class="QPushButton" name="pushButton">
+             <property name="enabled">
+              <bool>false</bool>
+             </property>
+             <property name="geometry">
+              <rect>
+               <x>110</x>
+               <y>360</y>
+               <width>83</width>
+               <height>29</height>
+              </rect>
+             </property>
+             <property name="text">
+              <string>Equip</string>
+             </property>
+            </widget>
+            <widget class="QListWidget" name="list_weaponInv">
+             <property name="geometry">
+              <rect>
+               <x>10</x>
+               <y>10</y>
+               <width>301</width>
+               <height>321</height>
+              </rect>
+             </property>
+            </widget>
+           </widget>
+          </widget>
          </widget>
          <widget class="QPushButton" name="btn_stats">
           <property name="geometry">
@@ -1455,9 +1482,266 @@ border-image: url(:/Images/Images/villages/village 1/mineGate2.png);
        <zorder>btn_mine</zorder>
       </widget>
       <widget class="QWidget" name="p5_village2"/>
-      <widget class="QWidget" name="p6_shop"/>
-      <widget class="QWidget" name="p7_hostel"/>
-      <widget class="QWidget" name="p8_mine"/>
+      <widget class="QWidget" name="p6_shop">
+       <property name="styleSheet">
+        <string notr="true">QWidget#p6_shop{
+image: url(:/Images/Images/Background/maps habitation/boutique potion.jpeg);
+}</string>
+       </property>
+       <widget class="QLabel" name="lbl_merchantPic">
+        <property name="geometry">
+         <rect>
+          <x>520</x>
+          <y>-20</y>
+          <width>561</width>
+          <height>831</height>
+         </rect>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">image: url(:/Images/Images/LivingCreature/PNG/Merchant.jpeg);</string>
+        </property>
+        <property name="text">
+         <string/>
+        </property>
+       </widget>
+       <widget class="QFrame" name="frm_Shop">
+        <property name="geometry">
+         <rect>
+          <x>150</x>
+          <y>110</y>
+          <width>291</width>
+          <height>501</height>
+         </rect>
+        </property>
+        <property name="frameShape">
+         <enum>QFrame::Shape::StyledPanel</enum>
+        </property>
+        <property name="frameShadow">
+         <enum>QFrame::Shadow::Raised</enum>
+        </property>
+        <widget class="QTabWidget" name="tab_shop">
+         <property name="geometry">
+          <rect>
+           <x>0</x>
+           <y>0</y>
+           <width>291</width>
+           <height>391</height>
+          </rect>
+         </property>
+         <property name="currentIndex">
+          <number>0</number>
+         </property>
+         <property name="iconSize">
+          <size>
+           <width>16</width>
+           <height>16</height>
+          </size>
+         </property>
+         <property name="elideMode">
+          <enum>Qt::TextElideMode::ElideNone</enum>
+         </property>
+         <property name="usesScrollButtons">
+          <bool>true</bool>
+         </property>
+         <widget class="QWidget" name="Potions">
+          <attribute name="title">
+           <string>Potions</string>
+          </attribute>
+          <widget class="QListWidget" name="list_potions">
+           <property name="geometry">
+            <rect>
+             <x>10</x>
+             <y>10</y>
+             <width>271</width>
+             <height>331</height>
+            </rect>
+           </property>
+          </widget>
+         </widget>
+         <widget class="QWidget" name="Weapons">
+          <attribute name="title">
+           <string>Weapons</string>
+          </attribute>
+          <widget class="QListWidget" name="list_weapons">
+           <property name="geometry">
+            <rect>
+             <x>10</x>
+             <y>10</y>
+             <width>271</width>
+             <height>331</height>
+            </rect>
+           </property>
+          </widget>
+         </widget>
+         <widget class="QWidget" name="Sell">
+          <attribute name="title">
+           <string>Sell</string>
+          </attribute>
+          <widget class="QListWidget" name="list_invSell">
+           <property name="geometry">
+            <rect>
+             <x>10</x>
+             <y>10</y>
+             <width>271</width>
+             <height>331</height>
+            </rect>
+           </property>
+          </widget>
+         </widget>
+        </widget>
+        <widget class="QLabel" name="lbl_searchShop">
+         <property name="geometry">
+          <rect>
+           <x>20</x>
+           <y>400</y>
+           <width>111</width>
+           <height>31</height>
+          </rect>
+         </property>
+         <property name="styleSheet">
+          <string notr="true">font: 15pt;</string>
+         </property>
+         <property name="text">
+          <string>Search</string>
+         </property>
+        </widget>
+        <widget class="QPushButton" name="pushButton_4">
+         <property name="enabled">
+          <bool>false</bool>
+         </property>
+         <property name="geometry">
+          <rect>
+           <x>20</x>
+           <y>450</y>
+           <width>83</width>
+           <height>29</height>
+          </rect>
+         </property>
+         <property name="text">
+          <string>Buy</string>
+         </property>
+        </widget>
+        <widget class="QPushButton" name="pushButton_5">
+         <property name="enabled">
+          <bool>false</bool>
+         </property>
+         <property name="geometry">
+          <rect>
+           <x>190</x>
+           <y>450</y>
+           <width>83</width>
+           <height>29</height>
+          </rect>
+         </property>
+         <property name="text">
+          <string>Sell</string>
+         </property>
+        </widget>
+        <widget class="QPlainTextEdit" name="txt_searchShop">
+         <property name="geometry">
+          <rect>
+           <x>150</x>
+           <y>400</y>
+           <width>111</width>
+           <height>31</height>
+          </rect>
+         </property>
+        </widget>
+       </widget>
+       <widget class="QLabel" name="lbl_Shop">
+        <property name="geometry">
+         <rect>
+          <x>370</x>
+          <y>0</y>
+          <width>281</width>
+          <height>111</height>
+         </rect>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">border-image: url(:/Images/Images/Background/Header Background.png);
+color: rgb(255, 255, 127);</string>
+        </property>
+        <property name="text">
+         <string>Shop</string>
+        </property>
+       </widget>
+       <widget class="QLabel" name="lbl_golds">
+        <property name="geometry">
+         <rect>
+          <x>170</x>
+          <y>20</y>
+          <width>171</width>
+          <height>71</height>
+         </rect>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">font: 15pt;
+border-image: url(:/Images/Images/Background/title background.png);</string>
+        </property>
+        <property name="text">
+         <string>Golds: </string>
+        </property>
+       </widget>
+       <widget class="QComboBox" name="cbox_shops">
+        <property name="geometry">
+         <rect>
+          <x>700</x>
+          <y>40</y>
+          <width>141</width>
+          <height>31</height>
+         </rect>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">font: 15pt &quot;Algerian&quot;;
+border-image: url(:/Images/Images/Void.png);
+color: rgb(0, 0, 0);</string>
+        </property>
+        <property name="insertPolicy">
+         <enum>QComboBox::InsertPolicy::InsertAfterCurrent</enum>
+        </property>
+        <property name="frame">
+         <bool>true</bool>
+        </property>
+        <item>
+         <property name="text">
+          <string>No Shop</string>
+         </property>
+        </item>
+       </widget>
+       <widget class="QLabel" name="lbl_shoppic">
+        <property name="geometry">
+         <rect>
+          <x>680</x>
+          <y>20</y>
+          <width>171</width>
+          <height>71</height>
+         </rect>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">font: 15pt;
+border-image: url(:/Images/Images/Background/title background.png);</string>
+        </property>
+        <property name="text">
+         <string/>
+        </property>
+       </widget>
+       <zorder>lbl_merchantPic</zorder>
+       <zorder>frm_Shop</zorder>
+       <zorder>lbl_Shop</zorder>
+       <zorder>lbl_golds</zorder>
+       <zorder>lbl_shoppic</zorder>
+       <zorder>cbox_shops</zorder>
+      </widget>
+      <widget class="QWidget" name="p7_hostel">
+       <property name="styleSheet">
+        <string notr="true">image: url(:/Images/Images/Background/maps habitation/Tavern.jpeg);</string>
+       </property>
+      </widget>
+      <widget class="QWidget" name="p8_mine">
+       <property name="styleSheet">
+        <string notr="true">border-image: url(:/Images/Images/Background/maps habitation/grote.jpeg);</string>
+       </property>
+      </widget>
      </widget>
      <widget class="QWidget" name="verticalLayoutWidget">
       <property name="geometry">

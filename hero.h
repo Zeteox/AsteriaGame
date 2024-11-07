@@ -4,6 +4,7 @@
 #include "livingcreature.h"
 #include "potion.h"
 #include "inventory.h"
+#include "merchant.h"
 
 class Hero : public LivingCreature
 {
@@ -16,10 +17,11 @@ public:
     string& getClass();
     Inventory* getInventory();
     string addToInventory(Potion *potion);
+    string addToInventory(Weapon *weapon);
     string removeFromInventory(Potion *potion);
     string talk() const;
     void drink(Potion *potion);
-    //void trade(Merchant *merchant);
+    void trade(Merchant *merchant, string objectType, int index);
 };
 
 #endif // HERO_H

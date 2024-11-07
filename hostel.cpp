@@ -1,7 +1,7 @@
 #include "hostel.h"
 #include "randomNumber.h"
 
-Hostel::Hostel() : Building("Hostel") {
+Hostel::Hostel() {
     m_price = getRandNumber(5, 15);
 }
 

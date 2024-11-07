@@ -2,26 +2,21 @@
 #define MERCHANT_H
 
 #include <vector>
-#include "building.h"
 #include "potion.h"
-#include "shield.h"
-#include "staff.h"
 #include "sword.h"
-class Merchant : public Building
+#include "staff.h"
+#include "shield.h"
+#include "randomNumber.h"
+
+class Merchant
 {
-    vector<Sword*> m_swordStock;
-    vector<Shield*> m_shieldStock;
-    vector<Staff*> m_staffStock;
+    vector<Weapon*> m_weaponStock;
     vector<Potion*> m_potionStock;
 public:
     Merchant();
-    vector<Sword*> getSwordStock();
-    vector<Shield*> getShieldStock();
-    vector<Staff*> getStaffStock();
+    vector<Weapon*> getWeaponStock();
     vector<Potion*> getPotionStock();
-    string removeSword(Sword* sword);
-    string removeShield(Shield* shield);
-    string removeStaff(Staff* staff);
+    string removeWeapon(Weapon* weapon);
     string removePotion(Potion* potion);
 
 };

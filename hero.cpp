@@ -30,6 +30,22 @@ string Hero::addToInventory(Potion* potion) {
     return m_inventory->addPotion(potion);
 }
 
+string Hero::addToInventory(Weapon* weapon) {
+    return m_inventory->addWeapon(weapon);
+}
+
 Inventory* Hero::getInventory() {
     return m_inventory;
+}
+
+void Hero::trade(Merchant* merchant, string objectType, int index) {
+    if (objectType == "Potion") {
+        addToInventory(merchant->getPotionStock()[index]);
+        setGolds(m_golds-merchant->getPotionStock()[index]->getPrice());
+        merchant->getPotionStock().erase(merchant->getPotionStock().begin() + index);
+    } else if (objectType == "Weapon") {
+        addToInventory(merchant->getWeaponStock()[index]);
+        setGolds(m_golds-merchant->getWeaponStock()[index]->getPrice());
+        merchant->getWeaponStock().erase(merchant->getWeaponStock().begin() + index);
+    }
 }
