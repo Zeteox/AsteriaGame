@@ -2,19 +2,24 @@
 #define INVENTORY_H
 #include <vector>
 #include "potion.h"
+#include "weapon.h"
 
 class Inventory
 {
 private:
     size_t m_space;
     vector<Potion*> m_potions;
+    vector<Weapon*> m_weapons;
 public:
     Inventory();
     size_t getSpace();
-    vector<Potion*> showPotions();
+    string addSpace();
+    vector<Potion*> getPotions();
     string addPotion(Potion* potion);
     string removePotion(Potion* potion);
-    string addSpace();
+    vector<Weapon*> getWeapons();
+    string addWeapon(Weapon* weapon);
+    string removeWeapon(Weapon* weapon);
 };
 
 #endif // INVENTORY_H
