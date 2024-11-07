@@ -55,7 +55,7 @@ bool Mine::isEmpty(){
     }
 }
 
-void Mine::generateMine(){
+string Mine::generateMine(){
     if(m_mineLevel < 6){
         for(int i=0; i!=fibonacci(m_mineLevel); i++){
             int choice = getRandNumber(0, 3);
@@ -74,6 +74,9 @@ void Mine::generateMine(){
                 break;
             }
         }
+        return "Mine was generated";
+    }else if(m_mineLevel > 9){
+        return "This mine has been finished";
     }else{
         int choice = getRandNumber(0, 2);
         switch (choice) {
