@@ -90,5 +90,6 @@ string Mine::generateMine(){
             m_monster.push_back(new Monster("Tiefling Demon", 2, 2, 2, 2, false, false, true));
             break;
         }
+        return "Mine was generated";
     }
 }
