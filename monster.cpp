@@ -1,5 +1,6 @@
 
 #include "monster.h"
+#include "randomNumber.h"
 
 Monster::Monster(const string name, const int maxHp, const int golds, const int damage, const int defence,
                  const bool haveSword, const bool haveShield, const bool haveStaff)
@@ -19,6 +20,8 @@ Monster::Monster(const string name, const int maxHp, const int golds, const int 
     }else{
         m_staff = nullptr;
     }
+    genImagePath(name);
+
 }
 
 Sword* Monster::getSword(){
@@ -72,4 +75,69 @@ void Monster::updDefence() {
     } else {
         m_defence = m_baseDefence;
     }
+}
+
+string Monster::getImagePath(){
+    return m_imagePath;
+}
+
+string Monster::genImagePath(string name){
+    if(name == "goblin"){
+        int choice = getRandNumber(1, 2);
+        switch (choice) {
+        case 1:
+            m_imagePath = ":/Images/Images/LivingCreature/Monster/mobs/gobelin/gobelin (1).jpeg";
+            break;
+        case 2:
+            m_imagePath = ":/Images/Images/LivingCreature/Monster/mobs/gobelin/gobelin (2).jpeg";
+            break;
+        }
+        return m_imagePath;
+    }else if(name == "lizard man"){
+        int choice = getRandNumber(1, 2);
+        switch (choice) {
+        case 1:
+            m_imagePath = ":/Images/Images/LivingCreature/Monster/mobs/homme lezard/Homme lezard (1).jpeg";
+            break;
+        case 2:
+            m_imagePath = ":/Images/Images/LivingCreature/Monster/mobs/homme lezard/Homme lezard (2).jpeg";
+            break;
+        }
+        return m_imagePath;
+    }else if(name == "skeleton"){
+        int choice = getRandNumber(1, 2);
+        switch (choice) {
+        case 1:
+            m_imagePath = ":/Images/Images/LivingCreature/Monster/mobs/squelette/squelette (1).jpeg";
+            break;
+        case 2:
+            m_imagePath = ":/Images/Images/LivingCreature/Monster/mobs/squelette/squelette (2).jpeg";
+            break;
+        }
+        return m_imagePath;
+    }else if(name == "tiefling"){
+        int choice = getRandNumber(1, 3);
+        switch (choice) {
+        case 1:
+            m_imagePath = ":/Images/Images/LivingCreature/Monster/mobs/tiefling/Tiefling femme.jpeg";
+            break;
+        case 2:
+            m_imagePath = ":/Images/Images/LivingCreature/Monster/mobs/tiefling/Tiefling homme (1).jpeg";
+            break;
+        case 3:
+            m_imagePath = ":/Images/Images/LivingCreature/Monster/mobs/tiefling/Tiefling homme (2).jpeg";
+            break;
+        }
+        return m_imagePath;
+    }else if(name == "Cthulu"){
+        m_imagePath = ":/Images/Images/LivingCreature/Monster/boss/Cthulu.jpeg";
+        return m_imagePath;
+    }else if(name == "Plague Guardian"){
+        m_imagePath = ":/Images/Images/LivingCreature/Monster/boss/Peste Gardien.jpeg";
+        return m_imagePath;
+    }else if(name == "Tiefling Demon"){
+        m_imagePath = ":/Images/Images/LivingCreature/Monster/boss/tiefling demon.jpeg";
+        return m_imagePath;
+    }
+    return "error : I don't know this name";
 }

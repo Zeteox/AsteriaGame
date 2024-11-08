@@ -12,6 +12,7 @@ private:
     Sword *m_sword;
     Shield* m_shield;
     Staff* m_staff;
+    string m_imagePath;
 public:
     Monster(const string name, const int maxHp, const int golds, const int damage, const int defence,
             const bool haveSword, const bool haveShield, const bool haveStaff);
@@ -25,6 +26,8 @@ public:
     string getStats() const;
     void updDamage();
     void updDefence();
+    string getImagePath();
+    string genImagePath(string name);
 };
 
 #endif // MONSTER_H
