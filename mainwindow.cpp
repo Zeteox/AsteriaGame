@@ -33,6 +33,7 @@ void MainWindow::stackedWidgetIndexSetup() {
     ui->stk_invStats->setCurrentIndex(0);
     ui->tab_inventory->setCurrentIndex(0);
     ui->tab_shop->setCurrentIndex(0);
+    ui->stk_hostelheal->setCurrentIndex(0);
 }
 
 void MainWindow::connectAll() {
@@ -70,10 +71,15 @@ void MainWindow::connectAll() {
     connect(ui->btn_village2,SIGNAL(clicked(bool)),this,SLOT(btnVillageTwoClicked()));
 
     connect(ui->btn_shop,SIGNAL(clicked(bool)),this,SLOT(shopButtonClicked()));
+    connect(ui->btn_buy,SIGNAL(clicked(bool)),this,SLOT(shopBuyButtonClicked()));
+    connect(ui->btn_sell,SIGNAL(clicked(bool)),this,SLOT(shopSellButtonClicked()));
     connect(ui->txt_searchShop,SIGNAL(textChanged()),this,SLOT(searchInputShop()));
     connect(ui->cbox_shops,SIGNAL(currentTextChanged(QString)),this,SLOT(shopComboBoxChanged()));
 
     connect(ui->btn_hostel,SIGNAL(clicked(bool)),this,SLOT(hostelButtonClicked()));
+    connect(ui->btn_yes,SIGNAL(clicked(bool)),this,SLOT(yesHostelButtonClicked()));
+    connect(ui->btn_no,SIGNAL(clicked(bool)),this,SLOT(noHostelButtonClicked()));
+
     connect(ui->btn_mine,SIGNAL(clicked(bool)),this,SLOT(mineButtonClicked()));
 }
 
@@ -131,12 +137,6 @@ void MainWindow::createHeroButtonClicked()
             ui->btn_mage->setChecked(false);
             ui->btn_paladin->setChecked(false);
             ui->btn_warrior->setChecked(false);
-            m_hero->addToInventory(new Potion(1));
-            m_hero->addToInventory(new Potion(2));
-            m_hero->addToInventory(new Potion(1));
-            m_hero->addToInventory(new Potion(3));
-            m_hero->addToInventory(new Potion(5));
-            m_hero->addToInventory(new Potion(4));
             genVillages();
         }
     }
@@ -237,6 +237,7 @@ void MainWindow::heroButtonClicked() {
     m_hero->updDefence();
     ui->lbl_statsHero->setText(QString::fromStdString(m_hero->getStats()));
     ui->Game->setCurrentIndex(1);
+    searchInputInv();
 }
 
 void MainWindow::statsButtonClicked() {
@@ -258,12 +259,20 @@ void MainWindow::menuButtonClicked() {
 void MainWindow::searchInputInv() {
     if (m_hero != nullptr) {
         vector<Potion*> inv = m_hero->getInventory()->getPotions();
+        vector<Weapon*> invWeapon = m_hero->getInventory()->getWeapons();
 
         ui->list_potionInv->clear();
+        ui->list_weaponInv->clear();
 
         for (size_t x=0;x<inv.size();x++) {
             if (inv[x]->getName().find(ui->txt_search->toPlainText().QString::toStdString()) != string::npos) {
                 ui->list_potionInv->addItem(QString::fromStdString(inv[x]->getName()));
+            }
+        }
+
+        for (size_t x=0;x<invWeapon.size();x++) {
+            if (invWeapon[x]->getName().find(ui->txt_search->toPlainText().QString::toStdString()) != string::npos) {
+                ui->list_weaponInv->addItem(QString::fromStdString(invWeapon[x]->getName()));
             }
         }
     }
@@ -282,6 +291,7 @@ void MainWindow::searchInputShop() {
         vector<Potion*> potionStock = merchant->getPotionStock();
         vector<Weapon*> weaponStock = merchant->getWeaponStock();
         vector<Potion*> invP = m_hero->getInventory()->getPotions();
+        vector<Weapon*> invW = m_hero->getInventory()->getWeapons();
 
         ui->list_potions->clear();
         ui->list_weapons->clear();
@@ -292,14 +302,19 @@ void MainWindow::searchInputShop() {
                 ui->list_potions->addItem(QString::fromStdString(potionStock[x]->getName()+" ("+to_string(potionStock[x]->getPrice())+"G)"));
             }
         }
-        for (size_t x=0;x<weaponStock.size();x++) {
-            if (weaponStock[x]->getName().find(ui->txt_searchShop->toPlainText().QString::toStdString()) != string::npos) {
-                ui->list_weapons->addItem(QString::fromStdString(weaponStock[x]->getName()+" ("+to_string(weaponStock[x]->getPrice())+"G)"));
+        for (size_t i=0;i<weaponStock.size();i++) {
+            if (weaponStock[i]->getName().find(ui->txt_searchShop->toPlainText().QString::toStdString()) != string::npos) {
+                ui->list_weapons->addItem(QString::fromStdString(weaponStock[i]->getName()+" ("+to_string(weaponStock[i]->getPrice())+"G)"));
             }
         }
         for (size_t x=0;x<invP.size();x++) {
             if (invP[x]->getName().find(ui->txt_searchShop->toPlainText().QString::toStdString()) != string::npos) {
                 ui->list_invSell->addItem(QString::fromStdString(invP[x]->getName()+" ("+to_string(invP[x]->getPrice())+"G)"));
+            }
+        }
+        for (size_t x=0;x<invW.size();x++) {
+            if (invW[x]->getName().find(ui->txt_searchShop->toPlainText().QString::toStdString()) != string::npos) {
+                ui->list_invSell->addItem(QString::fromStdString(invW[x]->getName()+" ("+to_string(invW[x]->getPrice())+"G)"));
             }
         }
     }
@@ -309,6 +324,7 @@ void MainWindow::shopButtonClicked() {
     if (ui->Game->currentIndex() != m_lastIndex) {
         m_lastIndex = getUiStackedWidgetIndex("Game");
     }
+    ui->lbl_merchantSpeak->setText("Here's my stock, have a look!");
     ui->lbl_golds->setText("Golds: " + QString::fromStdString(to_string(m_hero->getGolds())));
     ui->Game->setCurrentIndex(5);
     for (int i=1;i<ui->cbox_shops->count();i++) {
@@ -327,7 +343,26 @@ void MainWindow::hostelButtonClicked() {
     if (ui->Game->currentIndex() != m_lastIndex) {
         m_lastIndex = getUiStackedWidgetIndex("Game");
     }
+    ui->lbl_hostelSpeak->setText("Hello adventurer! do you want some sleep and good food?");
+    ui->btn_no->setHidden(false);
+    ui->btn_yes->setHidden(false);
+    ui->stk_hostelheal->setCurrentIndex(0);
     ui->Game->setCurrentIndex(6);
+}
+
+void MainWindow::yesHostelButtonClicked() {
+    ui->lbl_hostelSpeak->setText("I knew you would say that! Come, follow me");
+    ui->btn_no->setHidden(true);
+    ui->btn_yes->setHidden(true);
+    ui->lbl_heal->setText("You have recovered all your life");
+    m_hero->healHp(m_hero->getMaxHp());
+    ui->stk_hostelheal->setCurrentIndex(1);
+}
+
+void MainWindow::noHostelButtonClicked() {
+    ui->lbl_hostelSpeak->setText("I hoped that you were a great men");
+    ui->btn_no->setHidden(true);
+    ui->btn_yes->setHidden(true);
 }
 
 void MainWindow::mineButtonClicked() {
@@ -336,3 +371,63 @@ void MainWindow::mineButtonClicked() {
     }
     ui->Game->setCurrentIndex(7);
 }
+
+void MainWindow::shopBuyButtonClicked() {
+    Merchant* merchant = m_shops[ui->cbox_shops->currentIndex()-1];
+    if (ui->list_potions->currentItem()!=nullptr) {
+        Potion* popo = nullptr;
+        for (int i =0;i<ui->list_potions->count();i++) {
+            if (ui->list_potions->currentItem()->text().QString::toStdString().find(merchant->getPotionStock()[i]->getName()) != string::npos) {
+                popo = merchant->getPotionStock()[i];
+                if (m_hero->getGolds()>=popo->getPrice()) {
+                    m_hero->trade(merchant, popo);
+                    ui->lbl_golds->setText("Golds: " + QString::fromStdString(to_string(m_hero->getGolds())));
+                    ui->lbl_merchantSpeak->setText("Thanks i'll remember it!");
+                    searchInputShop();
+                } else {
+                    ui->lbl_merchantSpeak->setText("Go somewhere else you poor little guy");
+                }
+                break;
+            }
+        }
+    } else if (ui->list_weapons->currentItem()!=nullptr) {
+        Weapon* weapon = nullptr;
+        for (int i =0;i<ui->list_weapons->count();i++) {
+            if (ui->list_weapons->currentItem()->text().QString::toStdString().find(merchant->getWeaponStock()[i]->getName()) != string::npos) {
+                weapon = merchant->getWeaponStock()[i];
+                if (m_hero->getGolds()>=weapon->getPrice()) {
+                    qDebug()<<weapon->getName();
+                    m_hero->trade(merchant, weapon);
+                    ui->lbl_golds->setText("Golds: " + QString::fromStdString(to_string(m_hero->getGolds())));
+                    ui->lbl_merchantSpeak->setText("Thanks i'll remember it!");
+                    searchInputShop();
+                } else {
+                    ui->lbl_merchantSpeak->setText("Go somewhere else you poor little guy");
+                }
+                break;
+            }
+        }
+    } else {
+        ui->lbl_merchantSpeak->setText("Select an Item to buy");
+    }
+}
+
+void MainWindow::shopSellButtonClicked() {
+    Merchant* merchant = m_shops[ui->cbox_shops->currentIndex()-1];
+    if (ui->list_invSell->currentItem()!=nullptr) {
+        int allPotionSize = m_hero->getInventory()->getPotions().size();
+        int index = ui->list_invSell->currentRow();
+        if (index>=allPotionSize) {
+            m_hero->sell(merchant, m_hero->getInventory()->getWeapons()[index-allPotionSize]);
+            ui->lbl_merchantSpeak->setText("what a trash piece, but i'll take it");
+        } else {
+            m_hero->sell(merchant, m_hero->getInventory()->getPotions()[index]);
+            ui->lbl_merchantSpeak->setText("I wonder why you sold me this potion");
+        }
+        searchInputShop();
+        ui->lbl_golds->setText("Golds: " + QString::fromStdString(to_string(m_hero->getGolds())));
+    } else {
+        ui->lbl_merchantSpeak->setText("Select an Item to sell");
+    }
+}
+

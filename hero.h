@@ -19,9 +19,13 @@ public:
     string addToInventory(Potion *potion);
     string addToInventory(Weapon *weapon);
     string removeFromInventory(Potion *potion);
+    string removeFromInventory(Weapon *weapon);
     string talk() const;
     void drink(Potion *potion);
-    void trade(Merchant *merchant, string objectType, int index);
+    void trade(Merchant *merchant, Potion *potion);
+    void trade(Merchant *merchant, Weapon *weapon);
+    void sell(Merchant *merchant, Potion *potion);
+    void sell(Merchant *merchant, Weapon *weapon);
 };
 
 #endif // HERO_H

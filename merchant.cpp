@@ -1,4 +1,5 @@
 #include "merchant.h"
+#include <QDebug>
 
 Merchant::Merchant() {
     for (int i =0; i<30;i++) {
@@ -35,13 +36,21 @@ vector<Potion*> Merchant::getPotionStock(){
     return m_potionStock;
 }
 
+void Merchant::addPotion(Potion* potion){
+        m_potionStock.push_back(potion);
+}
+
+void Merchant::addWeapon(Weapon* weapon){
+        m_weaponStock.push_back(weapon);
+}
+
 string Merchant::removeWeapon(Weapon* weapon){
     if (m_weaponStock.size() == 0){
         return "You have no weapon to remove";
     }else{
         for (size_t i=0; i<m_weaponStock.size();i++) {
             if (m_weaponStock[i] == weapon) {
-                m_weaponStock.erase(next(m_weaponStock.begin()+i));
+                m_weaponStock.erase(m_weaponStock.begin()+i);
                 return "The weapon has been removed";
             }
         }

@@ -16,6 +16,8 @@ public:
     Merchant();
     vector<Weapon*> getWeaponStock();
     vector<Potion*> getPotionStock();
+    void addPotion(Potion* potion);
+    void addWeapon(Weapon* weapon);
     string removeWeapon(Weapon* weapon);
     string removePotion(Potion* potion);
 

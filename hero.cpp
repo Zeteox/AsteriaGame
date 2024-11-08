@@ -26,11 +26,16 @@ string Hero::removeFromInventory(Potion *potion) {
     return m_inventory->removePotion(potion);
 }
 
-string Hero::addToInventory(Potion* potion) {
+string Hero::removeFromInventory(Weapon *weapon) {
+    return m_inventory->removeWeapon(weapon);
+}
+
+
+string Hero::addToInventory(Potion *potion) {
     return m_inventory->addPotion(potion);
 }
 
-string Hero::addToInventory(Weapon* weapon) {
+string Hero::addToInventory(Weapon *weapon) {
     return m_inventory->addWeapon(weapon);
 }
 
@@ -38,14 +43,26 @@ Inventory* Hero::getInventory() {
     return m_inventory;
 }
 
-void Hero::trade(Merchant* merchant, string objectType, int index) {
-    if (objectType == "Potion") {
-        addToInventory(merchant->getPotionStock()[index]);
-        setGolds(m_golds-merchant->getPotionStock()[index]->getPrice());
-        merchant->getPotionStock().erase(merchant->getPotionStock().begin() + index);
-    } else if (objectType == "Weapon") {
-        addToInventory(merchant->getWeaponStock()[index]);
-        setGolds(m_golds-merchant->getWeaponStock()[index]->getPrice());
-        merchant->getWeaponStock().erase(merchant->getWeaponStock().begin() + index);
-    }
+void Hero::trade(Merchant* merchant, Potion *potion) {
+    addToInventory(potion);
+    setGolds(getGolds()-potion->getPrice());
+    merchant->removePotion(potion);
+}
+
+void Hero::trade(Merchant* merchant, Weapon *weapon) {
+    addToInventory(weapon);
+    setGolds(getGolds()-weapon->getPrice());
+    merchant->removeWeapon(weapon);
+}
+
+void Hero::sell(Merchant* merchant, Potion *potion) {
+    merchant->addPotion(potion);
+    setGolds(getGolds()+potion->getPrice());
+    removeFromInventory(potion);
+}
+
+void Hero::sell(Merchant* merchant, Weapon *weapon) {
+    merchant->addWeapon(weapon);
+    setGolds(getGolds()+weapon->getPrice());
+    removeFromInventory(weapon);
 }

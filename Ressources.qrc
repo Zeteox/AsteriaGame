@@ -52,5 +52,8 @@
         <file>Images/Button/stuff1.png</file>
         <file>Images/Button/stuff2.png</file>
         <file>Images/villages/village 1/village3.png</file>
+        <file>Images/Background/banniere dialogue.png</file>
+        <file>Images/Background/banniere.png</file>
+        <file>Images/Background/parchemin.png</file>
     </qresource>
 </RCC>

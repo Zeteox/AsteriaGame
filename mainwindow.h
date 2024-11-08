@@ -46,8 +46,12 @@ private slots:
     void menuButtonClicked();
     void shopButtonClicked();
     void hostelButtonClicked();
+    void yesHostelButtonClicked();
+    void noHostelButtonClicked();
     void mineButtonClicked();
     void shopComboBoxChanged();
+    void shopBuyButtonClicked();
+    void shopSellButtonClicked();
 
 private:
     Ui::MainWindow *ui;
