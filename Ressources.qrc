@@ -55,5 +55,11 @@
         <file>Images/Background/banniere dialogue.png</file>
         <file>Images/Background/banniere.png</file>
         <file>Images/Background/parchemin.png</file>
+        <file>Images/Button/icone/caracter.png</file>
+        <file>Images/Button/icone/caracter2.png</file>
+        <file>Images/Button/icone/map icone.png</file>
+        <file>Images/Button/icone/maps icon2.png</file>
+        <file>Images/Button/icone/setting.png</file>
+        <file>Images/Button/icone/setting2.png</file>
     </qresource>
 </RCC>

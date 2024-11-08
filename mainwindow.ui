@@ -2003,8 +2003,70 @@ color: rgb(255, 255, 127);</string>
       </widget>
       <widget class="QWidget" name="p8_mine">
        <property name="styleSheet">
-        <string notr="true">border-image: url(:/Images/Images/Background/maps habitation/grote.jpeg);</string>
+        <string notr="true">QWidget#p8_mine{border-image: url(:/Images/Images/Background/maps habitation/grote.jpeg);}</string>
        </property>
+       <widget class="QStackedWidget" name="stackedWidget">
+        <property name="geometry">
+         <rect>
+          <x>0</x>
+          <y>0</y>
+          <width>1001</width>
+          <height>661</height>
+         </rect>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">background-color: rgba(255, 255, 255, 0);</string>
+        </property>
+        <property name="currentIndex">
+         <number>0</number>
+        </property>
+        <widget class="QWidget" name="p1_mineEntry">
+         <widget class="QComboBox" name="cbox_mines">
+          <property name="geometry">
+           <rect>
+            <x>280</x>
+            <y>60</y>
+            <width>481</width>
+            <height>51</height>
+           </rect>
+          </property>
+          <property name="styleSheet">
+           <string notr="true">font: 25pt &quot;Algerian&quot;;
+border-image: url(:/Images/Images/Void.png);
+color: rgb(255, 255, 127);
+</string>
+          </property>
+          <property name="insertPolicy">
+           <enum>QComboBox::InsertPolicy::InsertAtBottom</enum>
+          </property>
+          <item>
+           <property name="text">
+            <string>No Mine</string>
+           </property>
+          </item>
+         </widget>
+         <widget class="QLabel" name="lbl_minePic">
+          <property name="geometry">
+           <rect>
+            <x>250</x>
+            <y>0</y>
+            <width>551</width>
+            <height>171</height>
+           </rect>
+          </property>
+          <property name="styleSheet">
+           <string notr="true">border-image: url(:/Images/Images/Background/Header Background.png);</string>
+          </property>
+          <property name="text">
+           <string/>
+          </property>
+         </widget>
+         <zorder>lbl_minePic</zorder>
+         <zorder>cbox_mines</zorder>
+        </widget>
+        <widget class="QWidget" name="p2_mineMenu"/>
+        <widget class="QWidget" name="p3_mineBattlefield"/>
+       </widget>
       </widget>
      </widget>
      <widget class="QFrame" name="verticalFrame">
@@ -2051,10 +2113,10 @@ color: rgb(255, 255, 127);</string>
          </property>
          <property name="styleSheet">
           <string notr="true">QPushButton#btn_Menu:!hover{
-	border-image: url(:/Images/Images/Button/settings1.png);
+	border-image: url(:/Images/Images/Button/icone/setting2.png);
 }
 QPushButton#btn_Menu:hover{
-	border-image: url(:/Images/Images/Button/settings2.png);
+	border-image: url(:/Images/Images/Button/icone/setting.png);
 }</string>
          </property>
          <property name="text">
@@ -2078,10 +2140,10 @@ QPushButton#btn_Menu:hover{
          </property>
          <property name="styleSheet">
           <string notr="true">QPushButton#btn_hero:!hover{
-	border-image: url(:/Images/Images/Button/stuff1.png);
+	border-image: url(:/Images/Images/Button/icone/caracter2.png);
 }
 QPushButton#btn_hero:hover{
-	border-image: url(:/Images/Images/Button/stuff2.png);
+	border-image: url(:/Images/Images/Button/icone/caracter.png);
 }</string>
          </property>
          <property name="text">
@@ -2103,8 +2165,16 @@ QPushButton#btn_hero:hover{
            <height>60</height>
           </size>
          </property>
+         <property name="styleSheet">
+          <string notr="true">QPushButton#btn_worldMap:!hover{
+	border-image: url(:/Images/Images/Button/icone/maps icon2.png);
+}
+QPushButton#btn_worldMap:hover{
+	border-image: url(:/Images/Images/Button/icone/map icone.png);
+}</string>
+         </property>
          <property name="text">
-          <string>World Map</string>
+          <string/>
          </property>
         </widget>
        </item>
