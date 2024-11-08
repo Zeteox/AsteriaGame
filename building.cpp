@@ -13,7 +13,7 @@ Building::Building(const string &type) {
     } else     if (type == "Mine") {
         m_hostel = nullptr;
         m_merchant = nullptr;
-        m_mine = new Mine (0);
+        m_mine = new Mine (1);
     }
 }
 string Building::getType(){

@@ -5,13 +5,16 @@
 #include <vector>
 class Mine
 {
+private:
     int m_mineLevel;
     vector<Monster*> m_monster;
     int fibonacci(int n);
+    int m_numberOfMonster;
 
 public:
     Mine(int mineLevel);
     ~Mine();
+    int getMonsterNumber();
     int getMineLevel();
     void setMineLevel(int mineLevel);
     vector<Monster*> getMonster();

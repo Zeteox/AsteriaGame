@@ -3,7 +3,12 @@
 
 Mine::Mine(int mineLevel) {
     m_mineLevel = mineLevel;
+    m_numberOfMonster =0;
     generateMine();
+}
+
+int Mine::getMonsterNumber() {
+    return m_numberOfMonster;
 }
 
 int Mine::fibonacci(int n) {
@@ -30,6 +35,7 @@ vector<Monster*> Mine::getMonster(){
 
 string Mine::addMonster(Monster* monster){
     m_monster.push_back(monster);
+    m_numberOfMonster++;
     return "The Monster has been added";
 }
 
@@ -37,6 +43,7 @@ string Mine::removeMonster(Monster* monster){
     if (m_monster.size() == 0){
         return "You have no monster to remove";
     }else{
+        m_numberOfMonster--;
         for (size_t i=0; i<m_monster.size();i++) {
             if(m_monster[i] == monster){
                 m_monster.erase(m_monster.begin()+i);
@@ -62,16 +69,16 @@ string Mine::generateMine(){
             int choice = getRandNumber(0, 3);
             switch (choice) {
             case 0:
-                m_monster.push_back(new Monster("gobelin", 2, 2, 2, 2, true, false, false));
+                addMonster(new Monster("gobelin", 8, 2, 1, 0, true, false, false));
                 break;
             case 1:
-                m_monster.push_back(new Monster("skeleton", 2, 2, 2, 2, true, false, false));
+                addMonster(new Monster("skeleton", 6, 0, 2, 0, true, false, false));
                 break;
             case 2:
-                m_monster.push_back(new Monster("lizardMan", 2, 2, 2, 2, true, true, false));
+                addMonster(new Monster("lizardMan", 10, 5, 1, 1, true, true, false));
                 break;
             case 3:
-                m_monster.push_back(new Monster("tiefling", 2, 2, 2, 2, false, false, true));
+                addMonster(new Monster("tiefling", 12, 10, 2, 2, false, false, true));
                 break;
             }
         }
@@ -82,13 +89,13 @@ string Mine::generateMine(){
         int choice = getRandNumber(0, 2);
         switch (choice) {
         case 0:
-            m_monster.push_back(new Monster("Cthulu", 2, 2, 2, 2, false, false, true));
+            m_monster.push_back(new Monster("Cthulu", 16, 14, 5, 1, false, false, true));
             break;
         case 1:
-            m_monster.push_back(new Monster("Plague Guardian", 2, 2, 2, 2, true, true, false));
+            m_monster.push_back(new Monster("Plague Guardian", 20, 16, 4, 1, true, true, false));
             break;
         case 2:
-            m_monster.push_back(new Monster("Tiefling Demon", 2, 2, 2, 2, false, false, true));
+            m_monster.push_back(new Monster("Tiefling Demon", 24, 17, 5, 0, false, false, true));
             break;
         }
         return "Mine was generated";

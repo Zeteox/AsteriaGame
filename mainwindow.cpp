@@ -34,6 +34,8 @@ void MainWindow::stackedWidgetIndexSetup() {
     ui->tab_inventory->setCurrentIndex(0);
     ui->tab_shop->setCurrentIndex(0);
     ui->stk_hostelheal->setCurrentIndex(0);
+    ui->stk_mine->setCurrentIndex(0);
+    ui->stk_mineFight->setCurrentIndex(0);
 }
 
 void MainWindow::connectAll() {
@@ -66,6 +68,8 @@ void MainWindow::connectAll() {
     connect(ui->txt_search,SIGNAL(textChanged()),this,SLOT(searchInputInv()));
     connect(ui->btn_stats,SIGNAL(clicked(bool)),this,SLOT(statsButtonClicked()));
     connect(ui->btn_inv,SIGNAL(clicked(bool)),this,SLOT(invButtonClicked()));
+    connect(ui->btn_backInv,SIGNAL(clicked(bool)),this,SLOT(backButtonClicked()));
+    connect(ui->btn_drink,SIGNAL(clicked(bool)),this,SLOT(drinkButtonClicked()));
 
     connect(ui->btn_village1,SIGNAL(clicked(bool)),this,SLOT(btnVillageOneClicked()));
     connect(ui->btn_village2,SIGNAL(clicked(bool)),this,SLOT(btnVillageTwoClicked()));
@@ -82,6 +86,14 @@ void MainWindow::connectAll() {
     connect(ui->cbox_hostel,SIGNAL(currentTextChanged(QString)),this,SLOT(hostelComboBoxChanged()));
 
     connect(ui->btn_mine,SIGNAL(clicked(bool)),this,SLOT(mineButtonClicked()));
+    connect(ui->btn_Enter,SIGNAL(clicked(bool)),this,SLOT(enterMineButtonClicked()));
+    connect(ui->cbox_mines,SIGNAL(currentTextChanged(QString)),this,SLOT(mineComboBoxChanged()));
+    connect(ui->btn_quitMine,SIGNAL(clicked(bool)),this,SLOT(quitMineButtonClicked()));
+    connect(ui->btn_fight,SIGNAL(clicked(bool)),this,SLOT(fightMineButtonClicked()));
+    connect(ui->btn_attack,SIGNAL(clicked(bool)),this,SLOT(attackButtonClicked()));
+    connect(ui->btn_potion,SIGNAL(clicked(bool)),this,SLOT(potionButtonClicked()));
+    connect(ui->btn_drinkMine,SIGNAL(clicked(bool)),this,SLOT(drinkMineButtonClicked()));
+    connect(ui->btn_goBack,SIGNAL(clicked(bool)),this,SLOT(goBackButtonClicked()));
 }
 
 void MainWindow::getAllBuildings() {
@@ -89,6 +101,8 @@ void MainWindow::getAllBuildings() {
     ui->cbox_hostel->addItem("No hostel");
     ui->cbox_shops->clear();
     ui->cbox_shops->addItem("No shop");
+    ui->cbox_mines->clear();
+    ui->cbox_mines->addItem("No mine");
 
     m_shops.clear();
     for (size_t x=0;x<m_villages[m_currentVillage-1]->getAllBuildings().size();x++) {
@@ -102,6 +116,13 @@ void MainWindow::getAllBuildings() {
         if (m_villages[m_currentVillage-1]->getAllBuildings()[x]->getType() == "Hostel") {
             m_hostels.push_back(m_villages[m_currentVillage-1]->getAllBuildings()[x]->getHostel());
             ui->cbox_hostel->addItem(QString::fromStdString("Hostel " + to_string(m_hostels.size())));
+        }
+    }
+    m_mines.clear();
+    for (size_t x=0;x<m_villages[m_currentVillage-1]->getAllBuildings().size();x++) {
+        if (m_villages[m_currentVillage-1]->getAllBuildings()[x]->getType() == "Mine") {
+            m_mines.push_back(m_villages[m_currentVillage-1]->getAllBuildings()[x]->getMine());
+            ui->cbox_mines->addItem(QString::fromStdString("Mine " + to_string(m_mines.size())));
         }
     }
 }
@@ -278,6 +299,18 @@ void MainWindow::invButtonClicked() {
     ui->txt_search->clear();
 }
 
+//--------------------------------------------------------------------------------
+
+void MainWindow::drinkButtonClicked() {
+    if (ui->list_potionsMine->currentRow()>=0) {
+
+    }
+}
+
+//--------------------------------------------------------------------------------
+
+
+
 void MainWindow::menuButtonClicked() {
     if (ui->Game->currentIndex() != m_lastIndex) {
         m_lastIndex = getUiStackedWidgetIndex("Game");
@@ -411,12 +444,6 @@ void MainWindow::noHostelButtonClicked() {
     ui->btn_yes->setHidden(true);
 }
 
-void MainWindow::mineButtonClicked() {
-    if (ui->Game->currentIndex() != m_lastIndex) {
-        m_lastIndex = getUiStackedWidgetIndex("Game");
-    }
-    ui->Game->setCurrentIndex(7);
-}
 
 void MainWindow::shopBuyButtonClicked() {
     Merchant* merchant = m_shops[ui->cbox_shops->currentIndex()-1];
@@ -476,3 +503,86 @@ void MainWindow::shopSellButtonClicked() {
     }
 }
 
+void MainWindow::mineButtonClicked() {
+    if (ui->Game->currentIndex() != m_lastIndex) {
+        m_lastIndex = getUiStackedWidgetIndex("Game");
+    }
+    if (ui->cbox_mines->currentIndex()==0) {
+        ui->btn_Enter->setEnabled(false);
+    }
+    ui->Game->setCurrentIndex(7);
+}
+
+void MainWindow::mineComboBoxChanged() {
+    if (ui->cbox_mines->currentIndex()>0) {
+        ui->btn_Enter->setEnabled(true);
+    } else {
+        ui->btn_Enter->setEnabled(false);
+    }
+}
+
+void MainWindow::enterMineButtonClicked() {
+    Mine* mine = m_mines[ui->cbox_mines->currentIndex()-1];
+    ui->stk_mine->setCurrentIndex(1);
+    ui->nb_lastIndex->setValue(m_lastIndex);
+    ui->btn_back2->setEnabled(false);
+    ui->btn_worldMap->setEnabled(false);
+    ui->lbl_remainingMonster->setText(QString::fromStdString(to_string(mine->getMonsterNumber()))
+                                      +" Remaining monsters");
+    if (mine->getMonsterNumber()>0) {
+        ui->btn_quitMine->setEnabled(false);
+    }
+}
+
+void MainWindow::quitMineButtonClicked() {
+    ui->stk_mine->setCurrentIndex(0);
+    m_lastIndex = ui->nb_lastIndex->value();
+    ui->btn_back2->setEnabled(true);
+    ui->btn_worldMap->setEnabled(true);
+    backButtonClicked();
+}
+
+void MainWindow::fightMineButtonClicked() {
+    Mine* mine = m_mines[ui->cbox_mines->currentIndex()-1];
+    ui->lbl_heroPictureMine->setStyleSheet(ui->lbl_heroPicture->styleSheet());
+    ui->lbl_heroHp->setText(QString::number(m_hero->getHp())+"/"+QString::number(m_hero->getMaxHp()));
+    ui->lbl_monsterHp->setText(QString::number(mine->getMonster()[0]->getHp())+"/"+QString::number(mine->getMonster()[0]->getMaxHp()));
+    ui->lbl_fightTextMine->setText("You've encountered a " +
+                                   QString::fromStdString(mine->getMonster()[0]->getName()));
+    ui->stk_mine->setCurrentIndex(2);
+    ui->frm_menu->setHidden(true);
+}
+
+void MainWindow::goBackButtonClicked() {
+    ui->stk_mineFight->setCurrentIndex(0);
+}
+
+void MainWindow::drinkMineButtonClicked() {
+    if (ui->list_potionsMine->currentRow()>=0) {
+        if (m_hero->getHp() < m_hero->getMaxHp()) {
+            goBackButtonClicked();
+            drinkButtonClicked();
+        } else {
+            ui->lbl_fightTextMine->setText("You don't need to drink that");
+        }
+    } else {
+        ui->lbl_fightTextMine->setText("Select a potion before drinking the void");
+    }
+}
+
+void MainWindow::potionButtonClicked() {
+    ui->stk_mineFight->setCurrentIndex(1);
+    vector<Potion*> inv = m_hero->getInventory()->getPotions();
+
+    ui->list_potionsMine->clear();
+
+    for (size_t x=0;x<inv.size();x++) {
+        if (inv[x]->getName().find(ui->txt_search->toPlainText().QString::toStdString()) != string::npos) {
+            ui->list_potionsMine->addItem(QString::fromStdString(inv[x]->getName()));
+        }
+    }
+}
+
+void MainWindow::attackButtonClicked() {
+
+}

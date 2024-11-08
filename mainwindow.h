@@ -49,6 +49,7 @@ private slots:
     void searchInputShop();
     void statsButtonClicked();
     void invButtonClicked();
+    void drinkButtonClicked();
 
     void menuButtonClicked();
 
@@ -63,6 +64,14 @@ private slots:
     void hostelComboBoxChanged();
 
     void mineButtonClicked();
+    void enterMineButtonClicked();
+    void quitMineButtonClicked();
+    void fightMineButtonClicked();
+    void mineComboBoxChanged();
+    void potionButtonClicked();
+    void attackButtonClicked();
+    void goBackButtonClicked();
+    void drinkMineButtonClicked();
 
 
 private:
