@@ -27,7 +27,7 @@ public:
     void updDamage();
     void updDefence();
     string getImagePath();
-    string genImagePath(string name);
+    void genImagePath();
 };
 
 #endif // MONSTER_H

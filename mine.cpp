@@ -68,7 +68,7 @@ string Mine::generateMine(){
                 m_monster.push_back(new Monster("skeleton", 2, 2, 2, 2, true, false, false));
                 break;
             case 2:
-                m_monster.push_back(new Monster("lizard man", 2, 2, 2, 2, true, true, false));
+                m_monster.push_back(new Monster("lizardMan", 2, 2, 2, 2, true, true, false));
                 break;
             case 3:
                 m_monster.push_back(new Monster("tiefling", 2, 2, 2, 2, false, false, true));

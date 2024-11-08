@@ -81,8 +81,8 @@ string Monster::getImagePath(){
     return m_imagePath;
 }
 
-string Monster::genImagePath(string name){
-    if(name == "goblin"){
+void Monster::genImagePath(){
+    if(m_name == "goblin"){
         int choice = getRandNumber(1, 2);
         switch (choice) {
         case 1:
@@ -92,8 +92,7 @@ string Monster::genImagePath(string name){
             m_imagePath = ":/Images/Images/LivingCreature/Monster/mobs/gobelin/gobelin (2).jpeg";
             break;
         }
-        return m_imagePath;
-    }else if(name == "lizard man"){
+    }else if(m_name == "lizardMan"){
         int choice = getRandNumber(1, 2);
         switch (choice) {
         case 1:
@@ -103,8 +102,7 @@ string Monster::genImagePath(string name){
             m_imagePath = ":/Images/Images/LivingCreature/Monster/mobs/homme lezard/Homme lezard (2).jpeg";
             break;
         }
-        return m_imagePath;
-    }else if(name == "skeleton"){
+    }else if(m_name == "skeleton"){
         int choice = getRandNumber(1, 2);
         switch (choice) {
         case 1:
@@ -114,8 +112,7 @@ string Monster::genImagePath(string name){
             m_imagePath = ":/Images/Images/LivingCreature/Monster/mobs/squelette/squelette (2).jpeg";
             break;
         }
-        return m_imagePath;
-    }else if(name == "tiefling"){
+    }else if(m_name == "tiefling"){
         int choice = getRandNumber(1, 3);
         switch (choice) {
         case 1:
@@ -128,16 +125,11 @@ string Monster::genImagePath(string name){
             m_imagePath = ":/Images/Images/LivingCreature/Monster/mobs/tiefling/Tiefling homme (2).jpeg";
             break;
         }
-        return m_imagePath;
-    }else if(name == "Cthulu"){
+    }else if(m_name == "Cthulu"){
         m_imagePath = ":/Images/Images/LivingCreature/Monster/boss/Cthulu.jpeg";
-        return m_imagePath;
-    }else if(name == "Plague Guardian"){
+    }else if(m_name == "Plague Guardian"){
         m_imagePath = ":/Images/Images/LivingCreature/Monster/boss/Peste Gardien.jpeg";
-        return m_imagePath;
-    }else if(name == "Tiefling Demon"){
+    }else if(m_name == "Tiefling Demon"){
         m_imagePath = ":/Images/Images/LivingCreature/Monster/boss/tiefling demon.jpeg";
-        return m_imagePath;
     }
-    return "error : I don't know this name";
 }
