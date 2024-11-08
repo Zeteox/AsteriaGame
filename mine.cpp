@@ -69,7 +69,7 @@ string Mine::generateMine(){
             int choice = getRandNumber(0, 3);
             switch (choice) {
             case 0:
-                addMonster(new Monster("gobelin", 8, 2, 1, 0, true, false, false));
+                addMonster(new Monster("goblin", 8, 2, 1, 0, true, false, false));
                 break;
             case 1:
                 addMonster(new Monster("skeleton", 6, 0, 2, 0, true, false, false));
@@ -83,7 +83,7 @@ string Mine::generateMine(){
             }
         }
         return "Mine was generated";
-    }else if(m_mineLevel > 9){
+    }else if(m_mineLevel > 7) {
         return "This mine has been finished";
     }else{
         int choice = getRandNumber(0, 2);
