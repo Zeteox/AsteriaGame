@@ -79,8 +79,31 @@ void MainWindow::connectAll() {
     connect(ui->btn_hostel,SIGNAL(clicked(bool)),this,SLOT(hostelButtonClicked()));
     connect(ui->btn_yes,SIGNAL(clicked(bool)),this,SLOT(yesHostelButtonClicked()));
     connect(ui->btn_no,SIGNAL(clicked(bool)),this,SLOT(noHostelButtonClicked()));
+    connect(ui->cbox_hostel,SIGNAL(currentTextChanged(QString)),this,SLOT(hostelComboBoxChanged()));
 
     connect(ui->btn_mine,SIGNAL(clicked(bool)),this,SLOT(mineButtonClicked()));
+}
+
+void MainWindow::getAllBuildings() {
+    ui->cbox_hostel->clear();
+    ui->cbox_hostel->addItem("No hostel");
+    ui->cbox_shops->clear();
+    ui->cbox_shops->addItem("No shop");
+
+    m_shops.clear();
+    for (size_t x=0;x<m_villages[m_currentVillage-1]->getAllBuildings().size();x++) {
+        if (m_villages[m_currentVillage-1]->getAllBuildings()[x]->getType() == "Merchant") {
+            m_shops.push_back(m_villages[m_currentVillage-1]->getAllBuildings()[x]->getMerchant());
+            ui->cbox_shops->addItem(QString::fromStdString("Merchant " + to_string(m_shops.size())));
+        }
+    }
+    m_hostels.clear();
+    for (size_t x=0;x<m_villages[m_currentVillage-1]->getAllBuildings().size();x++) {
+        if (m_villages[m_currentVillage-1]->getAllBuildings()[x]->getType() == "Hostel") {
+            m_hostels.push_back(m_villages[m_currentVillage-1]->getAllBuildings()[x]->getHostel());
+            ui->cbox_hostel->addItem(QString::fromStdString("Hostel " + to_string(m_hostels.size())));
+        }
+    }
 }
 
 int MainWindow::getUiStackedWidgetIndex(string widget) {
@@ -110,6 +133,8 @@ void MainWindow::backButtonClicked()
         ui->Main->setCurrentIndex(m_lastIndex);
     } else {
         ui->Game->setCurrentIndex(m_lastIndex);
+        ui->cbox_hostel->setCurrentIndex(0);
+        ui->cbox_shops->setCurrentIndex(0);
     }
 }
 
@@ -211,6 +236,7 @@ void MainWindow::btnVillageOneClicked() {
     }
     ui->Game->setCurrentIndex(3);
     m_currentVillage = 1;
+    getAllBuildings();
 }
 
 void MainWindow::btnVillageTwoClicked() {
@@ -219,6 +245,7 @@ void MainWindow::btnVillageTwoClicked() {
     }
     ui->Game->setCurrentIndex(3);
     m_currentVillage = 2;
+    getAllBuildings();
 }
 
 void MainWindow::worldButtonClicked() {
@@ -227,6 +254,8 @@ void MainWindow::worldButtonClicked() {
     }
     ui->Game->setCurrentIndex(0);
     m_currentVillage = 0;
+    ui->cbox_hostel->setCurrentIndex(0);
+    ui->cbox_shops->setCurrentIndex(0);
 }
 
 void MainWindow::heroButtonClicked() {
@@ -327,36 +356,53 @@ void MainWindow::shopButtonClicked() {
     ui->lbl_merchantSpeak->setText("Here's my stock, have a look!");
     ui->lbl_golds->setText("Golds: " + QString::fromStdString(to_string(m_hero->getGolds())));
     ui->Game->setCurrentIndex(5);
-    for (int i=1;i<ui->cbox_shops->count();i++) {
-        ui->cbox_shops->removeItem(i);
-    }
-    m_shops.clear();
-    for (size_t x=0;x<m_villages[m_currentVillage-1]->getAllBuildings().size();x++) {
-        if (m_villages[m_currentVillage-1]->getAllBuildings()[x]->getType() == "Merchant") {
-            m_shops.push_back(m_villages[m_currentVillage-1]->getAllBuildings()[x]->getMerchant());
-            ui->cbox_shops->addItem(QString::fromStdString("Merchant " + to_string(m_shops.size())));
-        }
-    }
 }
 
 void MainWindow::hostelButtonClicked() {
     if (ui->Game->currentIndex() != m_lastIndex) {
         m_lastIndex = getUiStackedWidgetIndex("Game");
     }
-    ui->lbl_hostelSpeak->setText("Hello adventurer! do you want some sleep and good food?");
-    ui->btn_no->setHidden(false);
-    ui->btn_yes->setHidden(false);
-    ui->stk_hostelheal->setCurrentIndex(0);
     ui->Game->setCurrentIndex(6);
+    ui->btn_no->setHidden(true);
+    ui->btn_yes->setHidden(true);
+    ui->stk_hostelheal->setCurrentIndex(0);
+    ui->lbl_heroPic->setStyleSheet(ui->lbl_heroPicture->styleSheet());
+    ui->lbl_goldsHostel->setText("Golds: " + QString::fromStdString(to_string(m_hero->getGolds())));
+    if (m_hostels.size()==0) {
+        ui->lbl_hostelSpeak->setText("The Hostel is empty maybe it's closed");
+        ui->lbl_hostelPic->setStyleSheet("");
+    } else {
+        ui->lbl_hostelSpeak->setText("Select an Hostel");
+    }
+}
+
+void MainWindow::hostelComboBoxChanged() {
+    if (ui->cbox_hostel->currentIndex()-1>=0) {
+        Hostel* hostel = m_hostels[ui->cbox_hostel->currentIndex()-1];
+        ui->lbl_hostelSpeak->setText("Hello adventurer! do you want some \n"
+                                     "sleep and good food?"
+                                     "\nIt will cost you "
+                                     + QString::fromStdString(to_string(hostel->getPrice())) + " Golds");
+        ui->btn_no->setHidden(false);
+        ui->btn_yes->setHidden(false);
+        ui->stk_hostelheal->setCurrentIndex(0);
+    }
 }
 
 void MainWindow::yesHostelButtonClicked() {
-    ui->lbl_hostelSpeak->setText("I knew you would say that! Come, follow me");
+    Hostel* hostel = m_hostels[ui->cbox_hostel->currentIndex()-1];
+    if (hostel->getPrice()<=m_hero->getGolds()) {
+        ui->lbl_hostelSpeak->setText("I knew you would say that! Come, follow me");
+        ui->lbl_heal->setText("You have recovered all your life");
+        m_hero->healHp(m_hero->getMaxHp());
+        m_hero->setGolds(m_hero->getGolds() - hostel->getPrice());
+        ui->stk_hostelheal->setCurrentIndex(1);
+        ui->lbl_goldsHostel->setText("Golds: " + QString::fromStdString(to_string(m_hero->getGolds())));
+    } else {
+        ui->lbl_hostelSpeak->setText("Get out if you can't\n invest a little bit of gold");
+    }
     ui->btn_no->setHidden(true);
     ui->btn_yes->setHidden(true);
-    ui->lbl_heal->setText("You have recovered all your life");
-    m_hero->healHp(m_hero->getMaxHp());
-    ui->stk_hostelheal->setCurrentIndex(1);
 }
 
 void MainWindow::noHostelButtonClicked() {
@@ -396,7 +442,6 @@ void MainWindow::shopBuyButtonClicked() {
             if (ui->list_weapons->currentItem()->text().QString::toStdString().find(merchant->getWeaponStock()[i]->getName()) != string::npos) {
                 weapon = merchant->getWeaponStock()[i];
                 if (m_hero->getGolds()>=weapon->getPrice()) {
-                    qDebug()<<weapon->getName();
                     m_hero->trade(merchant, weapon);
                     ui->lbl_golds->setText("Golds: " + QString::fromStdString(to_string(m_hero->getGolds())));
                     ui->lbl_merchantSpeak->setText("Thanks i'll remember it!");

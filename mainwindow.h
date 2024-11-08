@@ -29,29 +29,41 @@ private slots:
     void startButtonClicked();
     void backButtonClicked();
     void createHeroButtonClicked();
+
     void btnWarriorClicked();
     void btnWarriorStatsClicked();
+
     void btnMageClicked();
     void btnMageStatsClicked();
+
     void btnPaladinClicked();
     void btnPaladinStatsClicked();
+
     void btnVillageOneClicked();
     void btnVillageTwoClicked();
+
     void worldButtonClicked();
+
     void heroButtonClicked();
     void searchInputInv();
     void searchInputShop();
     void statsButtonClicked();
     void invButtonClicked();
+
     void menuButtonClicked();
+
     void shopButtonClicked();
+    void shopBuyButtonClicked();
+    void shopSellButtonClicked();
+    void shopComboBoxChanged();
+
     void hostelButtonClicked();
     void yesHostelButtonClicked();
     void noHostelButtonClicked();
+    void hostelComboBoxChanged();
+
     void mineButtonClicked();
-    void shopComboBoxChanged();
-    void shopBuyButtonClicked();
-    void shopSellButtonClicked();
+
 
 private:
     Ui::MainWindow *ui;
@@ -60,10 +72,13 @@ private:
     int m_lastIndex;
     vector<Village*> m_villages;
     vector<Merchant*> m_shops;
+    vector<Hostel*> m_hostels;
+    vector<Mine*> m_mines;
 
     int getUiStackedWidgetIndex(string widget);
     void connectAll();
     void stackedWidgetIndexSetup();
     void genVillages();
+    void getAllBuildings();
 };
 #endif // MAINWINDOW_H

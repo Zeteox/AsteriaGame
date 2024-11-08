@@ -1052,7 +1052,7 @@ qproperty-alignment: AlignCenter;
         <property name="currentIndex">
          <number>1</number>
         </property>
-        <widget class="QWidget" name="page">
+        <widget class="QWidget" name="p1_stats">
          <widget class="QFrame" name="statsFrame">
           <property name="geometry">
            <rect>
@@ -1117,7 +1117,7 @@ color: rgb(255, 255, 127);</string>
           </property>
          </widget>
         </widget>
-        <widget class="QWidget" name="page_2">
+        <widget class="QWidget" name="p2_inventory">
          <widget class="QLabel" name="lbl_statsTitle_2">
           <property name="geometry">
            <rect>
@@ -1189,7 +1189,7 @@ color: rgb(255, 255, 127);</string>
             </rect>
            </property>
            <property name="currentIndex">
-            <number>0</number>
+            <number>1</number>
            </property>
            <widget class="QWidget" name="potions">
             <attribute name="title">
@@ -1269,58 +1269,6 @@ color: rgb(255, 255, 127);</string>
           </property>
          </widget>
         </widget>
-       </widget>
-       <widget class="QLabel" name="label_2">
-        <property name="geometry">
-         <rect>
-          <x>470</x>
-          <y>90</y>
-          <width>111</width>
-          <height>121</height>
-         </rect>
-        </property>
-        <property name="text">
-         <string>Item</string>
-        </property>
-       </widget>
-       <widget class="QLabel" name="label_3">
-        <property name="geometry">
-         <rect>
-          <x>470</x>
-          <y>190</y>
-          <width>111</width>
-          <height>121</height>
-         </rect>
-        </property>
-        <property name="text">
-         <string>Item</string>
-        </property>
-       </widget>
-       <widget class="QLabel" name="label_4">
-        <property name="geometry">
-         <rect>
-          <x>470</x>
-          <y>300</y>
-          <width>111</width>
-          <height>121</height>
-         </rect>
-        </property>
-        <property name="text">
-         <string>Item</string>
-        </property>
-       </widget>
-       <widget class="QLabel" name="label_5">
-        <property name="geometry">
-         <rect>
-          <x>470</x>
-          <y>400</y>
-          <width>111</width>
-          <height>121</height>
-         </rect>
-        </property>
-        <property name="text">
-         <string>Item</string>
-        </property>
        </widget>
       </widget>
       <widget class="QWidget" name="p3_menu">
@@ -1637,6 +1585,7 @@ border-image: url(:/Images/Images/Void.png);</string>
 	color: rgb(0, 0, 0);
 }
 QPushButton:hover{
+	border-image: url(:/Images/Images/Void.png);
 	color: rgb(91, 0, 0);
 }</string>
          </property>
@@ -1666,6 +1615,7 @@ QPushButton:hover{
 	color: rgb(0, 0, 0);
 }
 QPushButton:hover{
+	border-image: url(:/Images/Images/Void.png);
 	color: rgb(91, 0, 0);
 }</string>
          </property>
@@ -1806,8 +1756,250 @@ color: rgb(255, 255, 127);</string>
       </widget>
       <widget class="QWidget" name="p7_hostel">
        <property name="styleSheet">
-        <string notr="true">image: url(:/Images/Images/Background/maps habitation/Tavern.jpeg);</string>
+        <string notr="true">QWidget#p7_hostel{border-image: url(:/Images/Images/Background/maps habitation/Tavern.jpeg);}</string>
        </property>
+       <widget class="QLabel" name="lbl_hostelPic">
+        <property name="geometry">
+         <rect>
+          <x>-90</x>
+          <y>90</y>
+          <width>541</width>
+          <height>581</height>
+         </rect>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">image: url(:/Images/Images/LivingCreature/PNG/Tavernier.jpeg);</string>
+        </property>
+        <property name="text">
+         <string/>
+        </property>
+       </widget>
+       <widget class="QLabel" name="lbl_hostelSpeak">
+        <property name="geometry">
+         <rect>
+          <x>270</x>
+          <y>450</y>
+          <width>471</width>
+          <height>151</height>
+         </rect>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">border-image: url(:/Images/Images/Background/banniere dialogue.png);
+font: 15pt;</string>
+        </property>
+        <property name="text">
+         <string>TextLabel</string>
+        </property>
+       </widget>
+       <widget class="QLabel" name="lbl_heroPic">
+        <property name="geometry">
+         <rect>
+          <x>640</x>
+          <y>130</y>
+          <width>421</width>
+          <height>631</height>
+         </rect>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">image: url(:/Images/Images/LivingCreature/Hero/sorcer.jpeg);</string>
+        </property>
+        <property name="text">
+         <string/>
+        </property>
+       </widget>
+       <widget class="QLabel" name="lbl_tavernKeeper">
+        <property name="geometry">
+         <rect>
+          <x>330</x>
+          <y>460</y>
+          <width>161</width>
+          <height>31</height>
+         </rect>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">font: 11pt;
+color: rgb(255, 255, 127);</string>
+        </property>
+        <property name="text">
+         <string>Tavern keeper</string>
+        </property>
+       </widget>
+       <widget class="QPushButton" name="btn_yes">
+        <property name="geometry">
+         <rect>
+          <x>450</x>
+          <y>560</y>
+          <width>41</width>
+          <height>29</height>
+         </rect>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">QPushButton:!hover{
+	border-image: url(:/Images/Images/Void.png);
+	font: 12pt &quot;Algerian&quot;;
+	color: rgb(0, 0, 0);
+}
+QPushButton:hover{
+	border-image: url(:/Images/Images/Void.png);
+	color: rgb(91, 0, 0);
+}</string>
+        </property>
+        <property name="text">
+         <string>Yes</string>
+        </property>
+       </widget>
+       <widget class="QPushButton" name="btn_no">
+        <property name="geometry">
+         <rect>
+          <x>510</x>
+          <y>560</y>
+          <width>41</width>
+          <height>29</height>
+         </rect>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">QPushButton:!hover{
+	border-image: url(:/Images/Images/Void.png);
+	font: 12pt &quot;Algerian&quot;;
+	color: rgb(0, 0, 0);
+}
+QPushButton:hover{
+	border-image: url(:/Images/Images/Void.png);
+	color: rgb(91, 0, 0);
+}</string>
+        </property>
+        <property name="text">
+         <string>No</string>
+        </property>
+       </widget>
+       <widget class="QStackedWidget" name="stk_hostelheal">
+        <property name="geometry">
+         <rect>
+          <x>230</x>
+          <y>140</y>
+          <width>551</width>
+          <height>171</height>
+         </rect>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">QWidget#p2_heal{border-image: url(:/Images/Images/Background/title background.png);
+background-color: rgba(255, 255, 255, 0);}</string>
+        </property>
+        <property name="currentIndex">
+         <number>1</number>
+        </property>
+        <widget class="QWidget" name="p1_noheal">
+         <property name="styleSheet">
+          <string notr="true">background-color: rgba(255, 255, 255, 0);</string>
+         </property>
+        </widget>
+        <widget class="QWidget" name="p2_heal">
+         <widget class="QLabel" name="lbl_heal">
+          <property name="geometry">
+           <rect>
+            <x>30</x>
+            <y>60</y>
+            <width>491</width>
+            <height>51</height>
+           </rect>
+          </property>
+          <property name="styleSheet">
+           <string notr="true">font: 20pt;</string>
+          </property>
+          <property name="text">
+           <string>Heal.txt</string>
+          </property>
+         </widget>
+        </widget>
+       </widget>
+       <widget class="QLabel" name="lbl_shoppic_2">
+        <property name="geometry">
+         <rect>
+          <x>680</x>
+          <y>20</y>
+          <width>171</width>
+          <height>71</height>
+         </rect>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">font: 15pt;
+border-image: url(:/Images/Images/Background/title background.png);</string>
+        </property>
+        <property name="text">
+         <string/>
+        </property>
+       </widget>
+       <widget class="QLabel" name="lbl_goldsHostel">
+        <property name="geometry">
+         <rect>
+          <x>170</x>
+          <y>20</y>
+          <width>171</width>
+          <height>71</height>
+         </rect>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">font: 15pt;
+border-image: url(:/Images/Images/Background/title background.png);</string>
+        </property>
+        <property name="text">
+         <string>Golds: </string>
+        </property>
+       </widget>
+       <widget class="QComboBox" name="cbox_hostel">
+        <property name="geometry">
+         <rect>
+          <x>690</x>
+          <y>40</y>
+          <width>151</width>
+          <height>31</height>
+         </rect>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">font: 13pt &quot;Algerian&quot;;
+border-image: url(:/Images/Images/Void.png);
+color: rgb(0, 0, 0);</string>
+        </property>
+        <property name="insertPolicy">
+         <enum>QComboBox::InsertPolicy::InsertAfterCurrent</enum>
+        </property>
+        <property name="frame">
+         <bool>true</bool>
+        </property>
+        <item>
+         <property name="text">
+          <string>No hostel</string>
+         </property>
+        </item>
+       </widget>
+       <widget class="QLabel" name="lbl_hostel">
+        <property name="geometry">
+         <rect>
+          <x>370</x>
+          <y>0</y>
+          <width>281</width>
+          <height>111</height>
+         </rect>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">border-image: url(:/Images/Images/Background/Header Background.png);
+color: rgb(255, 255, 127);</string>
+        </property>
+        <property name="text">
+         <string>Hostel</string>
+        </property>
+       </widget>
+       <zorder>lbl_heroPic</zorder>
+       <zorder>lbl_hostelPic</zorder>
+       <zorder>lbl_hostelSpeak</zorder>
+       <zorder>lbl_tavernKeeper</zorder>
+       <zorder>btn_yes</zorder>
+       <zorder>btn_no</zorder>
+       <zorder>stk_hostelheal</zorder>
+       <zorder>lbl_shoppic_2</zorder>
+       <zorder>lbl_goldsHostel</zorder>
+       <zorder>cbox_hostel</zorder>
+       <zorder>lbl_hostel</zorder>
       </widget>
       <widget class="QWidget" name="p8_mine">
        <property name="styleSheet">
@@ -1821,7 +2013,7 @@ color: rgb(255, 255, 127);</string>
         <x>-20</x>
         <y>-30</y>
         <width>151</width>
-        <height>471</height>
+        <height>481</height>
        </rect>
       </property>
       <property name="styleSheet">
@@ -2000,6 +2192,38 @@ QPushButton#btn_back2:hover{
     <hint type="destinationlabel">
      <x>348</x>
      <y>230</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>tab_inventory</sender>
+   <signal>currentChanged(int)</signal>
+   <receiver>list_potionInv</receiver>
+   <slot>clearSelection()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>659</x>
+     <y>176</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>734</x>
+     <y>325</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>tab_inventory</sender>
+   <signal>currentChanged(int)</signal>
+   <receiver>list_weaponInv</receiver>
+   <slot>clearSelection()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>704</x>
+     <y>179</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>712</x>
+     <y>294</y>
     </hint>
    </hints>
   </connection>

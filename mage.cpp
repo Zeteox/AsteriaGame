@@ -2,8 +2,9 @@
 
 Mage::Mage(const string &name, const int maxHp, const int golds, const int damage, const int defence, const string &p_class)
     :Hero(name,maxHp,golds,damage,defence,p_class){
-    m_staff=new Staff("Starter Staff",0,2);
+    m_staff=nullptr;
     m_dodgeChance = 20;
+    m_inventory->addWeapon(new Staff("Starter Staff",0,1));
 }
 
 void Mage::setStaff(Staff *newStaff) {
@@ -23,6 +24,12 @@ int Mage::getDodgeChance() {
 }
 
 string Mage::getStats() const {
+    string staffName = "";
+    if (m_staff == nullptr) {
+        staffName = "none";
+    } else {
+        staffName = m_staff->getName();
+    }
     return  "Name: " + m_name +
            "\nclass: " + m_class +
            "\nHp: " + to_string(m_hp) + "/" + to_string(m_maxHp) +
@@ -30,7 +37,7 @@ string Mage::getStats() const {
            "\nDamage: " + to_string(m_damage) +
            "\nDefence: " + to_string(m_defence) +
            "\nDodge chance: " + to_string(m_dodgeChance) +
-            "\nStaff: " + m_staff->getName();
+            "\nStaff: " + staffName;
 }
 
 void Mage::updDamage() {
