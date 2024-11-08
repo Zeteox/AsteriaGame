@@ -1,7 +1,9 @@
 #include "mine.h"
+#include "randomNumber.h"
 
 Mine::Mine(int mineLevel) {
     m_mineLevel = mineLevel;
+    generateMine();
 }
 
 int Mine::fibonacci(int n) {
@@ -45,6 +47,7 @@ string Mine::removeMonster(Monster* monster){
     }
     return "the monster doesn't exist in the Mine";
 }
+
 bool Mine::isEmpty(){
     if(m_monster.size() == 0){
         return true;
@@ -52,8 +55,52 @@ bool Mine::isEmpty(){
         return false;
     }
 }
-void Mine::generateMine(Monster* monster){
-    for(int i=0; i!=fibonacci(m_mineLevel); i++){
-        m_monster.push_back(monster);
+
+string Mine::generateMine(){
+    if(m_mineLevel < 6){
+        for(int i=0; i!=fibonacci(m_mineLevel); i++){
+            int choice = getRandNumber(0, 3);
+            switch (choice) {
+            case 0:
+                m_monster.push_back(new Monster("gobelin", 2, 2, 2, 2, true, false, false));
+                break;
+            case 1:
+                m_monster.push_back(new Monster("skeleton", 2, 2, 2, 2, true, false, false));
+                break;
+            case 2:
+                m_monster.push_back(new Monster("lizardMan", 2, 2, 2, 2, true, true, false));
+                break;
+            case 3:
+                m_monster.push_back(new Monster("tiefling", 2, 2, 2, 2, false, false, true));
+                break;
+            }
+        }
+        return "Mine was generated";
+    }else if(m_mineLevel > 9){
+        return "This mine has been finished";
+    }else{
+        int choice = getRandNumber(0, 2);
+        switch (choice) {
+        case 0:
+            m_monster.push_back(new Monster("Cthulu", 2, 2, 2, 2, false, false, true));
+            break;
+        case 1:
+            m_monster.push_back(new Monster("Plague Guardian", 2, 2, 2, 2, true, true, false));
+            break;
+        case 2:
+            m_monster.push_back(new Monster("Tiefling Demon", 2, 2, 2, 2, false, false, true));
+            break;
+        }
+        return "Mine was generated";
+    }
+}
+
+string Mine::levelUp() {
+    if(isEmpty() == true){
+        m_mineLevel++;
+        generateMine();
+        return "The Mine was level Up";
+    }else{
+        return "There are still monsters in the mine";
     }
 }

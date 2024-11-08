@@ -11,13 +11,15 @@ class Mine
 
 public:
     Mine(int mineLevel);
+    ~Mine();
     int getMineLevel();
     void setMineLevel(int mineLevel);
     vector<Monster*> getMonster();
     string addMonster(Monster* monster);
     string removeMonster(Monster* monster);
     bool isEmpty();
-    void generateMine(Monster* monster);
+    string generateMine();
+    string levelUp();
 };
 
 #endif // MINE_H
