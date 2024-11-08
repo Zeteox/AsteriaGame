@@ -3,6 +3,7 @@
 
 Sword::Sword(const string &name, const int price, int damage)
     : Weapon(name, price) {
+    m_type = "Sword";
     m_damage=damage;
 }
 

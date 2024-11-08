@@ -26,6 +26,9 @@ public:
     void trade(Merchant *merchant, Weapon *weapon);
     void sell(Merchant *merchant, Potion *potion);
     void sell(Merchant *merchant, Weapon *weapon);
+    /*virtual void setSword(Sword *newSword);
+    virtual void setShield(Shield *newShield);
+    virtual void setStaff(Staff *newStaff);*/
 };
 
 #endif // HERO_H

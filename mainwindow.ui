@@ -2031,15 +2031,15 @@ color: rgb(255, 255, 127);</string>
          <string notr="true">background-color: rgba(255, 255, 255, 0);</string>
         </property>
         <property name="currentIndex">
-         <number>2</number>
+         <number>0</number>
         </property>
         <widget class="QWidget" name="p1_mineEntry">
          <widget class="QComboBox" name="cbox_mines">
           <property name="geometry">
            <rect>
-            <x>440</x>
+            <x>400</x>
             <y>120</y>
-            <width>201</width>
+            <width>261</width>
             <height>51</height>
            </rect>
           </property>
@@ -2054,7 +2054,7 @@ color: rgb(255, 255, 127);
           </property>
           <item>
            <property name="text">
-            <string>No Mine</string>
+            <string>    No Mine</string>
            </property>
           </item>
          </widget>

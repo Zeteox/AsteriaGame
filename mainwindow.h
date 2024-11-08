@@ -50,6 +50,7 @@ private slots:
     void statsButtonClicked();
     void invButtonClicked();
     void drinkButtonClicked();
+    void equipButtonClicked();
 
     void menuButtonClicked();
 
@@ -72,6 +73,7 @@ private slots:
     void attackButtonClicked();
     void goBackButtonClicked();
     void drinkMineButtonClicked();
+    void monsterAttack();
 
 
 private:

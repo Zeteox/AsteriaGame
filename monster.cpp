@@ -6,22 +6,21 @@ Monster::Monster(const string name, const int maxHp, const int golds, const int 
                  const bool haveSword, const bool haveShield, const bool haveStaff)
     : LivingCreature( name, maxHp, golds, damage, defence){
     if(haveSword == true){
-        m_sword = new Sword("Standar Sword", 1, 2);
+        setSword(new Sword("Standard Sword", 1, 2));
     }else{
         m_sword = nullptr;
     }
     if(haveShield == true){
-        m_shield = new Shield("Starter Shield",0,1);
+        setShield(new Shield("Startard Shield",0,1));
     }else{
         m_shield = nullptr;
     }
     if(haveStaff == true){
-        m_staff = new Staff("Standar Staff", 1, 2);
+        setStaff(new Staff("Standard Staff", 1, 2));
     }else{
         m_staff = nullptr;
     }
-    genImagePath(name);
-
+    genImagePath();
 }
 
 Sword* Monster::getSword(){
@@ -30,6 +29,7 @@ Sword* Monster::getSword(){
 
 void Monster::setSword(Sword* sword){
     m_sword = sword;
+    updDamage();
 }
 
 Shield* Monster::getShield(){
@@ -38,6 +38,7 @@ Shield* Monster::getShield(){
 
 void Monster::setShield(Shield* shield){
     m_shield = shield;
+    updDefence();
 }
 
 Staff* Monster::getStaff(){
@@ -46,6 +47,7 @@ Staff* Monster::getStaff(){
 
 void Monster::setStaff(Staff* staff){
     m_staff = staff;
+    updDamage();
 }
 
 string Monster::getStats() const {

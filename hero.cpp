@@ -18,8 +18,10 @@ string Hero::talk() const {
 }
 
 void Hero::drink(Potion *potion) {
-    healHp(potion->getHp());
-    removeFromInventory(potion);
+    if (m_hp<m_maxHp) {
+        healHp(potion->getHp());
+        removeFromInventory(potion);
+    }
 }
 
 string Hero::removeFromInventory(Potion *potion) {

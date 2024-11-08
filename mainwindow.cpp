@@ -1,6 +1,11 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
 #include <QString>
+#include <chrono>
+#include <thread>
+
+using namespace std::chrono_literals;
+using namespace std::this_thread;
 
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
@@ -70,6 +75,7 @@ void MainWindow::connectAll() {
     connect(ui->btn_inv,SIGNAL(clicked(bool)),this,SLOT(invButtonClicked()));
     connect(ui->btn_backInv,SIGNAL(clicked(bool)),this,SLOT(backButtonClicked()));
     connect(ui->btn_drink,SIGNAL(clicked(bool)),this,SLOT(drinkButtonClicked()));
+    connect(ui->btn_equip,SIGNAL(clicked(bool)),this,SLOT(equipButtonClicked()));
 
     connect(ui->btn_village1,SIGNAL(clicked(bool)),this,SLOT(btnVillageOneClicked()));
     connect(ui->btn_village2,SIGNAL(clicked(bool)),this,SLOT(btnVillageTwoClicked()));
@@ -102,7 +108,7 @@ void MainWindow::getAllBuildings() {
     ui->cbox_shops->clear();
     ui->cbox_shops->addItem("No shop");
     ui->cbox_mines->clear();
-    ui->cbox_mines->addItem("No mine");
+    ui->cbox_mines->addItem("    No Mine");
 
     m_shops.clear();
     for (size_t x=0;x<m_villages[m_currentVillage-1]->getAllBuildings().size();x++) {
@@ -122,7 +128,8 @@ void MainWindow::getAllBuildings() {
     for (size_t x=0;x<m_villages[m_currentVillage-1]->getAllBuildings().size();x++) {
         if (m_villages[m_currentVillage-1]->getAllBuildings()[x]->getType() == "Mine") {
             m_mines.push_back(m_villages[m_currentVillage-1]->getAllBuildings()[x]->getMine());
-            ui->cbox_mines->addItem(QString::fromStdString("Mine " + to_string(m_mines.size())));
+            ui->cbox_mines->addItem(QString::fromStdString("Mine " + to_string(m_mines.size()) +
+                                                           "(lvl "+ to_string(m_mines[m_mines.size()-1]->getMineLevel())+")"));
         }
     }
 }
@@ -302,8 +309,27 @@ void MainWindow::invButtonClicked() {
 //--------------------------------------------------------------------------------
 
 void MainWindow::drinkButtonClicked() {
-    if (ui->list_potionsMine->currentRow()>=0) {
+    if (ui->list_potionInv->currentRow()>=0) {
+        m_hero->drink(m_hero->getInventory()->getPotions()[ui->list_potionInv->currentRow()]);
+    }
+}
 
+void MainWindow::equipButtonClicked() {
+    if (ui->list_weaponInv->currentRow()>=0) {
+        Weapon* weapon = m_hero->getInventory()->getWeapons()[ui->list_weaponInv->currentRow()];
+        if (weapon->getType()=="Sword") {
+            if (m_hero->getClass()=="Warrior" || m_hero->getClass()=="Paladin") {
+                qDebug()<<"Equip sword";
+            }
+        } else if (weapon->getType()=="Shield") {
+            if (m_hero->getClass()=="Paladin") {
+                qDebug()<<"Equip shield";
+            }
+        } else if (weapon->getType()=="Staff") {
+            if (m_hero->getClass()=="Mage") {
+                qDebug()<<"Equip staff";
+            }
+        }
     }
 }
 
@@ -545,6 +571,7 @@ void MainWindow::quitMineButtonClicked() {
 void MainWindow::fightMineButtonClicked() {
     Mine* mine = m_mines[ui->cbox_mines->currentIndex()-1];
     ui->lbl_heroPictureMine->setStyleSheet(ui->lbl_heroPicture->styleSheet());
+    ui->lbl_monsterPictureMine->setStyleSheet("image :url("+QString::fromStdString(mine->getMonster()[0]->getImagePath())+")");
     ui->lbl_heroHp->setText(QString::number(m_hero->getHp())+"/"+QString::number(m_hero->getMaxHp()));
     ui->lbl_monsterHp->setText(QString::number(mine->getMonster()[0]->getHp())+"/"+QString::number(mine->getMonster()[0]->getMaxHp()));
     ui->lbl_fightTextMine->setText("You've encountered a " +
@@ -561,7 +588,10 @@ void MainWindow::drinkMineButtonClicked() {
     if (ui->list_potionsMine->currentRow()>=0) {
         if (m_hero->getHp() < m_hero->getMaxHp()) {
             goBackButtonClicked();
-            drinkButtonClicked();
+            Potion* popo = m_hero->getInventory()->getPotions()[ui->list_potionsMine->currentRow()];
+            m_hero->drink(popo);
+            ui->lbl_fightTextMine->setText("You healed " + QString::number(popo->getHp()) + " Hp");
+            ui->lbl_heroHp->setText(QString::number(m_hero->getHp())+"/"+QString::number(m_hero->getMaxHp()));
         } else {
             ui->lbl_fightTextMine->setText("You don't need to drink that");
         }
@@ -584,5 +614,17 @@ void MainWindow::potionButtonClicked() {
 }
 
 void MainWindow::attackButtonClicked() {
+    Mine* mine = m_mines[ui->cbox_mines->currentIndex()-1];
+    mine->getMonster()[0]->removeHp(m_hero->getDamage());
+    ui->lbl_monsterHp->setText(QString::number(mine->getMonster()[0]->getHp())+"/"+QString::number(mine->getMonster()[0]->getMaxHp()));
+    ui->lbl_fightTextMine->setText("You've inflicted "+QString::number(m_hero->getDamage()-mine->getMonster()[0]->getDefence())+ " Damage");
+    monsterAttack();
+}
 
+void MainWindow::monsterAttack() {
+    sleep_for(chrono::milliseconds(300));
+    Mine* mine = m_mines[ui->cbox_mines->currentIndex()-1];
+    m_hero->removeHp(mine->getMonster()[0]->getDamage());
+    ui->lbl_heroHp->setText(QString::number(m_hero->getHp())+"/"+QString::number(m_hero->getMaxHp()));
+    ui->lbl_fightTextMine->setText("You've been inflicted "+QString::number(mine->getMonster()[0]->getDamage()-m_hero->getDefence())+ " Damage");
 }
