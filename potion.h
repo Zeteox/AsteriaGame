@@ -6,20 +6,17 @@
 using namespace std;
 
 class Potion {
-private:
+protected:
     string m_name;
-    int m_hp;
     int m_price;
-    void createPotion(int level);
 
 public:
-    Potion(int level);
+    Potion();
     string &getName();
-    void setName(string name);
-    void setHp(int hp);
-    int getHp();
+    void setName(string name);;
     void setPrice(int price);
     int getPrice();
+    virtual void createPotion(int level);
 };
 
 

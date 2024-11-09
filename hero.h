@@ -1,9 +1,11 @@
 #ifndef HERO_H
 #define HERO_H
 
+#include "healingpotion.h"
 #include "livingcreature.h"
-#include "potion.h"
 #include "inventory.h"
+#include "strengthpotion.h"
+#include "resistancepotion.h"
 
 class Hero : public LivingCreature
 {
@@ -14,10 +16,16 @@ public:
     Hero(const string &name, const int maxHp, const int golds, const int damage, const int defence, const string &p_class);
     string& getClass();
     Inventory &getInventory();
-    void addToInventory(Potion *potion);
-    void removeFromInventory(Potion *potion);
     string talk() const;
-    void drink(Potion *potion);
+    void addToInventory(HealingPotion *healingPotion);
+    void removeFromInventory(HealingPotion *healingPotion);
+    void drink(HealingPotion *healingPotion);
+    void addToInventory(StrengthPotion *strenghPotion);
+    void removeFromInventory(StrengthPotion *strenghPotion);
+    void drink(StrengthPotion *strenghPotion);
+    void addToInventory(ResistancePotion *resistancePotion);
+    void removeFromInventory(ResistancePotion *resistancePotion);
+    void drink(ResistancePotion *resistancePotion);
     //void trade(Merchant *merchant);
 };
 

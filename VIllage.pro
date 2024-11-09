@@ -10,6 +10,7 @@ CONFIG += c++17
 
 SOURCES += \
     building.cpp \
+    healingpotion.cpp \
     hero.cpp \
     hostel.cpp \
     inventory.cpp \
@@ -23,8 +24,10 @@ SOURCES += \
     paladin.cpp \
     potion.cpp \
     randomNumber.cpp \
+    resistancepotion.cpp \
     shield.cpp \
     staff.cpp \
+    strengthpotion.cpp \
     sword.cpp \
     warrior.cpp \
     village.cpp \
@@ -32,6 +35,7 @@ SOURCES += \
 
 HEADERS += \
     building.h \
+    healingpotion.h \
     hero.h \
     hostel.h \
     inventory.h \
@@ -44,8 +48,10 @@ HEADERS += \
     paladin.h \
     potion.h \
     randomNumber.h \
+    resistancepotion.h \
     shield.h \
     staff.h \
+    strengthpotion.h \
     sword.h \
     warrior.h \
     village.h \

@@ -79,12 +79,12 @@ void LivingCreature::attack(LivingCreature *target) const {
     target->removeHp(m_damage);
 }
 
-void LivingCreature::updDamage() {
-    m_damage = m_baseDamage;
+void LivingCreature::updDamage(int damage) {
+    m_damage = m_baseDamage = damage;
 }
 
-void LivingCreature::updDefence() {
-    m_defence = m_baseDefence;
+void LivingCreature::updDefence(int defence) {
+    m_defence = m_baseDefence + defence;
 }
 
 void LivingCreature::removeHp(int damage) {

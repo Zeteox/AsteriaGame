@@ -20,7 +20,7 @@ Monster::Monster(const string name, const int maxHp, const int golds, const int 
     }else{
         m_staff = nullptr;
     }
-    genImagePath(name);
+    genImagePath();
 
 }
 
