@@ -73,7 +73,7 @@ private slots:
     void attackButtonClicked();
     void goBackButtonClicked();
     void drinkMineButtonClicked();
-    void monsterAttack();
+    void monsterAttack(QString info);
 
 
 private:

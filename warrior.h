@@ -18,6 +18,7 @@ public:
     string getStats() const;
     int getDamageBoost()const;
     void updDamage();
+    int getBonuses();
 };
 
 #endif // WARRIOR_H

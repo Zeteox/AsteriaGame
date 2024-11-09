@@ -28,6 +28,7 @@ MainWindow::~MainWindow()
 void MainWindow::genVillages() {
     m_currentVillage = 0;
     m_villages.push_back(new Village("Vendetta"));
+    m_villages.push_back(new Village("Burratta"));
 }
 
 void MainWindow::stackedWidgetIndexSetup() {
@@ -100,6 +101,9 @@ void MainWindow::connectAll() {
     connect(ui->btn_potion,SIGNAL(clicked(bool)),this,SLOT(potionButtonClicked()));
     connect(ui->btn_drinkMine,SIGNAL(clicked(bool)),this,SLOT(drinkMineButtonClicked()));
     connect(ui->btn_goBack,SIGNAL(clicked(bool)),this,SLOT(goBackButtonClicked()));
+    connect(ui->btn_continue,SIGNAL(clicked(bool)),this,SLOT(enterMineButtonClicked()));
+
+    connect(ui->btn_quitEnd,SIGNAL(clicked(bool)),this,SLOT(quitButtonClicked()));
 }
 
 void MainWindow::getAllBuildings() {
@@ -128,8 +132,26 @@ void MainWindow::getAllBuildings() {
     for (size_t x=0;x<m_villages[m_currentVillage-1]->getAllBuildings().size();x++) {
         if (m_villages[m_currentVillage-1]->getAllBuildings()[x]->getType() == "Mine") {
             m_mines.push_back(m_villages[m_currentVillage-1]->getAllBuildings()[x]->getMine());
-            ui->cbox_mines->addItem(QString::fromStdString("Mine " + to_string(m_mines.size()) +
-                                                           "(lvl "+ to_string(m_mines[m_mines.size()-1]->getMineLevel())+")"));
+            if (m_mines[m_mines.size()-1]->getMineLevel()>6) {
+                ui->cbox_mines->addItem(QString::fromStdString("Mine " + to_string(m_mines.size()) + " (finished)"));
+            } else {
+                ui->cbox_mines->addItem(QString::fromStdString("Mine " + to_string(m_mines.size()) +
+                                                               "(lvl "+ to_string(m_mines[m_mines.size()-1]->getMineLevel())+")"));
+            }
+        }
+    }
+    if (m_mines.empty()) {
+        ui->btn_village2->setEnabled(true);
+    } else {
+        bool isVillageCleared = true;
+        for (size_t i =0;i<m_mines.size();i++) {
+            if (!m_mines[i]->getMonster().empty()) {
+                isVillageCleared = false;
+                break;
+            }
+        }
+        if (isVillageCleared) {
+            ui->btn_village2->setEnabled(true);
         }
     }
 }
@@ -287,9 +309,6 @@ void MainWindow::worldButtonClicked() {
 }
 
 void MainWindow::heroButtonClicked() {
-    if (ui->Game->currentIndex() != m_lastIndex) {
-        m_lastIndex = getUiStackedWidgetIndex("Game");
-    }
     m_hero->updDamage();
     m_hero->updDefence();
     ui->lbl_statsHero->setText(QString::fromStdString(m_hero->getStats()));
@@ -299,6 +318,7 @@ void MainWindow::heroButtonClicked() {
 
 void MainWindow::statsButtonClicked() {
     ui->stk_invStats->setCurrentIndex(0);
+    ui->lbl_statsHero->setText(QString::fromStdString(m_hero->getStats()));
 }
 
 void MainWindow::invButtonClicked() {
@@ -311,6 +331,7 @@ void MainWindow::invButtonClicked() {
 void MainWindow::drinkButtonClicked() {
     if (ui->list_potionInv->currentRow()>=0) {
         m_hero->drink(m_hero->getInventory()->getPotions()[ui->list_potionInv->currentRow()]);
+        ui->txt_search->clear();
     }
 }
 
@@ -548,6 +569,7 @@ void MainWindow::mineComboBoxChanged() {
 }
 
 void MainWindow::enterMineButtonClicked() {
+    ui->frm_menu->setHidden(false);
     Mine* mine = m_mines[ui->cbox_mines->currentIndex()-1];
     ui->stk_mine->setCurrentIndex(1);
     ui->nb_lastIndex->setValue(m_lastIndex);
@@ -555,8 +577,12 @@ void MainWindow::enterMineButtonClicked() {
     ui->btn_worldMap->setEnabled(false);
     ui->lbl_remainingMonster->setText(QString::fromStdString(to_string(mine->getMonsterNumber()))
                                       +" Remaining monsters");
-    if (mine->getMonsterNumber()>0) {
+    if (!mine->getMonster().empty()) {
+        ui->btn_fight->setEnabled(true);
         ui->btn_quitMine->setEnabled(false);
+    } else {
+        ui->btn_quitMine->setEnabled(true);
+        ui->btn_fight->setEnabled(false);
     }
 }
 
@@ -566,10 +592,15 @@ void MainWindow::quitMineButtonClicked() {
     ui->btn_back2->setEnabled(true);
     ui->btn_worldMap->setEnabled(true);
     backButtonClicked();
+    m_mines[ui->cbox_mines->currentIndex()-1]->levelUp();
+    getAllBuildings();
 }
 
 void MainWindow::fightMineButtonClicked() {
     Mine* mine = m_mines[ui->cbox_mines->currentIndex()-1];
+    ui->stk_mineFight->setCurrentIndex(0);
+    ui->btn_potion->setEnabled(true);
+    ui->btn_attack->setEnabled(true);
     ui->lbl_heroPictureMine->setStyleSheet(ui->lbl_heroPicture->styleSheet());
     ui->lbl_monsterPictureMine->setStyleSheet("image :url("+QString::fromStdString(mine->getMonster()[0]->getImagePath())+")");
     ui->lbl_heroHp->setText(QString::number(m_hero->getHp())+"/"+QString::number(m_hero->getMaxHp()));
@@ -614,17 +645,50 @@ void MainWindow::potionButtonClicked() {
 }
 
 void MainWindow::attackButtonClicked() {
+    ui->stk_mineFight->setCurrentIndex(0);
+    QString monsterInfo = "";
+    int damage = 0;
     Mine* mine = m_mines[ui->cbox_mines->currentIndex()-1];
-    mine->getMonster()[0]->removeHp(m_hero->getDamage());
+    if (m_hero->getClass()=="Warrior") {
+        damage =m_hero->getDamage()*1.5;
+        mine->getMonster()[0]->removeHp(damage);
+    } else {
+        damage = m_hero->getDamage();
+        mine->getMonster()[0]->removeHp(m_hero->getDamage());
+    }
+    monsterInfo="You've dealt "+QString::number(damage-mine->getMonster()[0]->getDefence())+" Damage";
     ui->lbl_monsterHp->setText(QString::number(mine->getMonster()[0]->getHp())+"/"+QString::number(mine->getMonster()[0]->getMaxHp()));
-    ui->lbl_fightTextMine->setText("You've inflicted "+QString::number(m_hero->getDamage()-mine->getMonster()[0]->getDefence())+ " Damage");
-    monsterAttack();
+    if (mine->getMonster()[0]->getHp()==0) {
+        ui->stk_mineFight->setCurrentIndex(2);
+        m_hero->setGolds(m_hero->getGolds()+mine->getMonster()[0]->getGolds());
+        ui->btn_attack->setEnabled(false);
+        ui->btn_potion->setEnabled(false);
+        mine->removeMonster(mine->getMonster()[0]);
+        ui->lbl_fightTextMine->setText(monsterInfo);
+    } else {
+        monsterAttack(monsterInfo);
+    }
 }
 
-void MainWindow::monsterAttack() {
-    sleep_for(chrono::milliseconds(300));
+void MainWindow::monsterAttack(QString info) {
     Mine* mine = m_mines[ui->cbox_mines->currentIndex()-1];
-    m_hero->removeHp(mine->getMonster()[0]->getDamage());
-    ui->lbl_heroHp->setText(QString::number(m_hero->getHp())+"/"+QString::number(m_hero->getMaxHp()));
-    ui->lbl_fightTextMine->setText("You've been inflicted "+QString::number(mine->getMonster()[0]->getDamage()-m_hero->getDefence())+ " Damage");
+    QString infoPlayer = "";
+    bool takeDmg = true;
+    if (m_hero->getClass()=="Mage") {
+        int dodgeNumber=getRandNumber(1,100);
+        if (dodgeNumber<m_hero->getBonuses()) {
+            takeDmg = false;
+            infoPlayer= "\nand you dodged the ennemy attack";
+        }
+    }
+    if (takeDmg) {
+        m_hero->removeHp(mine->getMonster()[0]->getDamage());
+        ui->lbl_heroHp->setText(QString::number(m_hero->getHp())+"/"+QString::number(m_hero->getMaxHp()));
+        infoPlayer = "\nand taken "+QString::number(mine->getMonster()[0]->getDamage()-m_hero->getDefence())+ " Damage";
+    }
+    ui->lbl_fightTextMine->setText(info + infoPlayer);
+    if (m_hero->getHp()==0) {
+        ui->Game->setCurrentIndex(8);
+        ui->lbl_end->setText("You died");
+    }
 }

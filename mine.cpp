@@ -69,10 +69,10 @@ string Mine::generateMine(){
             int choice = getRandNumber(0, 3);
             switch (choice) {
             case 0:
-                addMonster(new Monster("goblin", 8, 2, 1, 0, true, false, false));
+                addMonster(new Monster("goblin", 8, 3, 1, 0, true, false, false));
                 break;
             case 1:
-                addMonster(new Monster("skeleton", 6, 0, 2, 0, true, false, false));
+                addMonster(new Monster("skeleton", 6, 2, 2, 0, true, false, false));
                 break;
             case 2:
                 addMonster(new Monster("lizardMan", 10, 5, 1, 1, true, true, false));
@@ -83,19 +83,19 @@ string Mine::generateMine(){
             }
         }
         return "Mine was generated";
-    }else if(m_mineLevel > 7) {
+    }else if(m_mineLevel >= 7) {
         return "This mine has been finished";
     }else{
         int choice = getRandNumber(0, 2);
         switch (choice) {
         case 0:
-            m_monster.push_back(new Monster("Cthulu", 16, 14, 5, 1, false, false, true));
+            addMonster(new Monster("Cthulu", 16, 14, 5, 1, false, false, true));
             break;
         case 1:
-            m_monster.push_back(new Monster("Plague Guardian", 20, 16, 4, 1, true, true, false));
+            addMonster(new Monster("Plague Guardian", 20, 16, 4, 1, true, true, false));
             break;
         case 2:
-            m_monster.push_back(new Monster("Tiefling Demon", 24, 17, 5, 0, false, false, true));
+            addMonster(new Monster("Tiefling Demon", 24, 17, 5, 0, false, false, true));
             break;
         }
         return "Mine was generated";
@@ -103,11 +103,13 @@ string Mine::generateMine(){
 }
 
 string Mine::levelUp() {
-    if(isEmpty() == true){
-        m_mineLevel++;
-        generateMine();
-        return "The Mine was level Up";
-    }else{
-        return "There are still monsters in the mine";
+    if (m_mineLevel<6) {
+        if(isEmpty() == true){
+            m_mineLevel++;
+            generateMine();
+            return "The Mine was level Up";
+        }else{
+            return "There are still monsters in the mine";
+        }
     }
 }

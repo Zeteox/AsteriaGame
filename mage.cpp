@@ -7,6 +7,10 @@ Mage::Mage(const string &name, const int maxHp, const int golds, const int damag
     m_inventory->addWeapon(new Staff("Starter Staff",0,1));
 }
 
+int Mage::getBonuses() {
+    return m_dodgeChance;
+}
+
 void Mage::setStaff(Staff *newStaff) {
     m_staff = newStaff;
 }

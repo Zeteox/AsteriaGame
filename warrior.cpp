@@ -11,6 +11,10 @@ Warrior::~Warrior() {
     delete m_sword;
 }
 
+int Warrior::getBonuses(){
+    return m_damageBoost;
+}
+
 void Warrior::setSword(Sword *newSword) {
     m_sword = newSword;
 }

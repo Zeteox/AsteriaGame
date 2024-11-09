@@ -17,6 +17,7 @@ public:
     void setDodgeChance(int newDodgeChance);
     int getDodgeChance();
     void updDamage();
+    int getBonuses();
 };
 
 #endif // MAGE_H

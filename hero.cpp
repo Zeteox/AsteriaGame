@@ -17,6 +17,10 @@ string Hero::talk() const {
     return "je suis le hero " + m_name;
 }
 
+int Hero::getBonuses(){
+    return 0;
+}
+
 void Hero::drink(Potion *potion) {
     if (m_hp<m_maxHp) {
         healHp(potion->getHp());

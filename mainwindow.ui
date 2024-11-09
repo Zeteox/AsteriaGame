@@ -2031,7 +2031,7 @@ color: rgb(255, 255, 127);</string>
          <string notr="true">background-color: rgba(255, 255, 255, 0);</string>
         </property>
         <property name="currentIndex">
-         <number>0</number>
+         <number>2</number>
         </property>
         <widget class="QWidget" name="p1_mineEntry">
          <widget class="QComboBox" name="cbox_mines">
@@ -2452,6 +2452,48 @@ font: 20pt;</string>
          <zorder>btn_potion</zorder>
          <zorder>stk_mineFight</zorder>
         </widget>
+       </widget>
+      </widget>
+      <widget class="QWidget" name="p9_End">
+       <widget class="QPushButton" name="btn_quitEnd">
+        <property name="geometry">
+         <rect>
+          <x>270</x>
+          <y>420</y>
+          <width>511</width>
+          <height>171</height>
+         </rect>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">QPushButton:!hover{
+	color: rgb(0, 0, 0);
+	font: 25pt &quot;Algerian&quot;;
+	border-image: url(:/Images/Images/Button/button 1.png);
+}
+QPushButton:hover{
+	border-image: url(:/Images/Images/Button/button 1_2.png);
+}</string>
+        </property>
+        <property name="text">
+         <string>Quit</string>
+        </property>
+       </widget>
+       <widget class="QLabel" name="lbl_end">
+        <property name="geometry">
+         <rect>
+          <x>130</x>
+          <y>110</y>
+          <width>781</width>
+          <height>241</height>
+         </rect>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">border-image: url(:/Images/Images/Background/Header Background.png);
+color: rgb(255, 255, 127);</string>
+        </property>
+        <property name="text">
+         <string/>
+        </property>
        </widget>
       </widget>
      </widget>
