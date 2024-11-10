@@ -85,11 +85,11 @@
         <file>Images/Button/shields/shield5.png</file>
         <file>Images/LivingCreature/Monster/mobs/squelette/skeleton.png</file>
         <file>Images/villages/village 2/village second1.png</file>
-        <file>Images/villages/village 2/village second2.1.png</file>
-        <file>Images/villages/village 2/village second2.2.png</file>
-        <file>Images/villages/village 2/village second3.1.png</file>
-        <file>Images/villages/village 2/village second3.2.png</file>
-        <file>Images/villages/village 2/village second4.1.png</file>
-        <file>Images/villages/village 2/village second4.2.png</file>
+        <file>Images/villages/village 2/bat1.png</file>
+        <file>Images/villages/village 2/bat2.png</file>
+        <file>Images/villages/village 2/bat3.png</file>
+        <file>Images/villages/village 2/bat4.png</file>
+        <file>Images/villages/village 2/bat5.png</file>
+        <file>Images/villages/village 2/bat6.png</file>
     </qresource>
 </RCC>
