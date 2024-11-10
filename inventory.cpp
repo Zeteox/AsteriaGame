@@ -45,7 +45,6 @@ string Inventory::removePotion(Potion* potion){
     }else{
         for (size_t i=0; i<m_potions.size();i++) {
             if (m_potions[i] == potion) {
-                delete potion;
                 m_potions.erase(m_potions.begin()+i);
                 return "The potion has been removed";
             }
@@ -77,7 +76,6 @@ string Inventory::removeWeapon(Weapon* weapon){
     }else{
         for (size_t i=0; i<m_weapons.size();i++) {
             if (m_weapons[i] == weapon) {
-                delete weapon;
                 m_weapons.erase(m_weapons.begin()+i);
                 return "The weapon has been removed";
             }

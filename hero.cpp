@@ -34,6 +34,7 @@ void Hero::drink(Potion *potion) {
     if (m_hp<m_maxHp) {
         healHp(potion->getHp());
         removeFromInventory(potion);
+        delete potion;
     }
 }
 

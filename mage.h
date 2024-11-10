@@ -11,6 +11,7 @@ private:
     int m_dodgeChance;
 public:
     Mage(const string &name, const int maxHp, const int golds, const int damage, const int defence, const string &p_class);
+    ~Mage();
     void setWeapon(Weapon *newWeapon);
     vector<Weapon*> getWeapons();
     string getStats() const;

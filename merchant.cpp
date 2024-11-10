@@ -63,7 +63,6 @@ string Merchant::removeWeapon(Weapon* weapon){
     }else{
         for (size_t i=0; i<m_weaponStock.size();i++) {
             if (m_weaponStock[i] == weapon) {
-                delete weapon;
                 m_weaponStock.erase(m_weaponStock.begin()+i);
                 return "The weapon has been removed";
             }
@@ -80,7 +79,6 @@ string Merchant::removePotion(Potion* potion){
     }else{
         for (size_t i=0; i<m_potionStock.size();i++) {
             if (m_potionStock[i] == potion) {
-                delete potion;
                 m_potionStock.erase(m_potionStock.begin()+i);
                 return "The potion has been removed";
             }

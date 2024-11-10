@@ -8,6 +8,12 @@ Paladin::Paladin(const string &name, const int maxHp, const int golds, const int
     m_inventory->addWeapon(new Sword("Starter Sword",0,1));
 }
 
+Paladin::~Paladin() {
+    //delete all used memory adress
+    delete m_sword;
+    delete m_shield;
+}
+
 void Paladin::setWeapon(Weapon* newWeapon) {
     if (newWeapon!= nullptr) {
         if (newWeapon->getType()=="Sword") {

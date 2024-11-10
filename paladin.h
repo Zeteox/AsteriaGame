@@ -10,6 +10,7 @@ private:
     Weapon* m_shield;
 public:
     Paladin(const string &name, const int maxHp, const int golds, const int damage, const int defence, const string &p_class);
+    ~Paladin();
     void setWeapon(Weapon *newWeapon);
     vector<Weapon*> getWeapons();
     string getStats() const;

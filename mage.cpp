@@ -8,6 +8,11 @@ Mage::Mage(const string &name, const int maxHp, const int golds, const int damag
     m_inventory->addWeapon(new Staff("Starter Staff",0,1));
 }
 
+Mage::~Mage() {
+    //delete all used memory adress
+    delete m_staff;
+}
+
 int Mage::getBonuses() {
     return m_dodgeChance;
 }
