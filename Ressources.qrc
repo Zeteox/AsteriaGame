@@ -13,7 +13,6 @@
         <file>Images/LivingCreature/Monster/mobs/homme lezard/Homme lezard (1).jpeg</file>
         <file>Images/LivingCreature/Monster/mobs/homme lezard/Homme lezard (2).jpeg</file>
         <file>Images/LivingCreature/Monster/mobs/squelette/squelette (1).jpeg</file>
-        <file>Images/LivingCreature/Monster/mobs/squelette/squelette (2).jpeg</file>
         <file>Images/LivingCreature/Monster/mobs/tiefling/Tiefling femme.jpeg</file>
         <file>Images/LivingCreature/Monster/mobs/tiefling/Tiefling homme (1).jpeg</file>
         <file>Images/LivingCreature/Monster/mobs/tiefling/Tiefling homme (2).jpeg</file>
@@ -84,5 +83,13 @@
         <file>Images/Button/shields/shield3.png</file>
         <file>Images/Button/shields/shield4.png</file>
         <file>Images/Button/shields/shield5.png</file>
+        <file>Images/LivingCreature/Monster/mobs/squelette/skeleton.png</file>
+        <file>Images/villages/village 2/village second1.png</file>
+        <file>Images/villages/village 2/village second2.1.png</file>
+        <file>Images/villages/village 2/village second2.2.png</file>
+        <file>Images/villages/village 2/village second3.1.png</file>
+        <file>Images/villages/village 2/village second3.2.png</file>
+        <file>Images/villages/village 2/village second4.1.png</file>
+        <file>Images/villages/village 2/village second4.2.png</file>
     </qresource>
 </RCC>

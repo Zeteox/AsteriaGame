@@ -100,7 +100,7 @@
      <enum>QFrame::Shadow::Plain</enum>
     </property>
     <property name="currentIndex">
-     <number>1</number>
+     <number>2</number>
     </property>
     <widget class="QWidget" name="p1_mainMenu">
      <property name="autoFillBackground">
@@ -484,14 +484,14 @@ QPushButton:hover{
      <widget class="QStackedWidget" name="stk_Warrior">
       <property name="geometry">
        <rect>
-        <x>390</x>
+        <x>340</x>
         <y>210</y>
-        <width>221</width>
+        <width>291</width>
         <height>321</height>
        </rect>
       </property>
       <property name="currentIndex">
-       <number>1</number>
+       <number>0</number>
       </property>
       <widget class="QWidget" name="selectionButtonWarr">
        <widget class="QPushButton" name="btn_warrior">
@@ -500,7 +500,7 @@ QPushButton:hover{
         </property>
         <property name="geometry">
          <rect>
-          <x>0</x>
+          <x>40</x>
           <y>0</y>
           <width>221</width>
           <height>321</height>
@@ -538,14 +538,13 @@ QPushButton:checked {
       <widget class="QWidget" name="statsWarrior">
        <property name="styleSheet">
         <string notr="true">QWidget#statsWarrior{
-	border-image: url(:/Images/Images/Button/statsBox.png);
-	background-color: qlineargradient(spread:pad, x1:0, y1:0, x2:1, y2:1, stop:0.0140845 	rgba(255, 255, 0, 185), stop:1 rgba(255, 255, 255, 255));
+	border-image: url(:/Images/Images/Background/parchemin.png);
 }</string>
        </property>
        <widget class="QLabel" name="lbl_Stats_2">
         <property name="geometry">
          <rect>
-          <x>0</x>
+          <x>40</x>
           <y>10</y>
           <width>221</width>
           <height>61</height>
@@ -558,7 +557,7 @@ QPushButton:checked {
        <widget class="QLabel" name="lbl_warriorSpe">
         <property name="geometry">
          <rect>
-          <x>10</x>
+          <x>50</x>
           <y>190</y>
           <width>201</width>
           <height>101</height>
@@ -576,7 +575,7 @@ more damage</string>
        <widget class="QLabel" name="lbl_warriorStats">
         <property name="geometry">
          <rect>
-          <x>20</x>
+          <x>60</x>
           <y>80</y>
           <width>181</width>
           <height>111</height>
@@ -598,9 +597,9 @@ Defence: 1</string>
      <widget class="QStackedWidget" name="stk_Paladin">
       <property name="geometry">
        <rect>
-        <x>80</x>
+        <x>30</x>
         <y>210</y>
-        <width>221</width>
+        <width>291</width>
         <height>321</height>
        </rect>
       </property>
@@ -608,7 +607,7 @@ Defence: 1</string>
        <string notr="true"/>
       </property>
       <property name="currentIndex">
-       <number>1</number>
+       <number>0</number>
       </property>
       <widget class="QWidget" name="selectionButtonPala">
        <widget class="QPushButton" name="btn_paladin">
@@ -617,7 +616,7 @@ Defence: 1</string>
         </property>
         <property name="geometry">
          <rect>
-          <x>0</x>
+          <x>50</x>
           <y>0</y>
           <width>221</width>
           <height>321</height>
@@ -652,14 +651,13 @@ QPushButton:checked {
       <widget class="QWidget" name="statsPaladin">
        <property name="styleSheet">
         <string notr="true">QWidget#statsPaladin{
-	border-image: url(:/Images/Images/Button/statsBox.png);
-	background-color: qlineargradient(spread:pad, x1:0, y1:0, x2:1, y2:1, stop:0.0140845 rgba(255, 255, 0, 185), stop:1 rgba(255, 255, 255, 255));
+	border-image: url(:/Images/Images/Background/parchemin.png);
 }</string>
        </property>
        <widget class="QLabel" name="lbl_Stats">
         <property name="geometry">
          <rect>
-          <x>0</x>
+          <x>40</x>
           <y>10</y>
           <width>221</width>
           <height>61</height>
@@ -672,7 +670,7 @@ QPushButton:checked {
        <widget class="QLabel" name="lbl_paladinStats">
         <property name="geometry">
          <rect>
-          <x>20</x>
+          <x>60</x>
           <y>80</y>
           <width>181</width>
           <height>111</height>
@@ -692,7 +690,7 @@ Defence: 2</string>
        <widget class="QLabel" name="lbl_paladinSpe">
         <property name="geometry">
          <rect>
-          <x>10</x>
+          <x>50</x>
           <y>190</y>
           <width>201</width>
           <height>101</height>
@@ -712,14 +710,17 @@ no particular bonuses</string>
      <widget class="QStackedWidget" name="stk_Mage">
       <property name="geometry">
        <rect>
-        <x>690</x>
+        <x>650</x>
         <y>210</y>
-        <width>221</width>
+        <width>281</width>
         <height>321</height>
        </rect>
       </property>
+      <property name="styleSheet">
+       <string notr="true"/>
+      </property>
       <property name="currentIndex">
-       <number>1</number>
+       <number>0</number>
       </property>
       <widget class="QWidget" name="selectionButtonMage">
        <widget class="QPushButton" name="btn_mage">
@@ -728,7 +729,7 @@ no particular bonuses</string>
         </property>
         <property name="geometry">
          <rect>
-          <x>0</x>
+          <x>40</x>
           <y>0</y>
           <width>211</width>
           <height>321</height>
@@ -763,14 +764,13 @@ QPushButton:checked {
       <widget class="QWidget" name="statsMage">
        <property name="styleSheet">
         <string notr="true">QWidget#statsMage{
-	border-image: url(:/Images/Images/Button/statsBox.png);
-	background-color: qlineargradient(spread:pad, x1:0, y1:0, x2:1, y2:1, stop:0.0140845 rgba(255, 255, 0, 185), stop:1 rgba(255, 255, 255, 255));
+	border-image: url(:/Images/Images/Background/parchemin.png);
 }</string>
        </property>
        <widget class="QLabel" name="lbl_Stats_3">
         <property name="geometry">
          <rect>
-          <x>0</x>
+          <x>30</x>
           <y>10</y>
           <width>221</width>
           <height>61</height>
@@ -783,7 +783,7 @@ QPushButton:checked {
        <widget class="QLabel" name="lbl_mageStats">
         <property name="geometry">
          <rect>
-          <x>20</x>
+          <x>50</x>
           <y>80</y>
           <width>181</width>
           <height>111</height>
@@ -803,7 +803,7 @@ Defence: 0</string>
        <widget class="QLabel" name="lbl_mageSpe">
         <property name="geometry">
          <rect>
-          <x>10</x>
+          <x>40</x>
           <y>190</y>
           <width>201</width>
           <height>101</height>
@@ -984,11 +984,11 @@ qproperty-alignment: AlignCenter;
         </property>
         <property name="icon">
          <iconset resource="Ressources.qrc">
-          <normaloff>:/Images/Images/villages/village 1/village2Mini.png</normaloff>:/Images/Images/villages/village 1/village2Mini.png</iconset>
+          <normaloff>:/Images/Images/villages/village 2/village second1.png</normaloff>:/Images/Images/villages/village 2/village second1.png</iconset>
         </property>
         <property name="iconSize">
          <size>
-          <width>341</width>
+          <width>309</width>
           <height>241</height>
          </size>
         </property>
@@ -1490,7 +1490,115 @@ border-image: url(:/Images/Images/villages/village 1/mineGate2.png);
        <zorder>btn_shop</zorder>
        <zorder>btn_mine</zorder>
       </widget>
-      <widget class="QWidget" name="p5_village2"/>
+      <widget class="QWidget" name="p5_village2">
+       <property name="styleSheet">
+        <string notr="true">QWidget#p5_village2{
+	image: url(:/Images/Images/villages/village 2/village second1.png);
+}
+</string>
+       </property>
+       <widget class="QPushButton" name="btn_mine2">
+        <property name="geometry">
+         <rect>
+          <x>540</x>
+          <y>160</y>
+          <width>71</width>
+          <height>101</height>
+         </rect>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">QPushButton#btn_mine2:!hover{
+	border-image: url(:/Images/Images/villages/village 2/village second4.1.png);
+color: rgb(255, 255, 127);
+font: 13pt &quot;Algerian&quot;;
+}
+QPushButton#btn_mine2:hover{
+	border-image: url(:/Images/Images/villages/village 2/village second4.2.png);
+}</string>
+        </property>
+        <property name="text">
+         <string>Mine
+
+
+
+</string>
+        </property>
+       </widget>
+       <widget class="QPushButton" name="btn_hostel2">
+        <property name="geometry">
+         <rect>
+          <x>530</x>
+          <y>200</y>
+          <width>351</width>
+          <height>401</height>
+         </rect>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">QPushButton#btn_hostel2:!hover{
+	border-image: url(:/Images/Images/villages/village 2/village second3.1.png);
+	color: rgb(255, 255, 127);
+	font: 25pt &quot;Algerian&quot;;
+}
+QPushButton#btn_hostel2:hover{
+	border-image: url(:/Images/Images/villages/village 2/village second3.2.png);
+}
+</string>
+        </property>
+        <property name="text">
+         <string>Hostel
+
+
+
+
+
+</string>
+        </property>
+        <property name="iconSize">
+         <size>
+          <width>326</width>
+          <height>500</height>
+         </size>
+        </property>
+       </widget>
+       <widget class="QPushButton" name="btn_shop2">
+        <property name="geometry">
+         <rect>
+          <x>330</x>
+          <y>190</y>
+          <width>261</width>
+          <height>261</height>
+         </rect>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">QPushButton#btn_shop2:!hover{
+	border-image: url(:/Images/Images/villages/village 2/village second2.1.png);
+color: rgb(255, 255, 127);
+font: 25pt &quot;Algerian&quot;;
+}
+QPushButton#btn_shop2:hover{
+	border-image: url(:/Images/Images/villages/village 2/village second2.2.png);
+}</string>
+        </property>
+        <property name="text">
+         <string>Shop
+
+
+
+
+
+</string>
+        </property>
+        <property name="iconSize">
+         <size>
+          <width>326</width>
+          <height>500</height>
+         </size>
+        </property>
+       </widget>
+       <zorder>btn_hostel2</zorder>
+       <zorder>btn_shop2</zorder>
+       <zorder>btn_mine2</zorder>
+      </widget>
       <widget class="QWidget" name="p6_shop">
        <property name="styleSheet">
         <string notr="true">QWidget#p6_shop{

@@ -111,7 +111,7 @@ void Monster::genImagePath(){
             m_imagePath = ":/Images/Images/LivingCreature/Monster/mobs/squelette/squelette (1).jpeg";
             break;
         case 2:
-            m_imagePath = ":/Images/Images/LivingCreature/Monster/mobs/squelette/squelette (2).jpeg";
+            m_imagePath = ":/Images/Images/LivingCreature/Monster/mobs/squelette/squelette.png";
             break;
         }
     }else if(m_name == "tiefling"){

@@ -95,7 +95,12 @@ void MainWindow::connectAll() {
     connect(ui->btn_no,SIGNAL(clicked(bool)),this,SLOT(noHostelButtonClicked()));
     connect(ui->cbox_hostel,SIGNAL(currentTextChanged(QString)),this,SLOT(hostelComboBoxChanged()));
 
+    connect(ui->btn_shop2,SIGNAL(clicked(bool)),this,SLOT(shopButtonClicked()));
+
+    connect(ui->btn_hostel2,SIGNAL(clicked(bool)),this,SLOT(hostelButtonClicked()));
+
     connect(ui->btn_mine,SIGNAL(clicked(bool)),this,SLOT(mineButtonClicked()));
+    connect(ui->btn_mine2,SIGNAL(clicked(bool)),this,SLOT(mineButtonClicked()));
     connect(ui->btn_Enter,SIGNAL(clicked(bool)),this,SLOT(enterMineButtonClicked()));
     connect(ui->cbox_mines,SIGNAL(currentTextChanged(QString)),this,SLOT(mineComboBoxChanged()));
     connect(ui->btn_quitMine,SIGNAL(clicked(bool)),this,SLOT(quitMineButtonClicked()));
@@ -315,7 +320,7 @@ void MainWindow::btnVillageTwoClicked() {
     if (ui->Game->currentIndex() != m_lastIndex) {
         m_lastIndex = getUiStackedWidgetIndex("Game");
     }
-    ui->Game->setCurrentIndex(3);
+    ui->Game->setCurrentIndex(4);
     m_currentVillage = 2;
     getAllBuildings();
 }
@@ -395,7 +400,9 @@ void MainWindow::equipButtonClicked() {
 
 void MainWindow::unequipAllButtonClicked() {
     for (size_t x=0;x<m_hero->getWeapons().size();x++) {
-        m_hero->addToInventory(m_hero->getWeapons()[x]);
+        if (m_hero->getWeapons()[x]!=nullptr) {
+            m_hero->addToInventory(m_hero->getWeapons()[x]);
+        }
     }
     m_hero->setWeapon(nullptr);
     ui->lbl_swordStaffPic->setPixmap(QPixmap());
