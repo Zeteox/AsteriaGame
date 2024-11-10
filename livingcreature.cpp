@@ -1,6 +1,7 @@
 #include "livingcreature.h"
 
 LivingCreature::LivingCreature(const string &name, const int maxHp, const int golds, const int damage, const int defence) {
+    //giving a value for all the attributes created
     m_name = name;
     m_maxHp = maxHp;
     m_hp = m_maxHp;
@@ -16,11 +17,7 @@ string &LivingCreature::getName() {
 }
 
 void LivingCreature::setHp(int hp) {
-    if (hp >=0) {
         m_hp=hp;
-        return;
-    }
-    m_hp = hp;
 }
 
 int LivingCreature::getHp() const {
@@ -88,6 +85,7 @@ void LivingCreature::updDefence() {
 }
 
 void LivingCreature::removeHp(int damage) {
+    //remove given damage to the Livingcreature while taking account of the defence
     int damageTaken = damage - m_defence;
     if (damageTaken>0) {
         if (m_hp - damageTaken<=0) {
@@ -99,6 +97,7 @@ void LivingCreature::removeHp(int damage) {
 }
 
 void LivingCreature::healHp(int heal) {
+    //heal given hp to the LivingCreature
     int finalHp = m_hp + heal;
     if (finalHp > m_maxHp) {
         m_hp = m_maxHp;
@@ -108,5 +107,6 @@ void LivingCreature::healHp(int heal) {
 }
 
 bool LivingCreature::isAlive() {
+    //return if the LivingCreature is alive or not
     return m_hp>0;
 }

@@ -2,6 +2,7 @@
 
 Paladin::Paladin(const string &name, const int maxHp, const int golds, const int damage, const int defence, const string &p_class)
     : Hero(name,maxHp,golds,damage,defence,p_class){
+    //set all the attributes with a data and add a sword in the inventory
     m_sword=nullptr;
     m_shield=nullptr;
     m_inventory->addWeapon(new Sword("Starter Sword",0,1));
@@ -23,10 +24,12 @@ void Paladin::setWeapon(Weapon* newWeapon) {
 }
 
 vector<Weapon*> Paladin::getWeapons() {
+    // return all weapons of the hero in one vector
     return vector<Weapon*>{m_sword,m_shield};
 }
 
 string Paladin::getStats() const {
+    //return a string corresponding to the stats of the hero
     string swordName = "";
     if (m_sword == nullptr) {
         swordName = "none";
@@ -50,6 +53,7 @@ string Paladin::getStats() const {
 }
 
 void Paladin::updDamage() {
+    //function that update the damage in function of the sword
     if (m_sword != nullptr) {
         m_damage = m_baseDamage + m_sword->getDamage();
     } else {
@@ -58,6 +62,7 @@ void Paladin::updDamage() {
 }
 
 void Paladin::updDefence() {
+    //function that update the defence in function of the shield
     if (m_shield != nullptr) {
         m_defence = m_baseDefence + m_shield->getDefence();
     } else {

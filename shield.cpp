@@ -3,6 +3,7 @@
 
 Shield::Shield(const string &name, const int price, int defence)
     : Weapon(name, price) {
+    //give a data to all attributes
     m_type="Shield";
     m_defence=defence;
 }
@@ -16,6 +17,7 @@ int Shield::getDefence() const {
 }
 
 string Shield::getStats() const {
+    //return weapon stats
     return "Name: " + m_name +
            "\nPrice: " + to_string(m_price) +
            "\nDefence: "+ to_string(m_defence);

@@ -751,7 +751,8 @@ void MainWindow::attackButtonClicked() {
     int damage = 0;
     Mine* mine = m_mines[ui->cbox_mines->currentIndex()-1];
     if (m_hero->getClass()=="Warrior") {
-        damage =m_hero->getDamage()*1.5;
+        float dmgMultiplier = 1.0 + (float(m_hero->getBonuses())/100);
+        damage =m_hero->getDamage()*dmgMultiplier;
         mine->getMonster()[0]->removeHp(damage);
     } else {
         damage = m_hero->getDamage();
@@ -759,7 +760,7 @@ void MainWindow::attackButtonClicked() {
     }
     monsterInfo="You've dealt "+QString::number(damage-mine->getMonster()[0]->getDefence())+" Damage";
     ui->lbl_monsterHp->setText(QString::number(mine->getMonster()[0]->getHp())+"/"+QString::number(mine->getMonster()[0]->getMaxHp()));
-    if (mine->getMonster()[0]->getHp()==0) {
+    if (!mine->getMonster()[0]->isAlive()) {
         lootInfo = "You've got " +QString::number(mine->getMonster()[0]->getGolds())+ " Golds";
         if (mine->getMineLevel()>=6) {
             switch (getRandNumber(0,4)) {
@@ -798,7 +799,7 @@ void MainWindow::monsterAttack(QString info) {
         infoPlayer = "\nand taken "+QString::number(mine->getMonster()[0]->getDamage()-m_hero->getDefence())+ " Damage";
     }
     ui->lbl_fightTextMine->setText(info + infoPlayer);
-    if (m_hero->getHp()==0) {
+    if (!m_hero->isAlive()) {
         ui->Game->setCurrentIndex(8);
         ui->lbl_end->setText("You died");
     }

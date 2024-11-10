@@ -2,12 +2,14 @@
 
 Warrior::Warrior(const string &name, const int maxHp, const int golds, const int damage, const int defence, const string &p_class)
     : Hero(name,maxHp,golds,damage,defence,p_class) {
+    //set all the attributes with a data and add a sword in the inventory
     m_sword=nullptr;
     m_damageBoost = 50;
     m_inventory->addWeapon(new Sword("Starter Sword",0,1));
 }
 
 Warrior::~Warrior() {
+    //delete all used memory adress
     delete m_sword;
 }
 
@@ -16,7 +18,8 @@ int Warrior::getBonuses(){
 }
 
 void Warrior::setWeapon(Weapon* newWeapon) {
-    if (newWeapon!= nullptr) {
+    //set m_sword to the new weapon if it's not null and a Sword
+    if (newWeapon != nullptr) {
         if (newWeapon->getType()=="Sword") {
             m_sword = newWeapon;
         }
@@ -27,6 +30,7 @@ void Warrior::setWeapon(Weapon* newWeapon) {
 }
 
 vector<Weapon*> Warrior::getWeapons() {
+    //return all weapons of the hero in one vector
     return vector<Weapon*>{m_sword};
 }
 
@@ -39,6 +43,7 @@ int Warrior::getDamageBoost() const{
 }
 
 string Warrior::getStats() const {
+    //return the stats of the hero
     string swordName = "";
     if (m_sword == nullptr) {
         swordName = "none";
@@ -56,6 +61,7 @@ string Warrior::getStats() const {
 }
 
 void Warrior::updDamage() {
+    //update the m_damage variables in function of the weapon
     if (m_sword != nullptr) {
         m_damage = m_baseDamage + m_sword->getDamage();
     } else {
