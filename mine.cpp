@@ -2,6 +2,8 @@
 #include "randomNumber.h"
 
 Mine::Mine(int mineLevel) {
+    //The constructor sets the m_mineLevel attribute to the level entered as an argument
+    //and m_numberOfMonster to 0, then calls the generateMine method.
     m_mineLevel = mineLevel;
     m_numberOfMonster =0;
     generateMine();
@@ -12,6 +14,8 @@ int Mine::getMonsterNumber() {
 }
 
 int Mine::fibonacci(int n) {
+    //This method returns the number of the fibonacci
+    //sequence associated with the number entered as an argument.
     if(n==0) {
         return 0;
     }else if(n==1||n==2) {
@@ -34,12 +38,16 @@ vector<Monster*> Mine::getMonster(){
 }
 
 string Mine::addMonster(Monster* monster){
+    //The addMonster method adds a monster to the m_monster attribute
+    //and adds 1 to m_numberOfMonster.
     m_monster.push_back(monster);
     m_numberOfMonster++;
     return "The Monster has been added";
 }
 
 string Mine::removeMonster(Monster* monster){
+    //The removeMonster method removes from the mine the monster entered as argument
+    //and decrements the m_numberOfMonster attribute by 1.
     if (m_monster.size() == 0){
         return "You have no monster to remove";
     }else{
@@ -56,14 +64,12 @@ string Mine::removeMonster(Monster* monster){
 }
 
 bool Mine::isEmpty(){
-    if(m_monster.size() == 0){
-        return true;
-    }else {
-        return false;
-    }
+    return m_monster.size() == 0;
 }
 
 string Mine::generateMine(){
+    //The generateMine method creates a mine so that the number of monsters present
+    //is associated with the fibonacci sequence up to Level 6, where a Boss is generated.
     if(m_mineLevel < 6){
         for(int i=0; i!=fibonacci(m_mineLevel); i++){
             int choice = getRandNumber(0, 3);
@@ -103,6 +109,8 @@ string Mine::generateMine(){
 }
 
 string Mine::levelUp() {
+    //The levelUp method checks whether the mine is empty,
+    //adds 1 to the m_mineLevel attribute and then regenerates a mine.
     if (m_mineLevel<6) {
         if(isEmpty() == true){
             m_mineLevel++;

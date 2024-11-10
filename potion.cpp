@@ -1,6 +1,7 @@
 #include "potion.h"
 
 Potion::Potion(int level){
+    //The constructor calls the createPotion method.
     createPotion(level);
 }
 string& Potion::getName() {
@@ -22,6 +23,7 @@ int Potion::getPrice() {
     return m_price;
 }
 void Potion::createPotion(int level){
+    //The createPotion method generates a potion of the level entered as an argument.
     switch(level){
     case 1 :
         m_name = "Small Potion", m_hp = 3, m_price = 5;

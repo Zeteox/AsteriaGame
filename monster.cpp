@@ -5,6 +5,7 @@
 Monster::Monster(const string name, const int maxHp, const int golds, const int damage, const int defence,
                  const bool haveSword, const bool haveShield, const bool haveStaff)
     : LivingCreature( name, maxHp, golds, damage, defence){
+    //The constructor gives the type of weapon as an argument.
     if(haveSword == true){
         setSword(new Sword("Standard Sword", 1, 2));
     }else{
@@ -62,6 +63,7 @@ string Monster::getStats() const {
 }
 
 void Monster::updDamage() {
+    //The updDamage method increases monster damage.
     if (m_sword != nullptr) {
         m_damage = m_baseDamage + m_sword->getDamage();
     }else if(m_staff != nullptr){
@@ -72,6 +74,7 @@ void Monster::updDamage() {
 }
 
 void Monster::updDefence() {
+    //The updDefence method increases monster defense
     if (m_shield != nullptr) {
         m_defence = m_baseDefence + m_shield->getDefence();
     } else {
@@ -84,6 +87,7 @@ string Monster::getImagePath(){
 }
 
 void Monster::genImagePath(){
+    //La méthode genImagePath donne à l'attribut m_imagePath l'adresse de l'image du monstre associé.
     if(m_name == "goblin"){
         int choice = getRandNumber(1, 2);
         switch (choice) {

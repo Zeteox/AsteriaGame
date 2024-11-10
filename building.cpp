@@ -1,6 +1,8 @@
 #include "building.h"
 
 Building::Building(const string &type) {
+    //The constructor creates a new building
+    //of the type requested in the associated attribute.
     m_type = type;
     if (type == "Hostel") {
         m_hostel = new Hostel();

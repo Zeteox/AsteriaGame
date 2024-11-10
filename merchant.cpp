@@ -2,6 +2,8 @@
 #include <QDebug>
 
 Merchant::Merchant() {
+    //The constructor fills the m_potionStock attribute of 30 potions
+    //of levels 1 to 3 and m_weaponStock of all available weapons.
     for (int i =0; i<30;i++) {
         m_potionStock.push_back(new Potion(getRandNumber(1,3)));
     }
@@ -45,6 +47,8 @@ void Merchant::addWeapon(Weapon* weapon){
 }
 
 string Merchant::removeWeapon(Weapon* weapon){
+    //The removeWeapon method removes from merchant
+    //the weapon entered as an argument.
     if (m_weaponStock.size() == 0){
         return "You have no weapon to remove";
     }else{
@@ -59,6 +63,8 @@ string Merchant::removeWeapon(Weapon* weapon){
 }
 
 string Merchant::removePotion(Potion* potion){
+    //The removePotion method removes from merchant
+    //the potion entered as an argument.
     if (m_potionStock.size() == 0){
         return "You have no potion to remove";
     }else{

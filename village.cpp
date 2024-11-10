@@ -1,20 +1,20 @@
 #include "village.h"
-#include <iostream>
-#include "hostel.h"
-#include "merchant.h"
-#include "mine.h"
 #include "randomNumber.h"
 #include "building.h"
 #include <vector>
 using namespace std;
 
 Village::Village(string name) {
+    /*The constructor sets the m_name attribute to the name entered as an argument
+    and m_numberBuildings to a random number between 0 and 9,
+    then calls the generateVillage method.*/
     m_name = name;
     m_numberBuildings = getRandNumber(2, 9);
     generateVillage();
 }
 
 Village::~Village(){
+    // The destructor delete the village.
     for(size_t x = 0; x< m_allBuildings.size(); x++){
         delete m_allBuildings[x];
     }
@@ -41,11 +41,14 @@ vector<Building*> Village::getAllBuildings(){
 }
 
 string Village::addBuilding(Building* building){
+    //The addBuilding method adds the building entered as an argument.
     m_allBuildings.push_back(building);
     return "The building has been added";
 }
 
 string Village::removeBuilding(Building* building){
+    //The removeBuilding method removes the building entered as an argument
+    //from the list of buildings.
     if (m_numberBuildings == 0){
         return "You have no building to remove";
     }else{
@@ -60,17 +63,20 @@ string Village::removeBuilding(Building* building){
 }
 
 string Village::generateVillage(){
+    /*The generateVillage method creates a village with the number
+    of buildings specified in the m_numberBuildings attribute.
+    Then randomly adds one of the building types to the m_allBuildings attribute.*/
     for(int x=0; x != m_numberBuildings; x++){
         int choiceBuildingType = getRandNumber(1, 3);
         switch(choiceBuildingType){
         case 1 :
-            m_allBuildings.push_back(new Building("Hostel"));
+            addBuilding(new Building("Hostel"));
             break;
         case 2 :
-            m_allBuildings.push_back(new Building("Mine"));
+            addBuilding(new Building("Mine"));
             break;
         case 3 :
-            m_allBuildings.push_back(new Building("Merchant"));
+            addBuilding(new Building("Merchant"));
             break;
         }
     }

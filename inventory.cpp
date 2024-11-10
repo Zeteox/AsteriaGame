@@ -1,6 +1,7 @@
 #include "inventory.h"
 
 Inventory::Inventory() {
+    //The constructor sets the m_space attribute to 10.
     m_space = 10;
 }
 size_t Inventory::getSpace(){
@@ -17,6 +18,8 @@ vector<Potion*> Inventory::getPotions(){
 }
 
 string Inventory::addPotion(Potion* potion){
+    //The addPotion method checks if the inventory is full
+    //and adds a potion if possible.
     if (m_potions.size() + m_weapons.size() < m_space) {
         m_potions.push_back(potion);
         return "The potion has been added";
@@ -26,6 +29,8 @@ string Inventory::addPotion(Potion* potion){
 }
 
 string Inventory::removePotion(Potion* potion){
+    //The removePotion method removes from inventory
+    //the potion entered as an argument.
     if (m_potions.size() == 0){
         return "You have no potion to remove";
     }else{
@@ -44,6 +49,8 @@ vector<Weapon*> Inventory::getWeapons(){
 }
 
 string Inventory::addWeapon(Weapon* weapon){
+    //The addWeapon method checks if the inventory is
+    //full and adds a weapon if possible.
     if (m_potions.size() + m_weapons.size() < m_space) {
         m_weapons.push_back(weapon);
         return "The weapon has been added";
@@ -53,6 +60,8 @@ string Inventory::addWeapon(Weapon* weapon){
 }
 
 string Inventory::removeWeapon(Weapon* weapon){
+    //The removePotion method removes from inventory
+    //the weapon entered as an argument.
     if (m_weapons.size() == 0){
         return "You have no weapon to remove";
     }else{
