@@ -3,6 +3,7 @@
 
 Staff::Staff(const string &name, const int price, int damage)
     : Weapon(name, price) {
+    //give a data to all attributes
     m_type="Staff";
     m_damage=damage;
 }
@@ -16,6 +17,7 @@ int Staff::getDamage() const {
 }
 
 string Staff::getStats() const {
+    //return weapon stats
     return "Name: " + m_name +
            "\nPrice: " + to_string(m_price) +
            "\nDamage: "+ to_string(m_damage);

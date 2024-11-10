@@ -1,18 +1,10 @@
 #include "weapon.h"
 
 Weapon::Weapon(const string &name, const int price) {
+    //give a data to all attributes
     m_name = name;
     m_type = "";
     m_price = price;
-    for (int i = 1; i<=6;i++) {
-        m_swordIconsPath.push_back(":/Images/Images/Button/sword/sword"+to_string(i)+".png");
-    }
-    for (int i = 1; i<=6;i++) {
-        m_staffIconsPath.push_back(":/Images/Images/Button/staff/staff"+to_string(i)+".png");
-    }
-    for (int i = 1; i<=5;i++) {
-        m_shieldIconsPath.push_back(":/Images/Images/Button/shield/shield"+to_string(i)+".png");
-    }
 }
 
 Weapon::~Weapon() {}
@@ -41,16 +33,4 @@ void Weapon::setPrice(int newPrice) {
 
 int Weapon::getPrice() const {
     return m_price;
-}
-
-vector<string> Weapon::getSwordIconsPath() {
-    return m_swordIconsPath;
-}
-
-vector<string> Weapon::getStaffIconsPath() {
-    return m_staffIconsPath;
-}
-
-vector<string> Weapon::getShieldIconsPath() {
-    return m_shieldIconsPath;
 }

@@ -9,6 +9,8 @@ Mine::Mine(int mineLevel) {
     generateMine();
 }
 
+Mine::~Mine() {}
+
 int Mine::getMonsterNumber() {
     return m_numberOfMonster;
 }

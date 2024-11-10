@@ -2,6 +2,7 @@
 
 Mage::Mage(const string &name, const int maxHp, const int golds, const int damage, const int defence, const string &p_class)
     :Hero(name,maxHp,golds,damage,defence,p_class){
+    //set all the attributes with a data and add a staff in the inventory
     m_staff=nullptr;
     m_dodgeChance = 20;
     m_inventory->addWeapon(new Staff("Starter Staff",0,1));
@@ -23,6 +24,7 @@ void Mage::setWeapon(Weapon* newWeapon) {
 }
 
 vector<Weapon*> Mage::getWeapons() {
+    // return all weapons of the hero in one vector
     return vector<Weapon*>{m_staff};
 }
 

@@ -20,7 +20,6 @@ public:
     string addToInventory(Weapon *weapon);
     string removeFromInventory(Potion *potion);
     string removeFromInventory(Weapon *weapon);
-    string talk() const;
     void drink(Potion *potion);
     void trade(Merchant *merchant, Potion *potion);
     void trade(Merchant *merchant, Weapon *weapon);
