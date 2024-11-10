@@ -11,6 +11,7 @@ MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
     , ui(new Ui::MainWindow)
 {
+    //setting up attributes and game
     ui->setupUi(this);
     m_hero = nullptr;
 
@@ -20,20 +21,42 @@ MainWindow::MainWindow(QWidget *parent)
 
 MainWindow::~MainWindow()
 {
+    //delete content of all memory adress used
     delete m_hero;
-
     delete ui;
+    for (size_t i =0;i<m_shops.size();i++) {
+        delete m_shops[i];
+    }
+    for (size_t i =0;i<m_hostels.size();i++) {
+        delete m_hostels[i];
+    }
+    for (size_t i =0;i<m_mines.size();i++) {
+        delete m_mines[i];
+    }
 }
 
 void MainWindow::genVillages() {
+    //generate all villages (2) with a random name between a selection
     m_currentVillage = 0;
-    m_villages.push_back(new Village("Vendetta"));
-    m_villages.push_back(new Village("Burratta"));
+    vector<string> names{"Paentmarwy",
+                         "Cromer",
+                         "Tarmsworth",
+                         "Aelinmiley",
+                         "Davenport",
+                         "Narthwich",
+                         "Llaneybyder",
+                         "Tunstead",
+                         "Mirefield",
+                         "Blue Field"};
+    for (int i =0;i<=1;i++) {
+        m_villages.push_back(new Village(names[getRandNumber(0,names.size()-1)]));
+    }
     ui->lbl_nameVillage1->setText(QString::fromStdString(m_villages[0]->getName()));
     ui->lbl_nameVillage2->setText(QString::fromStdString(m_villages[1]->getName()));
 }
 
 void MainWindow::stackedWidgetIndexSetup() {
+    //set all the stacked wdget to the good index to start
     ui->Main->setCurrentIndex(0);
     ui->stk_Warrior->setCurrentIndex(0);
     ui->stk_Mage->setCurrentIndex(0);
@@ -47,6 +70,7 @@ void MainWindow::stackedWidgetIndexSetup() {
 }
 
 void MainWindow::connectAll() {
+    // connect all buttons in the game with a method to play
     // ------------ Main
     connect(ui->btn_quit,SIGNAL(clicked(bool)),this,SLOT(quitButtonClicked()));
     connect(ui->btn_start,SIGNAL(clicked(bool)),this,SLOT(startButtonClicked()));
@@ -115,6 +139,8 @@ void MainWindow::connectAll() {
 }
 
 void MainWindow::getAllBuildings() {
+    //get all items in the combo box of the villages the player is in
+    //clear all combo box
     ui->cbox_hostel->clear();
     ui->cbox_hostel->addItem("No hostel");
     ui->cbox_shops->clear();
@@ -122,6 +148,8 @@ void MainWindow::getAllBuildings() {
     ui->cbox_mines->clear();
     ui->cbox_mines->addItem("    No Mine");
 
+    //clear the vector of each buildings and add all building of the right type
+    //in the current village in it and add item in the corresponding combo box
     m_shops.clear();
     for (size_t x=0;x<m_villages[m_currentVillage-1]->getAllBuildings().size();x++) {
         if (m_villages[m_currentVillage-1]->getAllBuildings()[x]->getType() == "Merchant") {
@@ -148,6 +176,8 @@ void MainWindow::getAllBuildings() {
             }
         }
     }
+
+    //detect if all mines are cleared in the village or is there are none to acces to the other village
     if (m_currentVillage==1) {
         if (m_mines.empty()) {
             ui->btn_village2->setEnabled(true);
@@ -163,7 +193,7 @@ void MainWindow::getAllBuildings() {
                 ui->btn_village2->setEnabled(true);
             }
         }
-    } else if (m_currentVillage==2) {
+    } else if (m_currentVillage==2) { // detect if the village is cleared if so the player win
         if (m_mines.empty()) {
             ui->Game->setCurrentIndex(8);
         } else {
@@ -175,15 +205,18 @@ void MainWindow::getAllBuildings() {
                 }
             }
             if (isVillageCleared) {
-                ui->Game->setCurrentIndex(8);
+                ui->Game->setCurrentIndex(8); //send to the win page
                 ui->frm_menu->setHidden(true);
             }
         }
+        //set the end label to "You Won"
         ui->lbl_end->setText("You won");
     }
 }
 
 int MainWindow::getUiStackedWidgetIndex(string widget) {
+    //function that return the current index of the stacked widget
+    //game or Main in function of the given string
     if (widget == "Main") {
         return ui->Main->currentIndex();
     } else if (widget == "Game") {
@@ -200,12 +233,14 @@ void MainWindow::quitButtonClicked()
 
 void MainWindow::startButtonClicked()
 {
+    //send to the caracter selection page
     m_lastIndex = getUiStackedWidgetIndex("Main");
     ui->Main->setCurrentIndex(1);
 }
 
 void MainWindow::backButtonClicked()
 {
+    //send the player to the page he was before
     if (m_hero == nullptr) {
         ui->Main->setCurrentIndex(m_lastIndex);
     } else {
@@ -217,6 +252,7 @@ void MainWindow::backButtonClicked()
 
 void MainWindow::createHeroButtonClicked()
 {
+    //create the hero in function of what the player selected and entered as a name
     string name = ui->txt_name->text().QString::toStdString();
     if (name != "") {
         bool next = false;
@@ -233,13 +269,13 @@ void MainWindow::createHeroButtonClicked()
             ui->lbl_heroPicture->setStyleSheet("image: url(:/Images/Images/LivingCreature/Hero/sorcer.jpeg)");
             next = !next;
         }
-        if (next) {
+        if (next) { //send the player to the game
             ui->Main->setCurrentIndex(2);
             m_lastIndex = 0;
             ui->btn_mage->setChecked(false);
             ui->btn_paladin->setChecked(false);
             ui->btn_warrior->setChecked(false);
-            genVillages();
+            genVillages(); //generate all villages
         }
     }
 }
@@ -247,6 +283,7 @@ void MainWindow::createHeroButtonClicked()
 
 void MainWindow::btnWarriorClicked()
 {
+    //change the states of the button if it has been clicked
     if (!ui->btn_warrior->isChecked()) {
         ui->btn_warrior->setChecked(true);
     }
@@ -258,6 +295,7 @@ void MainWindow::btnWarriorClicked()
 
 void MainWindow::btnMageClicked()
 {
+    //change the states of the button if it has been clicked
     if (!ui->btn_mage->isChecked()) {
         ui->btn_mage->setChecked(true);
     }
@@ -269,6 +307,7 @@ void MainWindow::btnMageClicked()
 
 void MainWindow::btnPaladinClicked()
 {
+    //change the states of the button if it has been clicked
     if (!ui->btn_paladin->isChecked()) {
         ui->btn_paladin->setChecked(true);
     }
@@ -278,6 +317,7 @@ void MainWindow::btnPaladinClicked()
 }
 
 void MainWindow::btnWarriorStatsClicked() {
+    //show the page of the warrior stats
     if (ui->btn_statsWarrior->text() == "⇓") {
         ui->btn_statsWarrior->setText("⇑");
         ui->stk_Warrior->setCurrentIndex(1);
@@ -288,6 +328,7 @@ void MainWindow::btnWarriorStatsClicked() {
 }
 
 void MainWindow::btnMageStatsClicked() {
+    //show the page of the mage stats
     if (ui->btn_statsMage->text() == "⇓") {
         ui->btn_statsMage->setText("⇑");
         ui->stk_Mage->setCurrentIndex(1);
@@ -298,6 +339,7 @@ void MainWindow::btnMageStatsClicked() {
 }
 
 void MainWindow::btnPaladinStatsClicked() {
+    //show the page of the paladin stats
     if (ui->btn_statsPaladin->text() == "⇓") {
         ui->btn_statsPaladin->setText("⇑");
         ui->stk_Paladin->setCurrentIndex(1);
@@ -308,7 +350,10 @@ void MainWindow::btnPaladinStatsClicked() {
 }
 
 void MainWindow::btnVillageOneClicked() {
+    //change the page of the game to the first village
     if (ui->Game->currentIndex() != m_lastIndex) {
+        //verify if the last page was different of the one the player is on
+        //if not the last index change
         m_lastIndex = getUiStackedWidgetIndex("Game");
     }
     ui->Game->setCurrentIndex(3);
@@ -317,6 +362,7 @@ void MainWindow::btnVillageOneClicked() {
 }
 
 void MainWindow::btnVillageTwoClicked() {
+    //change the page of the game to the second village
     if (ui->Game->currentIndex() != m_lastIndex) {
         m_lastIndex = getUiStackedWidgetIndex("Game");
     }
@@ -326,6 +372,7 @@ void MainWindow::btnVillageTwoClicked() {
 }
 
 void MainWindow::worldButtonClicked() {
+    //change the page of the game to world map
     if (ui->Game->currentIndex() != m_lastIndex) {
         m_lastIndex = getUiStackedWidgetIndex("Game");
     }
@@ -336,6 +383,7 @@ void MainWindow::worldButtonClicked() {
 }
 
 void MainWindow::heroButtonClicked() {
+    //change page to the hero description
     m_hero->updDamage();
     m_hero->updDefence();
     ui->Game->setCurrentIndex(1);
@@ -344,16 +392,19 @@ void MainWindow::heroButtonClicked() {
 }
 
 void MainWindow::statsButtonClicked() {
+    //change the page of the hero description to the stats one
     ui->stk_invStats->setCurrentIndex(0);
     ui->lbl_statsHero->setText(QString::fromStdString(m_hero->getStats()));
 }
 
 void MainWindow::invButtonClicked() {
+    //change the page of the hero description to the inventory one
     ui->stk_invStats->setCurrentIndex(1);
     ui->txt_search->clear();
 }
 
 void MainWindow::drinkButtonClicked() {
+    //drink the potion seleccted if there one else it do nothing
     if (ui->list_potionInv->currentRow()>=0) {
         m_hero->drink(m_hero->getInventory()->getPotions()[ui->list_potionInv->currentRow()]);
         ui->txt_search->clear();
@@ -361,6 +412,7 @@ void MainWindow::drinkButtonClicked() {
 }
 
 void MainWindow::equipButtonClicked() {
+    //equip the selected weapon if ther is one and if the hero class can
     if (ui->list_weaponInv->currentRow()>=0) {
         Weapon* weapon = m_hero->getInventory()->getWeapons()[ui->list_weaponInv->currentRow()];
         if (weapon->getType()=="Sword") {
@@ -369,6 +421,7 @@ void MainWindow::equipButtonClicked() {
                     m_hero->addToInventory(m_hero->getWeapons()[0]);
                 }
                 m_hero->setWeapon(weapon);
+                //show the icon of the equiped weapon
                 QIcon icon = ui->list_weaponInv->item(ui->list_weaponInv->currentRow())->icon();
                 ui->lbl_swordStaffPic->setPixmap(icon.pixmap(icon.actualSize(QSize(100,100))));
                 m_hero->removeFromInventory(weapon);
@@ -379,6 +432,7 @@ void MainWindow::equipButtonClicked() {
                     m_hero->addToInventory(m_hero->getWeapons()[1]);
                 }
                 m_hero->setWeapon(weapon);
+                //show the icon of the equiped weapon
                 QIcon icon = ui->list_weaponInv->item(ui->list_weaponInv->currentRow())->icon();
                 ui->lbl_shieldPic->setPixmap(icon.pixmap(icon.actualSize(QSize(100,100))));
                 m_hero->removeFromInventory(weapon);
@@ -389,6 +443,7 @@ void MainWindow::equipButtonClicked() {
                     m_hero->addToInventory(m_hero->getWeapons()[0]);
                 }
                 m_hero->setWeapon(weapon);
+                //show the icon of the equiped weapon
                 QIcon icon = ui->list_weaponInv->item(ui->list_weaponInv->currentRow())->icon();
                 ui->lbl_swordStaffPic->setPixmap(icon.pixmap(icon.actualSize(QSize(100,100))));
                 m_hero->removeFromInventory(weapon);
@@ -399,18 +454,21 @@ void MainWindow::equipButtonClicked() {
 }
 
 void MainWindow::unequipAllButtonClicked() {
+    //unequip all the equiped weapons of the hero
     for (size_t x=0;x<m_hero->getWeapons().size();x++) {
         if (m_hero->getWeapons()[x]!=nullptr) {
             m_hero->addToInventory(m_hero->getWeapons()[x]);
         }
     }
     m_hero->setWeapon(nullptr);
+    //clear the icon of the weapons
     ui->lbl_swordStaffPic->setPixmap(QPixmap());
     ui->lbl_shieldPic->setPixmap(QPixmap());
     searchInputInv();
 }
 
 void MainWindow::menuButtonClicked() {
+    //change the page to the menu where you quand quit
     if (ui->Game->currentIndex() != m_lastIndex) {
         m_lastIndex = getUiStackedWidgetIndex("Game");
     }
@@ -418,6 +476,7 @@ void MainWindow::menuButtonClicked() {
 }
 
 void MainWindow::searchInputInv() {
+    // show only the items that contain the data in the search box
     if (m_hero != nullptr) {
         vector<Potion*> inv = m_hero->getInventory()->getPotions();
         vector<Weapon*> invWeapon = m_hero->getInventory()->getWeapons();
@@ -425,6 +484,7 @@ void MainWindow::searchInputInv() {
         ui->list_potionInv->clear();
         ui->list_weaponInv->clear();
 
+        //Add item to the list widget in function of the data of the search box
         for (size_t x=0;x<inv.size();x++) {
             if (inv[x]->getName().find(ui->txt_search->toPlainText().QString::toStdString()) != string::npos) {
                 ui->list_potionInv->addItem(QString::fromStdString(inv[x]->getName()));
@@ -488,6 +548,7 @@ void MainWindow::searchInputInv() {
 }
 
 void MainWindow::shopComboBoxChanged() {
+    //clear all list widget of the shop
     ui->list_potions->clear();
     ui->list_weapons->clear();
     ui->list_invSell->clear();
@@ -495,6 +556,7 @@ void MainWindow::shopComboBoxChanged() {
 }
 
 void MainWindow::searchInputShop() {
+    // show only the items that contain the data in the search box
     if (ui->cbox_shops->currentIndex()-1 >=0) {
         Merchant* merchant = m_shops[ui->cbox_shops->currentIndex()-1];
         vector<Potion*> potionStock = merchant->getPotionStock();
@@ -506,6 +568,7 @@ void MainWindow::searchInputShop() {
         ui->list_weapons->clear();
         ui->list_invSell->clear();
 
+        //Add item to the list widget in function of the data of the search box
         for (size_t x=0;x<potionStock.size();x++) {
             if (potionStock[x]->getName().find(ui->txt_searchShop->toPlainText().QString::toStdString()) != string::npos) {
                 ui->list_potions->addItem(QString::fromStdString(potionStock[x]->getName()+" ("+to_string(potionStock[x]->getPrice())+"G)"));
@@ -530,6 +593,7 @@ void MainWindow::searchInputShop() {
 }
 
 void MainWindow::shopButtonClicked() {
+    //change game page to the shop one
     if (ui->Game->currentIndex() != m_lastIndex) {
         m_lastIndex = getUiStackedWidgetIndex("Game");
     }
@@ -539,6 +603,7 @@ void MainWindow::shopButtonClicked() {
 }
 
 void MainWindow::hostelButtonClicked() {
+    //change game page to the hostel one
     if (ui->Game->currentIndex() != m_lastIndex) {
         m_lastIndex = getUiStackedWidgetIndex("Game");
     }
@@ -557,6 +622,7 @@ void MainWindow::hostelButtonClicked() {
 }
 
 void MainWindow::hostelComboBoxChanged() {
+    //change the hostel selected to get the choosen one
     if (ui->cbox_hostel->currentIndex()-1>=0) {
         Hostel* hostel = m_hostels[ui->cbox_hostel->currentIndex()-1];
         ui->lbl_hostelSpeak->setText("Hello adventurer! do you want some \n"
@@ -570,6 +636,7 @@ void MainWindow::hostelComboBoxChanged() {
 }
 
 void MainWindow::yesHostelButtonClicked() {
+    //heaal the player if he have enought money or force him to get out of the hostel
     Hostel* hostel = m_hostels[ui->cbox_hostel->currentIndex()-1];
     if (hostel->getPrice()<=m_hero->getGolds()) {
         ui->lbl_hostelSpeak->setText("I knew you would say that! Come, follow me");
@@ -586,6 +653,7 @@ void MainWindow::yesHostelButtonClicked() {
 }
 
 void MainWindow::noHostelButtonClicked() {
+    //force the player to get out of the hostel
     ui->lbl_hostelSpeak->setText("I hoped that you were a great men");
     ui->btn_no->setHidden(true);
     ui->btn_yes->setHidden(true);
@@ -593,7 +661,9 @@ void MainWindow::noHostelButtonClicked() {
 
 
 void MainWindow::shopBuyButtonClicked() {
+    //buy the selected item of the selected shop if it isn't null
     Merchant* merchant = m_shops[ui->cbox_shops->currentIndex()-1];
+    //potions part
     if (ui->list_potions->currentItem()!=nullptr) {
         Potion* popo = nullptr;
         for (int i =0;i<ui->list_potions->count();i++) {
@@ -610,6 +680,7 @@ void MainWindow::shopBuyButtonClicked() {
                 break;
             }
         }
+        //weapons part
     } else if (ui->list_weapons->currentItem()!=nullptr) {
         Weapon* weapon = nullptr;
         for (int i =0;i<ui->list_weapons->count();i++) {
@@ -632,6 +703,7 @@ void MainWindow::shopBuyButtonClicked() {
 }
 
 void MainWindow::shopSellButtonClicked() {
+    //sell the selected item the the selected merchant
     Merchant* merchant = m_shops[ui->cbox_shops->currentIndex()-1];
     if (ui->list_invSell->currentItem()!=nullptr) {
         int allPotionSize = m_hero->getInventory()->getPotions().size();
@@ -651,6 +723,7 @@ void MainWindow::shopSellButtonClicked() {
 }
 
 void MainWindow::mineButtonClicked() {
+    //change game page to the mines
     if (ui->Game->currentIndex() != m_lastIndex) {
         m_lastIndex = getUiStackedWidgetIndex("Game");
     }
@@ -661,6 +734,7 @@ void MainWindow::mineButtonClicked() {
 }
 
 void MainWindow::mineComboBoxChanged() {
+    //change selected mine
     if (ui->cbox_mines->currentIndex()>0) {
         ui->btn_Enter->setEnabled(true);
     } else {
@@ -669,15 +743,18 @@ void MainWindow::mineComboBoxChanged() {
 }
 
 void MainWindow::enterMineButtonClicked() {
+    //chage the page to the first part of the mine were you can challenge
+    //monsters and see how many there's remain
     ui->frm_menu->setHidden(false);
     Mine* mine = m_mines[ui->cbox_mines->currentIndex()-1];
+    ui->frm_menu->setHidden(true);
     ui->stk_mine->setCurrentIndex(1);
     ui->nb_lastIndex->setValue(m_lastIndex);
     ui->btn_back2->setEnabled(false);
     ui->btn_worldMap->setEnabled(false);
     ui->lbl_remainingMonster->setText(QString::fromStdString(to_string(mine->getMonsterNumber()))
                                       +" Remaining monsters");
-    if (!mine->getMonster().empty()) {
+    if (!mine->getMonster().empty()) { //set the states of button and frame in function of the mine
         ui->btn_fight->setEnabled(true);
         ui->btn_quitMine->setEnabled(false);
     } else {
@@ -687,16 +764,19 @@ void MainWindow::enterMineButtonClicked() {
 }
 
 void MainWindow::quitMineButtonClicked() {
+    //change Game page to the last before entering the mine
     ui->stk_mine->setCurrentIndex(0);
     m_lastIndex = ui->nb_lastIndex->value();
     ui->btn_back2->setEnabled(true);
     ui->btn_worldMap->setEnabled(true);
     backButtonClicked();
+    ui->frm_menu->setHidden(false);
     m_mines[ui->cbox_mines->currentIndex()-1]->levelUp();
     getAllBuildings();
 }
 
 void MainWindow::fightMineButtonClicked() {
+    //change the Game page to the battlefield where you fight monster
     Mine* mine = m_mines[ui->cbox_mines->currentIndex()-1];
     ui->stk_mineFight->setCurrentIndex(0);
     ui->btn_potion->setEnabled(true);
@@ -712,10 +792,13 @@ void MainWindow::fightMineButtonClicked() {
 }
 
 void MainWindow::goBackButtonClicked() {
+    //turn the fight potion window invisible
     ui->stk_mineFight->setCurrentIndex(0);
 }
 
 void MainWindow::drinkMineButtonClicked() {
+    //like the drinkButtonClicked() method
+    //heal the player in funtion of the selected potion
     if (ui->list_potionsMine->currentRow()>=0) {
         if (m_hero->getHp() < m_hero->getMaxHp()) {
             goBackButtonClicked();
@@ -732,6 +815,7 @@ void MainWindow::drinkMineButtonClicked() {
 }
 
 void MainWindow::potionButtonClicked() {
+    //open the fight potion window
     ui->stk_mineFight->setCurrentIndex(1);
     vector<Potion*> inv = m_hero->getInventory()->getPotions();
 
@@ -745,12 +829,13 @@ void MainWindow::potionButtonClicked() {
 }
 
 void MainWindow::attackButtonClicked() {
+    //attack the monster
     ui->stk_mineFight->setCurrentIndex(0);
     QString monsterInfo = "";
     QString lootInfo = "";
     int damage = 0;
     Mine* mine = m_mines[ui->cbox_mines->currentIndex()-1];
-    if (m_hero->getClass()=="Warrior") {
+    if (m_hero->getClass()=="Warrior") { //warriors deals % more damage
         float dmgMultiplier = 1.0 + (float(m_hero->getBonuses())/100);
         damage =m_hero->getDamage()*dmgMultiplier;
         mine->getMonster()[0]->removeHp(damage);
@@ -759,10 +844,11 @@ void MainWindow::attackButtonClicked() {
         mine->getMonster()[0]->removeHp(m_hero->getDamage());
     }
     monsterInfo="You've dealt "+QString::number(damage-mine->getMonster()[0]->getDefence())+" Damage";
-    ui->lbl_monsterHp->setText(QString::number(mine->getMonster()[0]->getHp())+"/"+QString::number(mine->getMonster()[0]->getMaxHp()));
-    if (!mine->getMonster()[0]->isAlive()) {
+    ui->lbl_monsterHp->setText(QString::number(mine->getMonster()[0]->getHp())+
+                               "/"+QString::number(mine->getMonster()[0]->getMaxHp()));
+    if (!mine->getMonster()[0]->isAlive()) { //verify if the monster is alive and counter-attack if he is
         lootInfo = "You've got " +QString::number(mine->getMonster()[0]->getGolds())+ " Golds";
-        if (mine->getMineLevel()>=6) {
+        if (mine->getMineLevel()>=6) { //boss can loot a special potion
             switch (getRandNumber(0,4)) {
             case 0:
                 m_hero->addToInventory(new Potion(4));
@@ -783,23 +869,24 @@ void MainWindow::attackButtonClicked() {
 }
 
 void MainWindow::monsterAttack(QString info) {
+    //moster attack the hero
     Mine* mine = m_mines[ui->cbox_mines->currentIndex()-1];
     QString infoPlayer = "";
     bool takeDmg = true;
-    if (m_hero->getClass()=="Mage") {
+    if (m_hero->getClass()=="Mage") { //mage 20% change to dodge
         int dodgeNumber=getRandNumber(1,100);
         if (dodgeNumber<m_hero->getBonuses()) {
             takeDmg = false;
             infoPlayer= "\nand you dodged the ennemy attack";
         }
     }
-    if (takeDmg) {
+    if (takeDmg) { //if the mage didnt dodge and for all other class
         m_hero->removeHp(mine->getMonster()[0]->getDamage());
         ui->lbl_heroHp->setText(QString::number(m_hero->getHp())+"/"+QString::number(m_hero->getMaxHp()));
         infoPlayer = "\nand taken "+QString::number(mine->getMonster()[0]->getDamage()-m_hero->getDefence())+ " Damage";
     }
     ui->lbl_fightTextMine->setText(info + infoPlayer);
-    if (!m_hero->isAlive()) {
+    if (!m_hero->isAlive()) { //if the hero is dead send to the end page and set the label to "You died"
         ui->Game->setCurrentIndex(8);
         ui->lbl_end->setText("You died");
     }
