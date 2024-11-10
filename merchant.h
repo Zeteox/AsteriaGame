@@ -10,6 +10,7 @@
 
 class Merchant
 {
+private:
     vector<Weapon*> m_weaponStock;
     vector<Potion*> m_potionStock;
 public:

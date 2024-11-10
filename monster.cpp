@@ -63,8 +63,8 @@ string Monster::getStats() const {
            "\nDamage: " + to_string(m_damage) +
            "\nDefence: " + to_string(m_defence) +
            "\nSword: " + m_sword->getName();
-           "\nShield: " + m_shield->getName();
-           "\nStaff: " + m_staff->getName();
+    "\nShield: " + m_shield->getName();
+    "\nStaff: " + m_staff->getName();
 }
 
 void Monster::updDamage() {

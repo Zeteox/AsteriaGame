@@ -7,6 +7,7 @@ using namespace std;
 
 class Village
 {
+private :
     string m_name;
     int m_numberBuildings;
     vector<Building*> m_allBuildings ;

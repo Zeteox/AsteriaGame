@@ -9,6 +9,7 @@ using namespace std;
 
 class Building
 {
+private:
     string m_type;
     Hostel* m_hostel;
     Merchant* m_merchant;
