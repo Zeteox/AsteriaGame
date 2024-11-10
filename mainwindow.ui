@@ -100,7 +100,7 @@
      <enum>QFrame::Shadow::Plain</enum>
     </property>
     <property name="currentIndex">
-     <number>2</number>
+     <number>1</number>
     </property>
     <widget class="QWidget" name="p1_mainMenu">
      <property name="autoFillBackground">
@@ -587,8 +587,8 @@ more damage</string>
 qproperty-alignment: AlignLeft;</string>
         </property>
         <property name="text">
-         <string>health: 10/10
-Gold: 10
+         <string>health: 13/13
+Gold: 7
 Attack: 2
 Defence: 1</string>
         </property>
@@ -683,8 +683,8 @@ QPushButton:checked {
 qproperty-alignment: AlignLeft;</string>
         </property>
         <property name="text">
-         <string>health: 15/15
-Gold: 10
+         <string>health: 9/9
+Gold: 3
 Attack: 1
 Defence: 2</string>
         </property>
@@ -795,7 +795,7 @@ qproperty-alignment: AlignLeft;</string>
         </property>
         <property name="text">
          <string>health: 10/10
-Gold: 15
+Gold: 12
 Attack: 2
 Defence: 0</string>
         </property>
@@ -1118,7 +1118,7 @@ color: rgb(255, 255, 127);</string>
          </widget>
         </widget>
         <widget class="QWidget" name="p2_inventory">
-         <widget class="QLabel" name="lbl_statsTitle_2">
+         <widget class="QLabel" name="lbl_invTitle">
           <property name="geometry">
            <rect>
             <x>60</x>
@@ -1135,7 +1135,7 @@ color: rgb(255, 255, 127);</string>
            <string>Inventory</string>
           </property>
          </widget>
-         <widget class="QFrame" name="statsFrame_2">
+         <widget class="QFrame" name="inventoryFrame">
           <property name="geometry">
            <rect>
             <x>50</x>
@@ -1723,6 +1723,7 @@ color: rgb(255, 255, 127);</string>
         </property>
         <property name="styleSheet">
          <string notr="true">font: 15pt;
+color: rgb(255, 255, 127);
 border-image: url(:/Images/Images/Background/title background.png);</string>
         </property>
         <property name="text">
@@ -1740,8 +1741,8 @@ border-image: url(:/Images/Images/Background/title background.png);</string>
         </property>
         <property name="styleSheet">
          <string notr="true">font: 15pt &quot;Algerian&quot;;
-border-image: url(:/Images/Images/Void.png);
-color: rgb(0, 0, 0);</string>
+color: rgb(255, 255, 127);
+border-image: url(:/Images/Images/Void.png);</string>
         </property>
         <property name="insertPolicy">
          <enum>QComboBox::InsertPolicy::InsertAfterCurrent</enum>
@@ -1789,7 +1790,7 @@ border-image: url(:/Images/Images/Background/banniere dialogue.png);</string>
          <string>TextLabel</string>
         </property>
        </widget>
-       <widget class="QLabel" name="label">
+       <widget class="QLabel" name="lbl_shopkeeper">
         <property name="geometry">
          <rect>
           <x>600</x>
@@ -1812,7 +1813,7 @@ color: rgb(255, 255, 127);</string>
        <zorder>lbl_shoppic</zorder>
        <zorder>cbox_shops</zorder>
        <zorder>lbl_merchantSpeak</zorder>
-       <zorder>label</zorder>
+       <zorder>lbl_shopkeeper</zorder>
        <zorder>frm_Shop</zorder>
       </widget>
       <widget class="QWidget" name="p7_hostel">
@@ -1984,7 +1985,8 @@ background-color: rgba(255, 255, 255, 0);}</string>
         </property>
         <property name="styleSheet">
          <string notr="true">font: 15pt;
-border-image: url(:/Images/Images/Background/title background.png);</string>
+border-image: url(:/Images/Images/Background/title background.png);
+</string>
         </property>
         <property name="text">
          <string/>
@@ -2001,7 +2003,8 @@ border-image: url(:/Images/Images/Background/title background.png);</string>
         </property>
         <property name="styleSheet">
          <string notr="true">font: 15pt;
-border-image: url(:/Images/Images/Background/title background.png);</string>
+border-image: url(:/Images/Images/Background/title background.png);
+color: rgb(255, 255, 127);</string>
         </property>
         <property name="text">
          <string>Golds: </string>
@@ -2019,7 +2022,7 @@ border-image: url(:/Images/Images/Background/title background.png);</string>
         <property name="styleSheet">
          <string notr="true">font: 13pt &quot;Algerian&quot;;
 border-image: url(:/Images/Images/Void.png);
-color: rgb(0, 0, 0);</string>
+color: rgb(255, 255, 127);</string>
         </property>
         <property name="insertPolicy">
          <enum>QComboBox::InsertPolicy::InsertAfterCurrent</enum>
@@ -2331,7 +2334,7 @@ QPushButton:hover{
            </rect>
           </property>
           <property name="currentIndex">
-           <number>0</number>
+           <number>2</number>
           </property>
           <widget class="QWidget" name="p1_void"/>
           <widget class="QWidget" name="p2_potions">
@@ -2421,10 +2424,13 @@ QPushButton:hover{
             <property name="geometry">
              <rect>
               <x>130</x>
-              <y>60</y>
+              <y>40</y>
               <width>231</width>
               <height>51</height>
              </rect>
+            </property>
+            <property name="styleSheet">
+             <string notr="true">color: rgb(255, 255, 127);</string>
             </property>
             <property name="text">
              <string>Victory !!!</string>
@@ -2434,7 +2440,7 @@ QPushButton:hover{
             <property name="geometry">
              <rect>
               <x>120</x>
-              <y>150</y>
+              <y>180</y>
               <width>241</width>
               <height>81</height>
              </rect>
@@ -2453,13 +2459,30 @@ QPushButton:hover{
              <string>Continue</string>
             </property>
            </widget>
+           <widget class="QLabel" name="lbl_gain">
+            <property name="geometry">
+             <rect>
+              <x>90</x>
+              <y>100</y>
+              <width>301</width>
+              <height>81</height>
+             </rect>
+            </property>
+            <property name="styleSheet">
+             <string notr="true">font: 15pt;
+color: rgb(118, 118, 59);</string>
+            </property>
+            <property name="text">
+             <string>gain.txt</string>
+            </property>
+           </widget>
           </widget>
          </widget>
          <widget class="QLabel" name="lbl_heroHp">
           <property name="geometry">
            <rect>
-            <x>150</x>
-            <y>40</y>
+            <x>140</x>
+            <y>-20</y>
             <width>191</width>
             <height>111</height>
            </rect>
@@ -2476,8 +2499,8 @@ font: 20pt;</string>
          <widget class="QLabel" name="lbl_monsterHp">
           <property name="geometry">
            <rect>
-            <x>670</x>
-            <y>30</y>
+            <x>680</x>
+            <y>-20</y>
             <width>191</width>
             <height>101</height>
            </rect>

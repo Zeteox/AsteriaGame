@@ -35,8 +35,5 @@ void Potion::createPotion(int level){
     case 4 :
         m_name = "Divine Potion", m_hp = 10000, m_price = -1;
         break;
-    case 5 :
-        m_name = "Divine Potiom", m_hp = 10000, m_price = -1;
-        break;
     }
 }

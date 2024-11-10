@@ -28,8 +28,7 @@ public:
     void sell(Merchant *merchant, Weapon *weapon);
     virtual int getBonuses();
     virtual void setWeapon(Weapon *newWeapon);
-    /*virtual void setShield(Shield *newShield);
-    virtual void setStaff(Staff *newStaff);*/
+    virtual vector<Weapon*> getWeapons();
 };
 
 #endif // HERO_H

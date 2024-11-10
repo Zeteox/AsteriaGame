@@ -22,8 +22,8 @@ void Mage::setWeapon(Weapon* newWeapon) {
     updDamage();
 }
 
-Weapon &Mage::getStaff() {
-    return *m_staff;
+vector<Weapon*> Mage::getWeapons() {
+    return vector<Weapon*>{m_staff};
 }
 
 void Mage::setDodgeChance(int newDodgeChance) {

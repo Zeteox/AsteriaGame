@@ -19,6 +19,10 @@ string Hero::talk() const {
 
 void Hero::setWeapon(Weapon*) {}
 
+vector<Weapon*> Hero::getWeapons() {
+    return vector<Weapon*>{};
+}
+
 int Hero::getBonuses(){
     return 0;
 }

@@ -171,6 +171,7 @@ void MainWindow::getAllBuildings() {
             }
             if (isVillageCleared) {
                 ui->Game->setCurrentIndex(8);
+                ui->frm_menu->setHidden(true);
             }
         }
         ui->lbl_end->setText("You won");
@@ -215,15 +216,15 @@ void MainWindow::createHeroButtonClicked()
     if (name != "") {
         bool next = false;
         if (ui->btn_paladin->isChecked()) {
-            m_hero = new Paladin(name,15,10,1,2,"Paladin");
+            m_hero = new Paladin(name,9,7,1,1,"Paladin");
             ui->lbl_heroPicture->setStyleSheet("image: url(:/Images/Images/LivingCreature/Hero/paladin.jpeg)");
             next = !next;
         } else if (ui->btn_warrior->isChecked()) {
-            m_hero = new Warrior(name,10,10,2,1,"Warrior");
+            m_hero = new Warrior(name,13,5,2,1,"Warrior");
             ui->lbl_heroPicture->setStyleSheet("image: url(:/Images/Images/LivingCreature/Hero/warrior.jpeg)");
             next = !next;
         } else if (ui->btn_mage->isChecked()) {
-            m_hero = new Mage(name,10,15,2,0,"Mage");
+            m_hero = new Mage(name,10,12,2,0,"Mage");
             ui->lbl_heroPicture->setStyleSheet("image: url(:/Images/Images/LivingCreature/Hero/sorcer.jpeg)");
             next = !next;
         }
@@ -354,42 +355,53 @@ void MainWindow::drinkButtonClicked() {
     }
 }
 
-//--------------------------------------------------------------------------------
-
 void MainWindow::equipButtonClicked() {
     if (ui->list_weaponInv->currentRow()>=0) {
         Weapon* weapon = m_hero->getInventory()->getWeapons()[ui->list_weaponInv->currentRow()];
         if (weapon->getType()=="Sword") {
             if (m_hero->getClass()=="Warrior" || m_hero->getClass()=="Paladin") {
+                if (m_hero->getWeapons()[0]!=nullptr) {
+                    m_hero->addToInventory(m_hero->getWeapons()[0]);
+                }
                 m_hero->setWeapon(weapon);
                 QIcon icon = ui->list_weaponInv->item(ui->list_weaponInv->currentRow())->icon();
                 ui->lbl_swordStaffPic->setPixmap(icon.pixmap(icon.actualSize(QSize(100,100))));
+                m_hero->removeFromInventory(weapon);
             }
         } else if (weapon->getType()=="Shield") {
             if (m_hero->getClass()=="Paladin") {
+                if (m_hero->getWeapons()[1]!=nullptr) {
+                    m_hero->addToInventory(m_hero->getWeapons()[1]);
+                }
                 m_hero->setWeapon(weapon);
                 QIcon icon = ui->list_weaponInv->item(ui->list_weaponInv->currentRow())->icon();
                 ui->lbl_shieldPic->setPixmap(icon.pixmap(icon.actualSize(QSize(100,100))));
+                m_hero->removeFromInventory(weapon);
             }
         } else if (weapon->getType()=="Staff") {
             if (m_hero->getClass()=="Mage") {
+                if (m_hero->getWeapons()[0]!=nullptr) {
+                    m_hero->addToInventory(m_hero->getWeapons()[0]);
+                }
                 m_hero->setWeapon(weapon);
                 QIcon icon = ui->list_weaponInv->item(ui->list_weaponInv->currentRow())->icon();
                 ui->lbl_swordStaffPic->setPixmap(icon.pixmap(icon.actualSize(QSize(100,100))));
+                m_hero->removeFromInventory(weapon);
             }
         }
+        searchInputInv();
     }
 }
 
 void MainWindow::unequipAllButtonClicked() {
+    for (size_t x=0;x<m_hero->getWeapons().size();x++) {
+        m_hero->addToInventory(m_hero->getWeapons()[x]);
+    }
     m_hero->setWeapon(nullptr);
     ui->lbl_swordStaffPic->setPixmap(QPixmap());
     ui->lbl_shieldPic->setPixmap(QPixmap());
+    searchInputInv();
 }
-
-//--------------------------------------------------------------------------------
-
-
 
 void MainWindow::menuButtonClicked() {
     if (ui->Game->currentIndex() != m_lastIndex) {
@@ -418,8 +430,6 @@ void MainWindow::searchInputInv() {
                     item->setIcon(QIcon(":/Images/Images/Button/potion/potion3.png"));
                 } else if (item->text()=="Divine Potion") {
                     item->setIcon(QIcon(":/Images/Images/Button/potion/potion4.png"));
-                } else if (item->text()=="Divine Potiom") {
-                    item->setIcon(QIcon(":/Images/Images/Button/potion/potion5.png"));
                 }
             }
         }
@@ -730,6 +740,7 @@ void MainWindow::potionButtonClicked() {
 void MainWindow::attackButtonClicked() {
     ui->stk_mineFight->setCurrentIndex(0);
     QString monsterInfo = "";
+    QString lootInfo = "";
     int damage = 0;
     Mine* mine = m_mines[ui->cbox_mines->currentIndex()-1];
     if (m_hero->getClass()=="Warrior") {
@@ -742,17 +753,17 @@ void MainWindow::attackButtonClicked() {
     monsterInfo="You've dealt "+QString::number(damage-mine->getMonster()[0]->getDefence())+" Damage";
     ui->lbl_monsterHp->setText(QString::number(mine->getMonster()[0]->getHp())+"/"+QString::number(mine->getMonster()[0]->getMaxHp()));
     if (mine->getMonster()[0]->getHp()==0) {
-        ui->stk_mineFight->setCurrentIndex(2);
+        lootInfo = "You've got " +QString::number(mine->getMonster()[0]->getGolds())+ " Golds";
         if (mine->getMineLevel()>=6) {
-            switch (getRandNumber(0,1)) {
+            switch (getRandNumber(0,4)) {
             case 0:
                 m_hero->addToInventory(new Potion(4));
-                break;
-            case 1:
-                m_hero->addToInventory(new Potion(4));
+                lootInfo += "\n and a Divine potion";
                 break;
             }
         }
+        ui->lbl_gain->setText(lootInfo);
+        ui->stk_mineFight->setCurrentIndex(2);
         m_hero->setGolds(m_hero->getGolds()+mine->getMonster()[0]->getGolds());
         ui->btn_attack->setEnabled(false);
         ui->btn_potion->setEnabled(false);

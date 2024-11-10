@@ -26,8 +26,8 @@ void Warrior::setWeapon(Weapon* newWeapon) {
     updDamage();
 }
 
-Weapon &Warrior::getSword() {
-    return *m_sword;
+vector<Weapon*> Warrior::getWeapons() {
+    return vector<Weapon*>{m_sword};
 }
 
 void Warrior::setDamageBoost(int newDamageBoost) {

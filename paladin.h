@@ -11,8 +11,7 @@ private:
 public:
     Paladin(const string &name, const int maxHp, const int golds, const int damage, const int defence, const string &p_class);
     void setWeapon(Weapon *newWeapon);
-    Weapon &getSword();
-    Weapon &getShield();
+    vector<Weapon*> getWeapons();
     string getStats() const;
     void updDamage();
     void updDefence();

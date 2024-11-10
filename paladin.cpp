@@ -22,12 +22,8 @@ void Paladin::setWeapon(Weapon* newWeapon) {
     updDefence();
 }
 
-Weapon &Paladin::getSword() {
-    return *m_sword;
-}
-
-Weapon &Paladin::getShield() {
-    return *m_shield;
+vector<Weapon*> Paladin::getWeapons() {
+    return vector<Weapon*>{m_sword,m_shield};
 }
 
 string Paladin::getStats() const {

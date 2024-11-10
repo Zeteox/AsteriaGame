@@ -75,10 +75,10 @@ string Mine::generateMine(){
                 addMonster(new Monster("skeleton", 6, 2, 2, 0, true, false, false));
                 break;
             case 2:
-                addMonster(new Monster("lizardMan", 10, 5, 1, 1, true, true, false));
+                addMonster(new Monster("lizardMan", 10, 5, 1, 0, true, true, false));
                 break;
             case 3:
-                addMonster(new Monster("tiefling", 12, 10, 2, 2, false, false, true));
+                addMonster(new Monster("tiefling", 12, 10, 2, 1, false, false, true));
                 break;
             }
         }
@@ -111,5 +111,7 @@ string Mine::levelUp() {
         }else{
             return "There are still monsters in the mine";
         }
+    } else {
+        return "The mine can't level up anymore";
     }
 }

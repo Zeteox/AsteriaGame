@@ -6,25 +6,25 @@ Merchant::Merchant() {
         m_potionStock.push_back(new Potion(getRandNumber(1,3)));
     }
     // ---Sword
-    m_weaponStock.push_back(new Sword("Standard Sword", 2, 2));
-    m_weaponStock.push_back(new Sword("Rare Sword", 5, 3));
-    m_weaponStock.push_back(new Sword("Magical Sword", 10, 5));
-    m_weaponStock.push_back(new Sword("Legendary Sword", 25, 7));
-    m_weaponStock.push_back(new Sword("Mythic Sword", 75, 12));
+    m_weaponStock.push_back(new Sword("Standard Sword", 4, 2));
+    m_weaponStock.push_back(new Sword("Rare Sword", 10, 3));
+    m_weaponStock.push_back(new Sword("Magical Sword", 20, 5));
+    m_weaponStock.push_back(new Sword("Legendary Sword", 50, 7));
+    m_weaponStock.push_back(new Sword("Mythic Sword", 140, 12));
 
     // ---Staff
-    m_weaponStock.push_back(new Staff("Standard Staff", 2, 1));
-    m_weaponStock.push_back(new Staff("Rare Staff", 5, 2));
-    m_weaponStock.push_back(new Staff("Magical Staff", 10, 4));
-    m_weaponStock.push_back(new Staff("Legendary Staff", 25, 6));
-    m_weaponStock.push_back(new Staff("Mythic Staff", 75, 11));
+    m_weaponStock.push_back(new Staff("Standard Staff", 4, 1));
+    m_weaponStock.push_back(new Staff("Rare Staff", 10, 2));
+    m_weaponStock.push_back(new Staff("Magical Staff", 20, 4));
+    m_weaponStock.push_back(new Staff("Legendary Staff", 50, 6));
+    m_weaponStock.push_back(new Staff("Mythic Staff", 140, 11));
 
     // ---Shield
-    m_weaponStock.push_back(new Shield("Standard Shield", 2, 1));
-    m_weaponStock.push_back(new Shield("Rare Shield", 5, 2));
-    m_weaponStock.push_back(new Shield("Magical Shield", 10, 3));
-    m_weaponStock.push_back(new Shield("Legendary Shield", 25, 5));
-    m_weaponStock.push_back(new Shield("Mythic Shield", 75, 7));
+    m_weaponStock.push_back(new Shield("Standard Shield", 4, 1));
+    m_weaponStock.push_back(new Shield("Rare Shield", 10, 2));
+    m_weaponStock.push_back(new Shield("Magical Shield", 20, 3));
+    m_weaponStock.push_back(new Shield("Legendary Shield", 50, 5));
+    m_weaponStock.push_back(new Shield("Mythic Shield", 140, 7));
 }
 
 

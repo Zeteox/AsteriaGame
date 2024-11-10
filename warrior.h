@@ -13,7 +13,7 @@ public:
     Warrior(const string &name, const int maxHp, const int golds, const int damage, const int defence, const string &p_class);
     virtual ~Warrior();
     void setWeapon(Weapon* newWeapon);
-    Weapon &getSword();
+    vector<Weapon*> getWeapons();
     void setDamageBoost(int newDamageBoost);
     string getStats() const;
     int getDamageBoost()const;
