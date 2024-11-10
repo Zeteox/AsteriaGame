@@ -61,5 +61,28 @@
         <file>Images/Button/icone/maps icon2.png</file>
         <file>Images/Button/icone/setting.png</file>
         <file>Images/Button/icone/setting2.png</file>
+        <file>Images/Button/potion/potion1.png</file>
+        <file>Images/Button/potion/potion2.png</file>
+        <file>Images/Button/potion/potion3.1.png</file>
+        <file>Images/Button/potion/potion3.png</file>
+        <file>Images/Button/potion/potion4.png</file>
+        <file>Images/Button/potion/potion5.png</file>
+        <file>Images/Button/sword/sword1.png</file>
+        <file>Images/Button/sword/sword2.png</file>
+        <file>Images/Button/sword/sword3.png</file>
+        <file>Images/Button/sword/sword4.png</file>
+        <file>Images/Button/sword/sword5.png</file>
+        <file>Images/Button/sword/sword6.png</file>
+        <file>Images/Button/staff/staff1.png</file>
+        <file>Images/Button/staff/staff2.png</file>
+        <file>Images/Button/staff/staff3.png</file>
+        <file>Images/Button/staff/staff4.png</file>
+        <file>Images/Button/staff/staff5.png</file>
+        <file>Images/Button/staff/staff6.png</file>
+        <file>Images/Button/shields/shield1.png</file>
+        <file>Images/Button/shields/shield2.png</file>
+        <file>Images/Button/shields/shield3.png</file>
+        <file>Images/Button/shields/shield4.png</file>
+        <file>Images/Button/shields/shield5.png</file>
     </qresource>
 </RCC>

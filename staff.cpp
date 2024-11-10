@@ -3,6 +3,7 @@
 
 Staff::Staff(const string &name, const int price, int damage)
     : Weapon(name, price) {
+    m_type="Staff";
     m_damage=damage;
 }
 

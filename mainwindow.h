@@ -51,6 +51,7 @@ private slots:
     void invButtonClicked();
     void drinkButtonClicked();
     void equipButtonClicked();
+    void unequipAllButtonClicked();
 
     void menuButtonClicked();
 

@@ -27,8 +27,8 @@ public:
     void sell(Merchant *merchant, Potion *potion);
     void sell(Merchant *merchant, Weapon *weapon);
     virtual int getBonuses();
-    /*virtual void setSword(Sword *newSword);
-    virtual void setShield(Shield *newShield);
+    virtual void setWeapon(Weapon *newWeapon);
+    /*virtual void setShield(Shield *newShield);
     virtual void setStaff(Staff *newStaff);*/
 };
 

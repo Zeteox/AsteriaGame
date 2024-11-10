@@ -17,6 +17,8 @@ string Hero::talk() const {
     return "je suis le hero " + m_name;
 }
 
+void Hero::setWeapon(Weapon*) {}
+
 int Hero::getBonuses(){
     return 0;
 }

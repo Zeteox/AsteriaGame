@@ -7,12 +7,12 @@
 class Mage : public Hero
 {
 private:
-    Staff *m_staff;
+    Weapon *m_staff;
     int m_dodgeChance;
 public:
     Mage(const string &name, const int maxHp, const int golds, const int damage, const int defence, const string &p_class);
-    void setStaff(Staff *newStaff);
-    Staff &getStaff();
+    void setWeapon(Weapon *newWeapon);
+    Weapon &getStaff();
     string getStats() const;
     void setDodgeChance(int newDodgeChance);
     int getDodgeChance();

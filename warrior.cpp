@@ -15,11 +15,18 @@ int Warrior::getBonuses(){
     return m_damageBoost;
 }
 
-void Warrior::setSword(Sword *newSword) {
-    m_sword = newSword;
+void Warrior::setWeapon(Weapon* newWeapon) {
+    if (newWeapon!= nullptr) {
+        if (newWeapon->getType()=="Sword") {
+            m_sword = newWeapon;
+        }
+    } else {
+        m_sword = nullptr;
+    }
+    updDamage();
 }
 
-Sword &Warrior::getSword() {
+Weapon &Warrior::getSword() {
     return *m_sword;
 }
 

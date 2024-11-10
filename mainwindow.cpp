@@ -29,6 +29,8 @@ void MainWindow::genVillages() {
     m_currentVillage = 0;
     m_villages.push_back(new Village("Vendetta"));
     m_villages.push_back(new Village("Burratta"));
+    ui->lbl_nameVillage1->setText(QString::fromStdString(m_villages[0]->getName()));
+    ui->lbl_nameVillage2->setText(QString::fromStdString(m_villages[1]->getName()));
 }
 
 void MainWindow::stackedWidgetIndexSetup() {
@@ -77,6 +79,7 @@ void MainWindow::connectAll() {
     connect(ui->btn_backInv,SIGNAL(clicked(bool)),this,SLOT(backButtonClicked()));
     connect(ui->btn_drink,SIGNAL(clicked(bool)),this,SLOT(drinkButtonClicked()));
     connect(ui->btn_equip,SIGNAL(clicked(bool)),this,SLOT(equipButtonClicked()));
+    connect(ui->btn_unequipAll,SIGNAL(clicked(bool)),this,SLOT(unequipAllButtonClicked()));
 
     connect(ui->btn_village1,SIGNAL(clicked(bool)),this,SLOT(btnVillageOneClicked()));
     connect(ui->btn_village2,SIGNAL(clicked(bool)),this,SLOT(btnVillageTwoClicked()));
@@ -140,19 +143,37 @@ void MainWindow::getAllBuildings() {
             }
         }
     }
-    if (m_mines.empty()) {
-        ui->btn_village2->setEnabled(true);
-    } else {
-        bool isVillageCleared = true;
-        for (size_t i =0;i<m_mines.size();i++) {
-            if (!m_mines[i]->getMonster().empty()) {
-                isVillageCleared = false;
-                break;
+    if (m_currentVillage==1) {
+        if (m_mines.empty()) {
+            ui->btn_village2->setEnabled(true);
+        } else {
+            bool isVillageCleared = true;
+            for (size_t i =0;i<m_mines.size();i++) {
+                if (!m_mines[i]->getMonster().empty()) {
+                    isVillageCleared = false;
+                    break;
+                }
+            }
+            if (isVillageCleared) {
+                ui->btn_village2->setEnabled(true);
             }
         }
-        if (isVillageCleared) {
-            ui->btn_village2->setEnabled(true);
+    } else if (m_currentVillage==2) {
+        if (m_mines.empty()) {
+            ui->Game->setCurrentIndex(8);
+        } else {
+            bool isVillageCleared = true;
+            for (size_t i =0;i<m_mines.size();i++) {
+                if (!m_mines[i]->getMonster().empty()) {
+                    isVillageCleared = false;
+                    break;
+                }
+            }
+            if (isVillageCleared) {
+                ui->Game->setCurrentIndex(8);
+            }
         }
+        ui->lbl_end->setText("You won");
     }
 }
 
@@ -311,8 +332,8 @@ void MainWindow::worldButtonClicked() {
 void MainWindow::heroButtonClicked() {
     m_hero->updDamage();
     m_hero->updDefence();
-    ui->lbl_statsHero->setText(QString::fromStdString(m_hero->getStats()));
     ui->Game->setCurrentIndex(1);
+    statsButtonClicked();
     searchInputInv();
 }
 
@@ -326,8 +347,6 @@ void MainWindow::invButtonClicked() {
     ui->txt_search->clear();
 }
 
-//--------------------------------------------------------------------------------
-
 void MainWindow::drinkButtonClicked() {
     if (ui->list_potionInv->currentRow()>=0) {
         m_hero->drink(m_hero->getInventory()->getPotions()[ui->list_potionInv->currentRow()]);
@@ -335,23 +354,37 @@ void MainWindow::drinkButtonClicked() {
     }
 }
 
+//--------------------------------------------------------------------------------
+
 void MainWindow::equipButtonClicked() {
     if (ui->list_weaponInv->currentRow()>=0) {
         Weapon* weapon = m_hero->getInventory()->getWeapons()[ui->list_weaponInv->currentRow()];
         if (weapon->getType()=="Sword") {
             if (m_hero->getClass()=="Warrior" || m_hero->getClass()=="Paladin") {
-                qDebug()<<"Equip sword";
+                m_hero->setWeapon(weapon);
+                QIcon icon = ui->list_weaponInv->item(ui->list_weaponInv->currentRow())->icon();
+                ui->lbl_swordStaffPic->setPixmap(icon.pixmap(icon.actualSize(QSize(100,100))));
             }
         } else if (weapon->getType()=="Shield") {
             if (m_hero->getClass()=="Paladin") {
-                qDebug()<<"Equip shield";
+                m_hero->setWeapon(weapon);
+                QIcon icon = ui->list_weaponInv->item(ui->list_weaponInv->currentRow())->icon();
+                ui->lbl_shieldPic->setPixmap(icon.pixmap(icon.actualSize(QSize(100,100))));
             }
         } else if (weapon->getType()=="Staff") {
             if (m_hero->getClass()=="Mage") {
-                qDebug()<<"Equip staff";
+                m_hero->setWeapon(weapon);
+                QIcon icon = ui->list_weaponInv->item(ui->list_weaponInv->currentRow())->icon();
+                ui->lbl_swordStaffPic->setPixmap(icon.pixmap(icon.actualSize(QSize(100,100))));
             }
         }
     }
+}
+
+void MainWindow::unequipAllButtonClicked() {
+    m_hero->setWeapon(nullptr);
+    ui->lbl_swordStaffPic->setPixmap(QPixmap());
+    ui->lbl_shieldPic->setPixmap(QPixmap());
 }
 
 //--------------------------------------------------------------------------------
@@ -376,12 +409,62 @@ void MainWindow::searchInputInv() {
         for (size_t x=0;x<inv.size();x++) {
             if (inv[x]->getName().find(ui->txt_search->toPlainText().QString::toStdString()) != string::npos) {
                 ui->list_potionInv->addItem(QString::fromStdString(inv[x]->getName()));
+                QListWidgetItem* item = ui->list_potionInv->item(x);
+                if (item->text()=="Small Potion") {
+                    item->setIcon(QIcon(":/Images/Images/Button/potion/potion1.png"));
+                } else if (item->text()=="Medium Potion") {
+                    item->setIcon(QIcon(":/Images/Images/Button/potion/potion2.png"));
+                } else if (item->text()=="Big Potion") {
+                    item->setIcon(QIcon(":/Images/Images/Button/potion/potion3.png"));
+                } else if (item->text()=="Divine Potion") {
+                    item->setIcon(QIcon(":/Images/Images/Button/potion/potion4.png"));
+                } else if (item->text()=="Divine Potiom") {
+                    item->setIcon(QIcon(":/Images/Images/Button/potion/potion5.png"));
+                }
             }
         }
 
         for (size_t x=0;x<invWeapon.size();x++) {
             if (invWeapon[x]->getName().find(ui->txt_search->toPlainText().QString::toStdString()) != string::npos) {
                 ui->list_weaponInv->addItem(QString::fromStdString(invWeapon[x]->getName()));
+                QListWidgetItem* item = ui->list_weaponInv->item(x);
+                if (item->text()=="Starter Sword") {
+                    item->setIcon(QIcon(":/Images/Images/Button/sword/sword1.png"));
+                } else if (item->text()=="Standard Sword") {
+                    item->setIcon(QIcon(":/Images/Images/Button/sword/sword2.png"));
+                } else if (item->text()=="Rare Sword") {
+                    item->setIcon(QIcon(":/Images/Images/Button/sword/sword3.png"));
+                } else if (item->text()=="Magical Sword") {
+                    item->setIcon(QIcon(":/Images/Images/Button/sword/sword4.png"));
+                } else if (item->text()=="Legendary Sword") {
+                    item->setIcon(QIcon(":/Images/Images/Button/sword/sword5.png"));
+                } else if (item->text()=="Mythic Sword") {
+                    item->setIcon(QIcon(":/Images/Images/Button/sword/sword6.png"));
+
+                }else if (item->text()=="Starter Staff") {
+                    item->setIcon(QIcon(":/Images/Images/Button/staff/staff1.png"));
+                } else if (item->text()=="Standard Staff") {
+                    item->setIcon(QIcon(":/Images/Images/Button/staff/staff2.png"));
+                } else if (item->text()=="Rare Staff") {
+                    item->setIcon(QIcon(":/Images/Images/Button/staff/staff3.png"));
+                } else if (item->text()=="Magical Staff") {
+                    item->setIcon(QIcon(":/Images/Images/Button/staff/staff4.png"));
+                } else if (item->text()=="Legendary Staff") {
+                    item->setIcon(QIcon(":/Images/Images/Button/staff/staff5.png"));
+                } else if (item->text()=="Mythic Staff") {
+                    item->setIcon(QIcon(":/Images/Images/Button/staff/staff5.png"));
+
+                } else if (item->text()=="Standard Shield") {
+                    item->setIcon(QIcon(":/Images/Images/Button/shields/shield1.png"));
+                } else if (item->text()=="Rare Shield") {
+                    item->setIcon(QIcon(":/Images/Images/Button/shields/shield2.png"));
+                } else if (item->text()=="Magical Shield") {
+                    item->setIcon(QIcon(":/Images/Images/Button/shields/shield3.png"));
+                } else if (item->text()=="Legendary Shield") {
+                    item->setIcon(QIcon(":/Images/Images/Button/shields/shield4.png"));
+                } else if (item->text()=="Mythic Shield") {
+                    item->setIcon(QIcon(":/Images/Images/Button/shields/shield5.png"));
+                }
             }
         }
     }
@@ -660,6 +743,16 @@ void MainWindow::attackButtonClicked() {
     ui->lbl_monsterHp->setText(QString::number(mine->getMonster()[0]->getHp())+"/"+QString::number(mine->getMonster()[0]->getMaxHp()));
     if (mine->getMonster()[0]->getHp()==0) {
         ui->stk_mineFight->setCurrentIndex(2);
+        if (mine->getMineLevel()>=6) {
+            switch (getRandNumber(0,1)) {
+            case 0:
+                m_hero->addToInventory(new Potion(4));
+                break;
+            case 1:
+                m_hero->addToInventory(new Potion(4));
+                break;
+            }
+        }
         m_hero->setGolds(m_hero->getGolds()+mine->getMonster()[0]->getGolds());
         ui->btn_attack->setEnabled(false);
         ui->btn_potion->setEnabled(false);

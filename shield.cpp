@@ -3,6 +3,7 @@
 
 Shield::Shield(const string &name, const int price, int defence)
     : Weapon(name, price) {
+    m_type="Shield";
     m_defence=defence;
 }
 

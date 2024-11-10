@@ -11,11 +11,18 @@ int Mage::getBonuses() {
     return m_dodgeChance;
 }
 
-void Mage::setStaff(Staff *newStaff) {
-    m_staff = newStaff;
+void Mage::setWeapon(Weapon* newWeapon) {
+    if (newWeapon!= nullptr) {
+        if (newWeapon->getType()=="Staff") {
+            m_staff = newWeapon;
+        }
+    } else {
+        m_staff = nullptr;
+    }
+    updDamage();
 }
 
-Staff &Mage::getStaff() {
+Weapon &Mage::getStaff() {
     return *m_staff;
 }
 

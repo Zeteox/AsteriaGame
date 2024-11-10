@@ -7,19 +7,26 @@ Paladin::Paladin(const string &name, const int maxHp, const int golds, const int
     m_inventory->addWeapon(new Sword("Starter Sword",0,1));
 }
 
-void Paladin::setSword(Sword *newSword) {
-    m_sword = newSword;
+void Paladin::setWeapon(Weapon* newWeapon) {
+    if (newWeapon!= nullptr) {
+        if (newWeapon->getType()=="Sword") {
+            m_sword = newWeapon;
+        } else if (newWeapon->getType()=="Shield") {
+            m_shield = newWeapon;
+        }
+    } else {
+        m_sword = nullptr;
+        m_shield = nullptr;
+    }
+    updDamage();
+    updDefence();
 }
 
-void Paladin::setShield(Shield *newShield) {
-    m_shield = newShield;
-}
-
-Sword &Paladin::getSword() {
+Weapon &Paladin::getSword() {
     return *m_sword;
 }
 
-Shield &Paladin::getShield() {
+Weapon &Paladin::getShield() {
     return *m_shield;
 }
 
