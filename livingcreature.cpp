@@ -17,7 +17,7 @@ string &LivingCreature::getName() {
 }
 
 void LivingCreature::setHp(int hp) {
-        m_hp=hp;
+    m_hp=hp;
 }
 
 int LivingCreature::getHp() const {

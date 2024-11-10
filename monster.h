@@ -16,7 +16,7 @@ private:
 public:
     Monster(const string name, const int maxHp, const int golds, const int damage, const int defence,
             const bool haveSword, const bool haveShield, const bool haveStaff);
-    ~Monster();
+    virtual ~Monster();
     Sword* getSword();
     void setSword(Sword* sword);
     Shield* getShield();

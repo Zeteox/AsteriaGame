@@ -16,6 +16,7 @@ class Building
 
 public:
     Building(const string &type);
+    ~Building();
     string getType();
     void setType(string type);
     Hostel* getHostel();

@@ -14,6 +14,7 @@ class Merchant
     vector<Potion*> m_potionStock;
 public:
     Merchant();
+    ~Merchant();
     vector<Weapon*> getWeaponStock();
     vector<Potion*> getPotionStock();
     void addPotion(Potion* potion);

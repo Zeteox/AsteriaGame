@@ -29,6 +29,15 @@ Merchant::Merchant() {
     m_weaponStock.push_back(new Shield("Mythic Shield", 140, 7));
 }
 
+Merchant::~Merchant(){
+    // The destructor delete the merchant.
+    for(size_t x = 0; x < m_weaponStock.size(); x++){
+        delete m_weaponStock[x];
+    }
+    for(size_t x = 0; x < m_potionStock.size(); x++){
+        delete m_potionStock[x];
+    }
+}
 
 vector<Weapon*> Merchant::getWeaponStock(){
     return m_weaponStock;
@@ -39,11 +48,11 @@ vector<Potion*> Merchant::getPotionStock(){
 }
 
 void Merchant::addPotion(Potion* potion){
-        m_potionStock.push_back(potion);
+    m_potionStock.push_back(potion);
 }
 
 void Merchant::addWeapon(Weapon* weapon){
-        m_weaponStock.push_back(weapon);
+    m_weaponStock.push_back(weapon);
 }
 
 string Merchant::removeWeapon(Weapon* weapon){
@@ -54,6 +63,7 @@ string Merchant::removeWeapon(Weapon* weapon){
     }else{
         for (size_t i=0; i<m_weaponStock.size();i++) {
             if (m_weaponStock[i] == weapon) {
+                delete weapon;
                 m_weaponStock.erase(m_weaponStock.begin()+i);
                 return "The weapon has been removed";
             }
@@ -70,6 +80,7 @@ string Merchant::removePotion(Potion* potion){
     }else{
         for (size_t i=0; i<m_potionStock.size();i++) {
             if (m_potionStock[i] == potion) {
+                delete potion;
                 m_potionStock.erase(m_potionStock.begin()+i);
                 return "The potion has been removed";
             }

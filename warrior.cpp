@@ -51,13 +51,13 @@ string Warrior::getStats() const {
         swordName = m_sword->getName();
     }
     return  "Name: " + m_name +
-            "\nclass: " + m_class +
-            "\nHp: " + to_string(m_hp) + "/" + to_string(m_maxHp) +
-            "\nGold: " + to_string(m_golds) +
-            "\nDamage: " + to_string(m_damage) +
-            "\nDefence: " + to_string(m_defence) +
-            "\nDamage boost: " + to_string(m_damageBoost) +
-            "\nSword: " + swordName;
+           "\nclass: " + m_class +
+           "\nHp: " + to_string(m_hp) + "/" + to_string(m_maxHp) +
+           "\nGold: " + to_string(m_golds) +
+           "\nDamage: " + to_string(m_damage) +
+           "\nDefence: " + to_string(m_defence) +
+           "\nDamage boost: " + to_string(m_damageBoost) +
+           "\nSword: " + swordName;
 }
 
 void Warrior::updDamage() {

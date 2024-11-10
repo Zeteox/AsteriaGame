@@ -18,9 +18,17 @@ Building::Building(const string &type) {
         m_mine = new Mine (1);
     }
 }
+Building::~Building(){
+    // The destructor delete the buildings.
+    delete m_hostel;
+    delete m_merchant;
+    delete m_mine;
+}
+
 string Building::getType(){
     return m_type;
 }
+
 void Building::setType(string type){
     m_type = type;
 };

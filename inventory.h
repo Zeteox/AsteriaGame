@@ -12,6 +12,7 @@ private:
     vector<Weapon*> m_weapons;
 public:
     Inventory();
+    ~Inventory();
     size_t getSpace();
     string addSpace();
     vector<Potion*> getPotions();

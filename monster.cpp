@@ -23,7 +23,12 @@ Monster::Monster(const string name, const int maxHp, const int golds, const int 
     }
     genImagePath();
 }
-
+Monster::~Monster(){
+    // The destructor delete the monster.
+    delete m_sword;
+    delete m_shield;
+    delete m_staff;
+}
 Sword* Monster::getSword(){
     return m_sword;
 }

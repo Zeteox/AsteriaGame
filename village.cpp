@@ -9,7 +9,7 @@ Village::Village(string name) {
     and m_numberBuildings to a random number between 0 and 9,
     then calls the generateVillage method.*/
     m_name = name;
-    m_numberBuildings = getRandNumber(2, 9);
+    m_numberBuildings = getRandNumber(3, 9);
     generateVillage();
 }
 
@@ -54,6 +54,7 @@ string Village::removeBuilding(Building* building){
     }else{
         for (int i=0; i<m_numberBuildings;i++) {
             if (m_allBuildings[i] == building) {
+                delete building;
                 m_allBuildings.erase(m_allBuildings.begin()+i);
                 return "The building has been removed";
             }

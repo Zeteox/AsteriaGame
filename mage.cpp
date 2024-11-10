@@ -50,7 +50,7 @@ string Mage::getStats() const {
            "\nDamage: " + to_string(m_damage) +
            "\nDefence: " + to_string(m_defence) +
            "\nDodge chance: " + to_string(m_dodgeChance) +
-            "\nStaff: " + staffName;
+           "\nStaff: " + staffName;
 }
 
 void Mage::updDamage() {

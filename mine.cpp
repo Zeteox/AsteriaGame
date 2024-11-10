@@ -9,7 +9,12 @@ Mine::Mine(int mineLevel) {
     generateMine();
 }
 
-Mine::~Mine() {}
+Mine::~Mine() {
+    // The destructor delete the mine.
+    for(size_t x = 0; x< m_monster.size(); x++){
+        delete m_monster[x];
+    }
+}
 
 int Mine::getMonsterNumber() {
     return m_numberOfMonster;
@@ -56,6 +61,7 @@ string Mine::removeMonster(Monster* monster){
         m_numberOfMonster--;
         for (size_t i=0; i<m_monster.size();i++) {
             if(m_monster[i] == monster){
+                delete monster;
                 m_monster.erase(m_monster.begin()+i);
                 return "The monster has been removed";
             }

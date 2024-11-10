@@ -8,9 +8,7 @@ Sword::Sword(const string &name, const int price, int damage)
     m_damage=damage;
 }
 
-Sword::~Sword() {
-
-}
+Sword::~Sword() {}
 
 void Sword::setDamage(int newDamage) {
     m_damage = newDamage;

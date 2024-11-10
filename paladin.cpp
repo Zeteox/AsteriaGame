@@ -43,13 +43,13 @@ string Paladin::getStats() const {
         shieldName = m_shield->getName();
     }
     return  "Name: " + m_name +
-            "\nclass: " + m_class +
-            "\nHp: " + to_string(m_hp) + "/" + to_string(m_maxHp) +
-            "\nGold: " + to_string(m_golds) +
-            "\nDamage: " + to_string(m_damage) +
-            "\nDefence: " + to_string(m_defence) +
-            "\nSword: " + swordName +
-            "\nShield: " + shieldName;
+           "\nclass: " + m_class +
+           "\nHp: " + to_string(m_hp) + "/" + to_string(m_maxHp) +
+           "\nGold: " + to_string(m_golds) +
+           "\nDamage: " + to_string(m_damage) +
+           "\nDefence: " + to_string(m_defence) +
+           "\nSword: " + swordName +
+           "\nShield: " + shieldName;
 }
 
 void Paladin::updDamage() {
